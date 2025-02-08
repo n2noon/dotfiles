@@ -1,0 +1,51 @@
+[manager]
+append_keymap = [
+	{ on = [ "q" ], run = "close", desc = "Close the current tab, or quit if it is last tab" },
+	{ on = [ "n" ], run = "create", desc = "Create a file or directory (ends with / for directories)" },
+]
+
+[[manager.prepend_keymap]]
+on   = [ "g", "m" ]
+run  = "cd ~/Music"
+desc = "~/Music"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "d" ]
+run  = "cd ~/Downloads"
+desc = "~/Downloads"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "t" ]
+run  = "cd ~/Torrents"
+desc = "~/Torrents"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "h" ]
+run  = "cd ~/"
+desc = "~/"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "b" ]
+run  = "cd ~/Books"
+desc = "~/Books"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "p" ]
+run  = "cd ~/projects/"
+desc = "~/projects"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "n" ]
+run  = "cd ~/Notes/"
+desc = "~/Notes"
+
+# These are all for plugins
+[[manager.prepend_keymap]]
+on = [ "T" ]
+run = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
+
+[[manager.prepend_keymap]]
+on   = [ "c", "a" ]
+run  = "plugin compress"
+desc = "Archive selected files"

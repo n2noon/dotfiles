@@ -1,0 +1,41 @@
+import = [
+    "~/.config/alacritty/tokyonight_moon.toml"
+]
+
+[shell]
+program = "/opt/homebrew/bin/fish"
+args = [
+    "-l",
+    # "-c",
+    # "zellij attach --index 0 || zellij"
+]
+
+[font]
+size = 16
+normal = { family = "JetBrainsMono NF", style = "Regular" }
+# offset = { x = 1, y = 1 }
+
+[window]
+padding = { x = 2, y = 0 }
+# dynamic_padding = true
+decorations = "None"
+startup_mode = "Maximized"
+# startup_mode = "SimpleFullscreen"
+# opacity = 0.93
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[mouse]
+# hide_when_typing = true
+
+[[hints.enabled]]
+binding = { key = "U", mods = "Control|Shift" }
+command = "xdg-open"
+hyperlinks = true
+mouse.enabled = true
+mouse.mods = "Command"
+post_processing = true
+persist = false
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"

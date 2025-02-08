@@ -1,0 +1,49 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift shift": "file_finder::Toggle",
+      "cmd-s": "workspace::ToggleLeftDock",
+      "cmd-shift-s": "workspace::ToggleRightDock",
+      "ctrl-s": "workspace::ToggleLeftDock",
+      "ctrl-§": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-.": "editor::ToggleCodeActions",
+      "ctrl-shift-p": "command_palette::Toggle",
+      "ctrl-p": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && (vim_operator == none || vim_operator == n) && !VimWaiting",
+    "bindings": {
+      ";": "command_palette::Toggle",
+      "H": "editor::MoveToBeginningOfLine",
+      "L": "editor::MoveToEndOfLine",
+      "space ;": "workspace::ToggleBottomDock",
+      "space f": "buffer_search::Deploy",
+      "space space": "file_finder::Toggle",
+      // "space t": "editor::ShowInlineCompletion",
+      "space n": "editor::Rename",
+      "space r": "task::Spawn",
+      "space v": "editor::SelectEnclosingSymbol",
+      "space o": "project_symbols::Toggle",
+      "space t": "editor::ToggleInlayHints",
+      "space w v": "pane::SplitRight",
+      "space w h": "pane::SplitDown",
+      "space w q": "pane::CloseActiveItem",
+      "space w w": "workspace::ActivateNextPane",
+      "space tab": "projects::OpenRecent"
+    }
+  }
+]

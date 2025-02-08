@@ -1,0 +1,111 @@
+# partially borrowed from https://github.com/trapd00r/configs/blob/master/beets/config.yaml
+directory: /Users/kalk/Music/Library
+replace:
+    '[\\]':         ''
+    '[_]':          '-'
+    '[/]':          '-'
+    '^\.':          ''
+    '[\x00-\x1f]':  ''
+    '[<>:"\?\*\|]': ''
+    '\.$':          ''
+    '\s+$':         ''
+    '^\s+':         ''
+    '^-':           ''
+    '’':            "'"
+    '′':            "'"
+    '″':            ''
+    '‐':            '-'
+    '[\u2018\u2019]': ''''
+    '[\u201c\u201d]': '"'
+    '[\u2010]': '-'
+per_disc_numbering: yes
+original_date: yes
+import:
+    move: yes
+    languages: en jp
+match:
+    strong_rec_thresh: 0.005
+plugins: the fish convert fetchart inline zero fromfilename albumtypes edit importreplace extrafiles missing rewrite embedart lastgenre # plexupdate
+embedart:
+  auto: no
+  remove_art_file: yes
+the:
+  a: no
+rewrite:
+   albumartist .*nurse with wound.*: Nurse With Wound
+   albumartist .*boris.*: Boris
+   albumartist .*mulatu astatke.*: Mulatu Astatke
+   albumartist .*beth gibbons.*: Beth Gibbons
+   albumartist .*nujabes.*: Nujabes
+   albumartist .*chat pile.*: Chat Pile
+   albumartist .*ryuichi sakamoto.*: Ryuichi Sakamoto
+   albumartist .*yellow eyes.*: Yellow Eyes
+   albumartist .*brian eno.*: Brian Eno
+   albumartist .*coil.*: Coil
+   albumartist .*d'angelo.*: D'Angelo
+   albumartist .*metallica.*: Metallica
+   albumartist .*otomo yoshihide.*: Otomo Yoshihide
+   albumartist .*takashi kokubo.*: Takashi Kokubo
+   albumartist .*john coltrane.*: John Coltrane
+   albumartist .*erik satie.*: Erik Satie
+   albumartist .*fela kuti.*: Fela Kuti
+   albumartist chick corea.*: Chick Corea
+   albumartist return to forever.*: Return to Forever
+   albumartist .*dillinger escape plan.*: The Dillinger Escape Plan
+lastgenre: #pip install mylast
+    whitelist: /Users/kalk/.config/beets/genres.txt
+extrafiles: # pip install beets-extrafiles
+    patterns:
+        artworkdir:
+          - '[sS]cans/'
+          - '[aA]rtwork/'
+    paths:
+        artworkdir: $albumpath/artwork
+convert:
+    auto: yes
+    quiet: yes
+    copy_album_art: no
+    embed: no
+    never_convert_lossy_files: yes
+    format: opus
+    delete_originals: true
+    formats:
+        opus:
+            command: opusenc --bitrate 192 $source $dest
+            extension: opus
+edit:
+    itemfields: track title artist albumartist album year
+    albumfields: track title artist albumartist album year
+importreplace: # pip install git+https://github.com/edgars-supe/beets-importreplace.git
+    replacements:
+        - item_fields: title artist artist_sort artist_credit
+          album_fields: album artist artist_sort artist_credit
+          replace:
+            '[\u2018-\u201B]': ''''
+            '[\u201C-\u201F]': '"'
+            '[\u2010-\u2015]': '-'
+# plex:
+#     host: "localhost"
+#     port: 32400
+#     token: "TOKEN"
+zero:
+    fields: month day genre comments
+    comments: [EAC, LAME]
+    update_database: true
+fetchart: # pip install requests
+    sources: filesystem coverart albumart itunes amazon lastfm wikipedia google
+    cover_format: jpeg
+    cautious: yes
+    minwidth: 600
+    maxwidth: 600
+pluginpath: ~/.config/beets/plugins
+
+item_fields:
+    multidisc: 1 if disctotal > 1 else 0
+ui:
+    color: yes
+paths:
+    default: %the{$albumartist}/[$year] $album $atypes/%if{$multidisc,$disc-}$track $title
+    singleton: %the{$albumartist}/Non-Album/$title
+    comp: %the{$albumartist}/Compilations/[$year] $album/$track $title
+    albumtype:soundtrack: Soundtracks/$album/$track $title

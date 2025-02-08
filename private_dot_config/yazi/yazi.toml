@@ -1,0 +1,32 @@
+[manager]
+layout         = [ 1, 4, 4 ]
+sort_by        = "mtime"
+sort_sensitive = true
+sort_reverse   = true
+sort_dir_first = true
+linemode       = "size_and_mtime"
+show_hidden    = false
+show_symlink   = true
+
+[preview]
+tab_size        = 4
+max_width       = 2000
+max_height      = 2000
+cache_dir       = ""
+image_delay     = 20
+image_filter    = "triangle"
+image_quality   = 75
+sixel_fraction  = 15
+ueberzug_scale  = 1
+ueberzug_offset = [ 0, 0, 0, 0 ]
+
+[log]
+enabled = false
+
+[plugin]
+prepend_previewers = [
+    # { mime = "{image,audio,video}/*", run = "mediainfo"},
+    { mime = "application/subrip", run = "mediainfo"},
+    { mime = "application/epub+zip", run = "archive"}
+]
+
