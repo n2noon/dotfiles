@@ -19,6 +19,7 @@ vim.g.maplocalleader = ' '
 -- [[OPTIONS]]
 -- See `:help vim.opt`
 -- For more options, you can see `:help option-list`
+vim.opt.title = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
@@ -26,6 +27,7 @@ vim.opt.mouse = 'a'       -- Enable mouse mode, can be useful for resizing split
 vim.opt.showmode = false  -- Don't show the mode, since it's already in the status line
 vim.opt.breakindent = true
 vim.opt.undofile = true   -- Save undo history
+vim.opt.laststatus = 1
 
 vim.opt.ignorecase = true -- Case-insensitive searching UNLESS \C or one or more capital letters in search term
 vim.opt.smartcase = true
@@ -234,12 +236,32 @@ require('lazy').setup({
         { "<leader>N", function() Snacks.rename.rename_file() end, desc = "Rename File" },
     },
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    opts = {
-    }
-  },
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  --   opts = {
+  --     options = {
+  --       -- section_separators = '<',
+  --       component_separators = '',
+  --     },
+  --     sections = {
+  --       lualine_a = {},
+  --       lualine_b = {'diagnostics'},
+  --       lualine_c = {'filename'},
+  --       lualine_x = {'filetype'},
+  --       lualine_y = {'searchcount'},
+  --       lualine_z = {'progress'}
+  --     },
+  --     inactive_sections = {
+  --       lualine_a = {},
+  --       lualine_b = {},
+  --       lualine_c = {},
+  --       lualine_x = {},
+  --       lualine_y = {},
+  --       lualine_z = {}
+  --     },
+  --   }
+  -- },
   {
     'echasnovski/mini.nvim',
     version = false,
