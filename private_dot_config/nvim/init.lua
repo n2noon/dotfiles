@@ -2,6 +2,20 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- TODO:
+-- - get task running/debugging
+-- - get bookmarks set up
+-- - get quickfix set up 
+-- - refactor this into keybinds and lsp 
+-- - use mini.ai for ciq?
+-- - surround
+--
+--
+--
+-- You can use \zs and \ze to mark the start and end of the capture, anything on the other side of these will be matched against but not captured.
+-- For example, this will change words beginning with foo to foobar:
+-- s/foo\zs\w\+/bar/
+
 -- [[OPTIONS]]
 -- See `:help vim.opt`
 -- For more options, you can see `:help option-list`
@@ -20,8 +34,8 @@ vim.opt.signcolumn = 'yes:1' -- Keep signcolumn on by default
 -- vim.opt.updatetime = 250   -- Decrease update time
 vim.opt.timeoutlen = 300   -- Displays which-key popup sooner
 
-vim.opt.splitright = true  -- Configure how new splits should be opened
 vim.opt.splitbelow = true
+vim.opt.splitright = true  -- Configure how new splits should be opened
 
 vim.opt.list = true -- Sets how neovim will display certain whitespace characters
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
@@ -41,9 +55,10 @@ vim.schedule(function()      -- This is delayed so startup time is quicker
 end)
 
 -- [[BASIC KEYMAPS]]
---  See `:help vim.keymap.set()`
 
 -- Clear highlights on search when pressing <Esc> in normal mode (and also dismiss lsp.buf.hover - this is hacky there's probably a better way to do it)
+vim.keymap.set({'n', 'v'}, '<C-/>', ":norm gcc<CR>")
+-- vim.keymap.set({'n', 'v'}, '<leader>c', ":norm gcc<CR>")
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>hl')
 -- always center search results
 vim.keymap.set('n', 'n', 'nzz', { silent = true })
@@ -52,24 +67,51 @@ vim.keymap.set('n', '*', '*zz', { silent = true })
 vim.keymap.set('n', '#', '#zz', { silent = true })
 vim.keymap.set('n', 'g*', 'g*zz', { silent = true })
 
-vim.keymap.set('n', 'H', '^')
+vim.keymap.set('n', 'H', '_')
 vim.keymap.set('n', 'L', '$')
 
 vim.keymap.set('n', ';', ':')
 
 -- Some emacs lol
-vim.keymap.set('n', '<C-a>', '^')
-vim.keymap.set('n', '<C-e>', '$')
+-- vim.keymap.set('n', '<C-a>', '^')
+-- vim.keymap.set('n', '<C-e>', '$')
+
+-- This is different to ciw, you can substitute next word too with n
+vim.keymap.set('n', '<Enter>', '*Ncgn', { silent = true, desc = "Substitute word under cursor" })
+-- Normal mode Backspace alternates buffers
+vim.keymap.set('n', '<Tab>', ':b#<CR>', { silent=true })
 
 -- make j and k move by visual line, not actual line, when text is soft-wrapped
 vim.keymap.set('n', 'j', 'gj')
 vim.keymap.set('n', 'k', 'gk')
+
+-- Double tap Esc in terminal to go back to normal
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
+-- LEADER BINDS --
+-- q - 
+-- w - window operations
+-- e - navigation
+-- r - task runner
+-- t - 
+-- y -
+-- u -
+-- i -
+-- o - symbols
+-- p -
+-- r -
+-- r -
+-- r -
+-- r -
 
 -- Quitting, saving
 vim.keymap.set('n', '<leader>wq', '<cmd>q<CR>', { desc = 'Quit' })
 -- vim.keymap.set('n', '<leader>q', '<cmd>q<CR>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { desc = 'Vsplit' })
 vim.keymap.set('n', '<leader>wh', ':split<CR>', { desc = 'Split' })
+
+-- More accessible %
+vim.keymap.set('n', '<leader>e', '%')
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -83,6 +125,8 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Focus left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Focus right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Focus lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Focus upper window' })
+
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Focus upper window' })
 
 -- [[ Basic Autocommands ]]
@@ -116,7 +160,7 @@ for _, pat in ipairs({'text', 'markdown', 'mail', 'gitcommit'}) do
   vim.api.nvim_create_autocmd('Filetype', {
     pattern = pat,
     group = text,
-    command = 'setlocal spell tw=72 colorcolumn=73',
+    command = 'setlocal spell tw=118 colorcolumn=120',
 })
 end
 
@@ -139,7 +183,8 @@ require('lazy').setup({
   {
     -- "catppuccin/nvim",
     -- "loctvl842/monokai-pro.nvim",
-    "folke/tokyonight.nvim",
+    -- "folke/tokyonight.nvim",
+    "ellisonleao/gruvbox.nvim",
     -- "rose-pine/neovim",
     lazy = false,
     priority = 1000,
@@ -147,58 +192,123 @@ require('lazy').setup({
       local scheme =
           -- "catppuccin-mocha"
           -- "monokai-pro"
-          -- "rose-pine"
           -- "tokyonight-moon"
-          "tokyonight-storm"
+          -- "tokyonight-storm"
+          "gruvbox"
+          -- "rose-pine"
       vim.cmd.colorscheme(scheme)
     end
   },
   {
-    'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    "folke/snacks.nvim",
+    -- see https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
     opts = {
-      icons = {
-        -- set icon mappings to true if you have a Nerd Font
-        mappings = vim.g.have_nerd_font,
-        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-        -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = '<Up> ',
-          Down = '<Down> ',
-          Left = '<Left> ',
-          Right = '<Right> ',
-          C = '<C-…> ',
-          M = '<M-…> ',
-          D = '<D-…> ',
-          S = '<S-…> ',
-          CR = '<CR> ',
-          Esc = '<Esc> ',
-          ScrollWheelDown = '<ScrollWheelDown> ',
-          ScrollWheelUp = '<ScrollWheelUp> ',
-          NL = '<NL> ',
-          BS = '<BS> ',
-          Space = '<Space> ',
-          Tab = '<Tab> ',
-          F1 = '<F1>',
-          F2 = '<F2>',
-          F3 = '<F3>',
-          F4 = '<F4>',
-          F5 = '<F5>',
-          F6 = '<F6>',
-          F7 = '<F7>',
-          F8 = '<F8>',
-          F9 = '<F9>',
-          F10 = '<F10>',
-          F11 = '<F11>',
-          F12 = '<F12>',
-        },
-      },
-      -- Document existing key chains
-      spec = {
-        { '<leader>s', group = '[S]earch' },
-      },
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      debug = { enabled = true },
+      lazygit = { enabled = true },
+      -- explorer = { enabled = true },
+      -- indent = { enabled = true },
+      -- input = { enabled = true },
+      -- picker = { enabled = true },
+      -- notifier = { enabled = true },
+      quickfile = { enabled = true },
+      rename = { enabled = true },
+      scope = { enabled = true },
+      scratch = { enabled = true },
+      -- scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      toggle = { enabled = true },
+      -- words = { enabled = true },
+    },
+    keys = {
+        { "<leader>g", function() Snacks.lazygit() end, desc = "Lazygit" },
+        { "<leader>..",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
+        { "<leader>.,",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
+        { "<leader>N", function() Snacks.rename.rename_file() end, desc = "Rename File" },
     },
   },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+    }
+  },
+  {
+    'echasnovski/mini.nvim',
+    version = false,
+    priority = 1000,
+    lazy = false,
+    -- opts = {
+    -- },
+  },
+    -- {
+    --   "echasnovski/mini.pairs",
+    --   event = "VeryLazy",
+    --   opts = {
+    --     modes = { insert = true, command = true, terminal = false },
+    --     -- skip autopair when next character is one of these
+    --     skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+    --     -- skip autopair when the cursor is inside these treesitter nodes
+    --     skip_ts = { "string" },
+    --     -- skip autopair when next character is closing pair
+    --     -- and there are more closing pairs than opening pairs
+    --     skip_unbalanced = true,
+    --     -- better deal with markdown code blocks
+    --     markdown = true,
+    --     },
+  -- {
+  --   'folke/which-key.nvim',
+  --   event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+  --   opts = {
+  --     icons = {
+  --       -- set icon mappings to true if you have a Nerd Font
+  --       mappings = vim.g.have_nerd_font,
+  --       -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+  --       -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
+  --       keys = vim.g.have_nerd_font and {} or {
+  --         Up = '<Up> ',
+  --         Down = '<Down> ',
+  --         Left = '<Left> ',
+  --         Right = '<Right> ',
+  --         C = '<C-…> ',
+  --         M = '<M-…> ',
+  --         D = '<D-…> ',
+  --         S = '<S-…> ',
+  --         CR = '<CR> ',
+  --         Esc = '<Esc> ',
+  --         ScrollWheelDown = '<ScrollWheelDown> ',
+  --         ScrollWheelUp = '<ScrollWheelUp> ',
+  --         NL = '<NL> ',
+  --         BS = '<BS> ',
+  --         Space = '<Space> ',
+  --         Tab = '<Tab> ',
+  --         F1 = '<F1>',
+  --         F2 = '<F2>',
+  --         F3 = '<F3>',
+  --         F4 = '<F4>',
+  --         F5 = '<F5>',
+  --         F6 = '<F6>',
+  --         F7 = '<F7>',
+  --         F8 = '<F8>',
+  --         F9 = '<F9>',
+  --         F10 = '<F10>',
+  --         F11 = '<F11>',
+  --         F12 = '<F12>',
+  --       },
+  --     },
+  --     -- Document existing key chains
+  --     spec = {
+  --       { '<leader>s', group = '[S]earch' },
+  --     },
+  --   },
+  -- },
   {
     "ibhagwan/fzf-lua",
     -- optional for icon support
@@ -279,11 +389,9 @@ require('lazy').setup({
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       opts = {} },
+      -- { 'j-hui/fidget.nvim',       opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp
       'hrsh7th/cmp-nvim-lsp',
@@ -305,7 +413,7 @@ require('lazy').setup({
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>d', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
+          -- map('<leader>d', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
@@ -322,7 +430,7 @@ require('lazy').setup({
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          -- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
           map('<C-.>', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
@@ -362,11 +470,11 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-          --   map('<leader>th', function()
-          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-          --   end, '[T]oggle Inlay [H]ints')
-          -- end
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map('<leader>th', function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+            end, '[T]oggle Inlay [H]ints')
+          end
         end,
       })
 
@@ -415,7 +523,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
       })
 
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
@@ -547,16 +655,40 @@ require('lazy').setup({
     end,
   },
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim',
+  { 
+    'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false }
   },
   {
-  'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
+    "stevearc/conform.nvim",
+    dependencies = { "mason.nvim" },
+    lazy = true,
+    cmd = "ConformInfo",
+    keys = {
+      {
+        "<leader>cF",
+        function()
+          require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+        end,
+        mode = { "n", "v" },
+        desc = "Format Injected Langs",
+      },
+    },
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        fish = { "fish_indent" },
+        sh = { "shfmt" },
+      },
+    }
   },
+  -- {
+  -- 'windwp/nvim-autopairs',
+  --   event = "InsertEnter",
+  --   config = true
+  -- },
   -- Highlight, edit, and navigate code
   {
     -- Can do :set filetype=json to set stuff manually (just a reminder)
@@ -565,7 +697,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'python', 'rust', 'query', 'vim', 'vimdoc' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -588,15 +720,6 @@ require('lazy').setup({
     event = "VeryLazy",
     opts = {}
   },
- -- Misc
-  -- {
-  --   "3rd/image.nvim",
-  --   event = "VeryLazy",
-  --   build = false,
-  --   opts = {
-  --
-  --   }
-  -- },
   {
     "kawre/leetcode.nvim",
     event = "VeryLazy",
@@ -606,15 +729,14 @@ require('lazy').setup({
         "ibhagwan/fzf-lua",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
-        -- "3rd/image.nvim"
     },
     opts = {
       ---@type lc.lang
       lang = "java",
-      -- -@type boolean
-      -- image_support = true
     },
   },
+  -- DEBUGGING --
+  -- https://www.lazyvim.org/extras/dap/core
   -- {
   --   "epwalsh/obsidian.nvim",
   --   -- https://github.com/epwalsh/obsidian.nvim
