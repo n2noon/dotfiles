@@ -26,6 +26,10 @@ o.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cu
 o.softtabstop = 4
 o.shiftwidth = 4
 o.expandtab = true
+o.shada = "'1000,f1,<500"
+
+
+
 -- o.timeoutlen = 400 -- Displays which-key popup sooner
 -- This is delayed so startup time is quicker
 vim.schedule(function()
