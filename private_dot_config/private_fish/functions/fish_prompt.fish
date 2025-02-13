@@ -24,18 +24,6 @@ function fish_prompt --description 'Write out the prompt'
         set status_color (set_color $fish_color_error)
         set prompt_status $status_color "[" $last_status "]" $normal
     end
-    #
-    ## Color the prompt based on vi mode
-    #switch $fish_bind_mode
-    #  case default
-    #    set status_color (set_color brred)
-    #  case insert
-    #    set status_color (set_color brgreen)
-    #  case replace_one
-    #    set status_color (set_color brblue)
-    #  case visual
-    #    set status_color (set_color brmagenta)
-    #end
 
     echo
     echo -s $cwd_color (prompt_pwd) $vcs_color (fish_vcs_prompt) $normal ' ' $prompt_status
