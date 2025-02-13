@@ -66,8 +66,21 @@ require('lazy').setup({
     version = false,
     priority = 1000,
     lazy = false,
-    -- opts = {
-    -- },
+    config = function ()
+      -- allows for q as a quote object and b selects all brackets
+      require('mini.ai').setup()
+      -- require('mini.clue').setup() needs triggers
+      require('mini.pairs').setup()
+      -- gj splits or joins
+      require('mini.splitjoin').setup({mappings = {toggle = 'gj'}})
+      -- saiw' adds ' to word surrounding
+      -- ds' deletes '
+      -- cs'" changes
+      -- fs finds
+      -- sh highlights
+      -- can use q and b also
+      require('mini.surround').setup()
+    end
   },
   {
     'ibhagwan/fzf-lua',
@@ -76,7 +89,7 @@ require('lazy').setup({
       { '<c-p>', function() FzfLua.files() end, desc = 'Open File', },
       { '<c-s-p>', function() FzfLua.commands() end, desc = 'Open Commands', },
       { '<leader>f', function() FzfLua.blines() end, desc = 'Search Buffer', },
-      { '<leader><leader>', function() FzfLua.live_grep() end, desc = 'Search Everywhere', },
+      { '<leader><leader>', function() FzfLua.live_grep_native() end, desc = 'Search Everywhere', },
       { '<leader><Tab>', function() FzfLua.oldfiles() end, desc = 'Recent Files', },
       { '<leader>sh', function() FzfLua.helptags() end, desc = '[S]earch [H]elp', },
       { '<leader>sk', function() FzfLua.keymaps() end, desc = '[S]earch keymaps?', },
@@ -85,9 +98,9 @@ require('lazy').setup({
       { '<leader>z', function() FzfLua.zoxide() end, desc = '[Z]oxide', },
       { '<leader>t', "<cmd>TodoFzfLua<CR>", desc = 'Search [T]ODO', },
       { '<leader>st', "<cmd>TodoFzfLua<CR>", desc = 'Search [T]ODO', },
-      -- {"<leader>o", function() FzfLua.treesitter() end, desc = 'Treesitter symbols'},
     },
     opts = {
+      -- see https://github.com/ibhagwan/fzf-lua?tab=readme-ov-file#customization
       defaults = {
         file_icons = false,
         winopts = {
@@ -98,16 +111,34 @@ require('lazy').setup({
         },
       },
       -- VSCode-like file name first
-      files = { formatter = 'path.filename_first' },
-      blines = { previewer = false, winopts = { row = 0.4, height = 0.8, width = 0.7 } },
-      oldfiles = { formatter = 'path.filename_first' },
+      files = {
+        formatter = 'path.filename_first',
+        winopts = {
+        },
+      },
+      blines = { previewer = false, winopts = { row = 0.4, height = 0.9, width = 0.8 } },
+      oldfiles = {
+        formatter = 'path.filename_first',
+        include_current_session = true
+      },
+      code_actions = {
+        -- requires git-delta
+        previewer = "codeaction_native",
+      },
+      lsp = {
+        -- see https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#symbolKind
+        symbols = {
+          symbol_style = 2,
+          symbol_fmt = function(s) return s  end,
+        }
+      },
     },
   },
-  -- TODO: configure this a bit more
   {
     'mikavilpas/yazi.nvim',
     event = 'VeryLazy',
     keys = {
+      -- <C-s> greps inside the directory!
       { '<leader>-', '<cmd>Yazi<cr>', desc = 'Open yazi at the current file' },
       { '<leader>cw', '<cmd>Yazi cwd<cr>', desc = "Open the file manager in nvim's working directory" },
     },
@@ -117,6 +148,9 @@ require('lazy').setup({
       keymaps = {
         show_help = '±', -- TODO: this
         open_file_in_horizontal_split = '<c-s>',
+      },
+      integrations = {
+        grep_in_directory = 'fzf-lua'
       },
       yazi_floating_window_winblend = 0,
     },
@@ -230,6 +264,16 @@ require('lazy').setup({
       end
     end,
   },
+  -- {
+  --   "HiPhish/rainbow-delimiters.nvim",
+  --   event = 'BufReadPre',
+  --   -- opts = {
+  --     -- query = {
+  --       -- [''] = 'rainbow-delimiters',
+  --       -- lua = 'rainbow-blocks',
+  --     -- }
+  --   -- }
+  -- },
   {
     "saghen/blink.cmp",
     dependencies = 'rafamadriz/friendly-snippets',
@@ -237,7 +281,7 @@ require('lazy').setup({
     opts = {
       keymap = { preset = 'super-tab' },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'snippets', 'lsp', 'path', 'buffer' },
         min_keyword_length = function(ctx)
           -- don't complete commands < 3 chars long
           if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then return 2 end

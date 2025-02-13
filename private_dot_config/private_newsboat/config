@@ -17,7 +17,6 @@ highlight article "\\((link|image|video)\\)" color8 default
 highlight article "https?://[^ ]+" color4 default
 highlight article "\[[0-9]+\]" color6 default bold
 
-
 browser "firefox %u"
 
 auto-reload yes
@@ -25,5 +24,11 @@ auto-reload yes
 highlight feedlist "---.*---" color8 default bold
 highlight feedlist ".*0/0.." default default invis
 
+download-full-page yes
+
 bind-key k up
 bind-key j down
+unbind-key ^U
+unbind-key ^D
+bind-key ^U pageup
+bind-key ^D pagedown

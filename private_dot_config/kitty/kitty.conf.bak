@@ -805,7 +805,7 @@ disable_ligatures always
 #: suffix of "c" on the width/height values to have them interpreted
 #: as number of cells instead of pixels.
 
-# enabled_layouts *
+enabled_layouts *
 
 #: The enabled window layouts. A comma separated list of layout names.
 #: The special value all means all layouts. The first listed layout
@@ -2141,7 +2141,7 @@ map ctrl+9 goto_tab 9
 
 #: Next layout
 
-# map kitty_mod+l next_layout
+map f1 next_layout
 
 
 #: You can also create shortcuts to switch to specific layouts::
@@ -2158,7 +2158,7 @@ map ctrl+9 goto_tab 9
 #: Useful to temporarily "zoom" the active window by switching to the
 #: stack layout::
 
-map ctrl+' toggle_layout stack
+map ctrl+§ toggle_layout stack
 map alt+; toggle_layout stack
 #: }}}
 
@@ -2481,7 +2481,7 @@ map super+backspace send_text all \x15
 
 
 # BEGIN_KITTY_THEME
-# Jet Brains Darcula
+# Birds Of Paradise
 include current-theme.conf
 # END_KITTY_THEME
 

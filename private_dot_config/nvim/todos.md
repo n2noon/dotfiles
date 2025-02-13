@@ -1,22 +1,12 @@
 # TODO
+- add neotest
 - get task running/debugging
 - get bookmarks set up
-- get quickfix set up
-- refactor this into keybinds and lsp
 - use mini.ai for ciq?
 - surround
-- might delete mason or conform and replace
-
 
 dap: look at https://www.reddit.com/r/neovim/comments/1ho7n3v/what_do_you_miss_from_vscode_if_you_even_miss/m48olf9/
-
-
 ideavim: https://gist.github.com/mikeslattery/d2f2562e5bbaa7ef036cf9f5a13deff5
-
-
-require "mappings" either looks for:
-- lua/mappings.lua
-- lua/mappings/init.lua
 
 
 # Learn
