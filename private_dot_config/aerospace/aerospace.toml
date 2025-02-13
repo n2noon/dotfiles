@@ -38,6 +38,11 @@ outer.bottom =     0
 outer.top =        0
 outer.right =      0
 
+[exec.env-vars]
+PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+EDITOR = 'nvim'
+SHELL = '/opt/homebrew/bin/fish'
+
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.main.binding]
 
@@ -103,7 +108,7 @@ alt-semicolon = 'workspace T --auto-back-and-forth'
 cmd-shift-semicolon = 'move-node-to-workspace T'
 alt-shift-semicolon = 'move-node-to-workspace T'
 cmd-m = 'workspace M --auto-back-and-forth'
-alt-m = 'workspace M --auto-back-and-forth'
+# alt-m = 'workspace M --auto-back-and-forth'
 
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
@@ -135,11 +140,18 @@ cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
-alt-enter = 'exec-and-forget kitty -1 yazi ~'
+# ctrl-minus = 'exec-and-forget kitty -1 yazi ~'
+alt-minus = 'exec-and-forget kitty -1 yazi ~'
+alt-m = 'exec-and-forget open /System/Applications/Mail.app'
+alt-c = 'exec-and-forget open /System/Applications/Calendar.app'
+alt-r = 'exec-and-forget open /System/Applications/Reminders.app'
+alt-b = 'exec-and-forget firefox -new-window'
+alt-n = 'exec-and-forget kitty -1 nvim ~/Notes/'
+alt-g = 'exec-and-forget kitty -1 lazygit'
 cmd-enter = 'exec-and-forget kitty -1 -d ~'
 ctrl-shift-esc = 'exec-and-forget kitty -1 btop' 
-cmd-b = 'exec-and-forget firefox -new-window'
-alt-b = 'exec-and-forget firefox -new-window'
+cmd-f = 'exec-and-forget firefox -new-window'
+alt-f = 'exec-and-forget firefox -new-window'
 alt-y = 'exec-and-forget firefox -new-window moz-extension://4c6a77e3-ff26-461c-b8e4-4f6ab68e4f5f/search.html'
 alt-o = 'exec-and-forget open /Applications/Obsidian.app' 
 alt-d = 'exec-and-forget open /Applications/Discord.app'
@@ -159,7 +171,7 @@ alt-left = 'resize width -50'
 alt-right = 'resize width +50'
 alt-down = 'resize height -50'
 alt-up = 'resize height +50'
-alt-r = 'mode resize'
+# alt-r = 'mode resize'
 
 [mode.resize.binding]
 h = 'resize width -50'
