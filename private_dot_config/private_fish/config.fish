@@ -1,79 +1,98 @@
-## Path (brew on darwin)
-fish_add_path /opt/homebrew/bin/
-fish_add_path /opt/homebrew/sbin/
-fish_add_path /opt/homebrew/opt/openjdk/bin/
-fish_add_path ~/.cargo/bin/
+if type -q brew
+    fish_add_path /opt/homebrew/bin/
+    fish_add_path /opt/homebrew/sbin/
+    fish_add_path /opt/homebrew/opt/openjdk/bin/
+    set -gx SHELL /opt/homebrew/bin/fish
+    abbr -a bi brew install
+    abbr -a bup brew upgrade
+    abbr -a bu brew remove
+    abbr -a bs brew search
+    abbr -a bl brew list
+    abbr -a binf brew info
+end
+
+if type -q cargo
+    fish_add_path ~/.cargo/bin/
+end
+
 fish_add_path ~/.scripts
 
-set -gx SHELL /opt/homebrew/bin/fish
 # kitty needs this for ime input
 set -gx GLFW_IM_MODULE ibus
 
 # maybe i should move to helix...
-set -gx EDITOR nvim
+if type -q nvim
+    set -gx EDITOR nvim
+else
+    set -gx EDITOR vim
+end
 
 # bat for coloured man pages
-set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
+if type -q bat
+    set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
+    abbr -a b bat
+end
 
 # bind ctrl+z to toggle fg
 bind \cz 'fg 2> /dev/null'
 
 # Yazi
-# (commented out dumb hack to get ueberzugpp in zellij lol i stopped using zellij)
-function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    #NVIM=1 NVIM_LOG_FILE=1 yazi $argv --cwd-file="$tmp"
-    yazi $argv --cwd-file="$tmp"
-    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
+if type -q yazi
+    function y
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            builtin cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
     end
-    rm -f -- "$tmp"
 end
 
-zoxide init fish | source
-fzf --fish | source
+if type -q zoxide
+    zoxide init fish | source
+end
 
-# eza
-abbr -a ls eza --icons always
-abbr -a ll eza --icons always -l
+if type -q fzf
+    fzf --fish | source
+end
+
+if type -q eza
+    abbr -a l eza --icons always
+    abbr -a ll eza --icons always -l
+end
+
+abbr -a c cat
 
 # muscle memory...
-abbr -a lf y
-abbr -a nv $EDITOR
 abbr -a n $EDITOR
 
-# Package manager (mac)
-abbr -a bi brew install
-abbr -a bup brew upgrade
-abbr -a bu brew remove
-abbr -a bs brew search
-abbr -a bl brew list
-abbr -a binf brew info
 #abbr -a --set-cursor encrypt age -p -o %.age
 
 # Wine
-abbr -a vn WINEPREFIX=~/VNs LC_MESSAGES=ja_JP.UTF-8 wine
+if type -q wine
+    abbr -a vn WINEPREFIX=~/VNs LC_MESSAGES=ja_JP.UTF-8 wine
+end
 
 # Git (add more!)
 abbr -a gc git commit
 abbr -a ga git add
+abbr -a gs git status
+abbr -a gl git log
 abbr -a gp git pull
 abbr -a gf git fetch
 abbr -a gr git rebase
-abbr -a lg lazygit
+abbr -a g lazygit
 abbr -a gcm git commit --message
 
 abbr -a --position anywhere pbcopy fish_clipboard_copy
 abbr -a --position anywhere pbpaste fish_clipboard_paste
 
-
 abbr -a proj cd ~/projects/
-# Some scripts
 
 
-# Created by `pipx` on 2024-10-07 21:18:26
 set PATH $PATH /Users/kalk/.local/bin
+
+# fish_update_completions
 
 # launch my music daemons...
 #mpd & mpdscribble &
-
