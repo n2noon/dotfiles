@@ -27,6 +27,7 @@ o.softtabstop = 4
 o.shiftwidth = 4
 o.expandtab = true
 o.shada = "'1000,f1,<500"
+o.updatetime = 700
 
 
 
