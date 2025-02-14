@@ -3,6 +3,7 @@ require 'options'
 require 'keymaps'
 require 'autocmds'
 
+
 ----- PLUGINS -----
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
