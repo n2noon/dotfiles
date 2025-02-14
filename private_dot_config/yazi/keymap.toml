@@ -39,6 +39,11 @@ on   = [ "g", "n" ]
 run  = "cd ~/Notes/"
 desc = "~/Notes"
 
+[[manager.prepend_keymap]]
+on   = [ "g", "n" ]
+run  = "cd ~/Notes/"
+desc = "~/Notes"
+
 # These are all for plugins
 [[manager.prepend_keymap]]
 on = [ "T" ]
@@ -49,3 +54,8 @@ desc = "Maximize or restore preview"
 on   = [ "c", "a" ]
 run  = "plugin compress"
 desc = "Archive selected files"
+
+[[manager.prepend_keymap]]
+on   = [ "c", "x" ]
+run  = "chmod +x"
+desc = "Mark file executable"

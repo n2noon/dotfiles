@@ -354,6 +354,10 @@ require('lazy').setup({
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'ibhagwan/fzf-lua', 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim', },
     opts = { lang = 'java' },
   },
+  {
+    "OXY2DEV/markview.nvim",
+    lazy = false
+  },
   -- DEBUGGING --
   -- taken from https://github.com/tjdevries/config.nvim/blob/master/lua/custom/plugins/dap.lua
   -- look at https://www.reddit.com/r/neovim/comments/1ho7n3v/what_do_you_miss_from_vscode_if_you_even_miss/m48olf9/
