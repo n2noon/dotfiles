@@ -780,7 +780,7 @@ map super+backspace send_text all \x15
 
 
 # BEGIN_KITTY_THEME
-# citylights
+# Kanagawa
 include current-theme.conf
 # END_KITTY_THEME
 

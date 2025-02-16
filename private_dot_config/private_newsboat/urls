@@ -4,13 +4,16 @@ https://fasterthanli.me/index.xml programming rust
 https://jvns.ca/atom.xml programming
 https://nyanpasu64.gitlab.io/atom.xml programming
 -OTHERS-
+https://blog.robertelder.org/rss programming
 https://foosoft.net/feeds/posts.atom programming
+https://www.cs.cornell.edu/~asampson/blog.xml programming
 https://izzys.casa/rss.xml programming 
 https://quietmisdreavus.net/feed.xml programming 
 https://faultlore.com/blah/rss.xml programming rust
 https://matklad.github.io/feed.xml programming rust
 https://without.boats/index.xml programming rust
 https://www.felienne.com/feed programming 
+https://mitchellh.com/feed.xml programming zig
 https://nullprogram.com/feed/ programming
 https://zed.dev/blog.rss programming rust
 https://asahilinux.org/blog/index.xml programming
@@ -18,6 +21,7 @@ https://strongly-typed-thoughts.net/blog/feed programming
 https://blog.m-ou.se/index.xml programming rust
 https://cliffle.com/rss.xml programming
 http://www.milchior.fr/blog_en/index.php/feed/atom programming
+https://antirez.com/rss programming
 https://matklad.github.io/feed.xml programming rust
 https://www.tedinski.com/feed.xml programming
 https://this-week-in-rust.org/atom.xml programming rust

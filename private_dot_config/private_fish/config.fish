@@ -4,6 +4,9 @@ bind \cz 'fg 2> /dev/null'
 # kitty needs this for ime input
 set -gx GLFW_IM_MODULE ibus
 
+abbr -a pk pkill
+
+
 if type -q brew
     fish_add_path /opt/homebrew/bin/
     fish_add_path /opt/homebrew/sbin/
@@ -53,6 +56,8 @@ end
 
 if type -q fzf
     fzf --fish | source
+    set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+    set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 end
 
 if type -q eza
@@ -95,6 +100,7 @@ abbr -a --position anywhere pbcopy fish_clipboard_copy
 abbr -a --position anywhere pbpaste fish_clipboard_paste
 
 abbr -a proj cd ~/projects/
+abbr -a home cd ~/
 
 
 set PATH $PATH /Users/kalk/.local/bin
