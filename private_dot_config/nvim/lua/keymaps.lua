@@ -10,11 +10,6 @@ vim.keymap.set('n', 'N', 'Nzz', { silent = true })
 vim.keymap.set('n', '*', '*zz', { silent = true })
 vim.keymap.set('n', '#', '#zz', { silent = true })
 vim.keymap.set('n', 'g*', 'g*zz', { silent = true })
--- and ctrl u d b f
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
-vim.keymap.set('n', '<C-b>', '<C-b>zz', { silent = true })
-vim.keymap.set('n', '<C-f>', '<C-f>zz', { silent = true })
 
 
 -- more friendly line begin/end binds
