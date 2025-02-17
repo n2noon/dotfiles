@@ -50,3 +50,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Focus upper window' })
 
 -- Save file with sudo permissions
 vim.keymap.set("ca", "w!!", "w !sudo tee % > /dev/null")
+
+
+--- PLUGINS ---
+-- local fzf = require('fzf-lua')

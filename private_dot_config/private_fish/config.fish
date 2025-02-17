@@ -5,6 +5,8 @@ bind \cz 'fg 2> /dev/null'
 set -gx GLFW_IM_MODULE ibus
 
 abbr -a pk pkill
+abbr -a im beet im
+abbr -a bim beet im
 
 
 if type -q brew
@@ -12,6 +14,8 @@ if type -q brew
     fish_add_path /opt/homebrew/sbin/
     fish_add_path /opt/homebrew/opt/openjdk/bin/
     set -gx SHELL /opt/homebrew/bin/fish
+    set -gx HOMEBREW_AUTO_UPDATE_SECS 60*60*24*7
+    set -gx HOMEBREW_NO_ENV_HINTS y
     abbr -a bi brew install
     abbr -a bup brew upgrade
     abbr -a bu brew remove
@@ -29,6 +33,7 @@ fish_add_path ~/.scripts
 # maybe i should move to helix...
 if type -q nvim
     set -gx EDITOR nvim
+    abbr -a leet nvim -c Leet
 else
     set -gx EDITOR vim
 end
@@ -101,6 +106,8 @@ abbr -a --position anywhere pbpaste fish_clipboard_paste
 
 abbr -a proj cd ~/projects/
 abbr -a home cd ~/
+
+abbr -a j just
 
 
 set PATH $PATH /Users/kalk/.local/bin

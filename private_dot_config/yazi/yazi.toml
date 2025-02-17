@@ -1,5 +1,5 @@
 [manager]
-layout         = [ 1, 4, 4 ]
+ratio          = [ 1, 4, 4 ]
 sort_by        = "mtime"
 sort_sensitive = true
 sort_reverse   = true
@@ -20,6 +20,20 @@ sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
+# also see https://yazi-rs.github.io/docs/configuration/yazi#open
+# [opener]
+# play = [
+#     { run = 'mpv "$@"', orphan = true, for = "unix" },
+#     { run = '"C:\Program Files\mpv.exe" %*', orphan = true, for = "windows" }
+# ]
+# edit = [
+#     { run = '$EDITOR "$@"', block = true, for = "unix" },
+#     { run = "%EDITOR% %*",  block = true, for = "windows" },
+# ]
+# open = [
+#     { run = 'xdg-open "$@"', desc = "Open" },
+# ]
+
 [log]
 enabled = false
 
@@ -29,7 +43,7 @@ prepend_previewers = [
     { mime = "application/subrip", run = "mediainfo"},
     { mime = "application/epub+zip", run = "archive"},
     { name = "*.md", run = "glow" },
-    { name = "*/", run = "eza-preview" }
+    # { name = "*/", run = "eza-preview" }
 ]
 
 append_previewers = [
