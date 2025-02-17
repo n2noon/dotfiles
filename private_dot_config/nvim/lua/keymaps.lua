@@ -10,6 +10,12 @@ vim.keymap.set('n', 'N', 'Nzz', { silent = true })
 vim.keymap.set('n', '*', '*zz', { silent = true })
 vim.keymap.set('n', '#', '#zz', { silent = true })
 vim.keymap.set('n', 'g*', 'g*zz', { silent = true })
+-- and ctrl u d b f
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set('n', '<C-b>', '<C-b>zz', { silent = true })
+vim.keymap.set('n', '<C-f>', '<C-f>zz', { silent = true })
+
 
 -- more friendly line begin/end binds
 vim.keymap.set('n', 'H', '_')
@@ -19,9 +25,11 @@ vim.keymap.set('n', ';', ':')
 -- This is different to ciw, you can substitute next word too with n
 vim.keymap.set('n', '-', '*Ncgn', { silent = true, desc = 'Substitute word under cursor' })
 
--- Normal mode Tab or Backspace alternate buffers
+-- Normal mode Tab alternates buffers
 vim.keymap.set('n', '<Tab>', ':b#<CR>', { silent = true })
-vim.keymap.set('n', '<Backspace>', ':b#<CR>', { silent = true })
+
+-- ciw shortcut
+vim.keymap.set('n', '<Backspace>', 'ciw', { silent = true })
 
 -- make j and k move by visual line, not actual line, when text is soft-wrapped
 vim.keymap.set('n', 'j', 'gj')
