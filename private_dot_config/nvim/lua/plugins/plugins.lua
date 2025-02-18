@@ -102,6 +102,17 @@ return {
     },
   },
   {
+    'smoka7/hop.nvim',
+    version = "*",
+    opts = {
+        keys = 'asdfqwertyghjkluiopvbnm'
+    },
+    keys = {
+        {'<leader>h', '<cmd>HopAnywhere<cr>', desc = '[H]op'}
+
+    },
+  },
+  {
     'mikavilpas/yazi.nvim',
     event = 'VeryLazy',
     keys = {
@@ -129,23 +140,11 @@ return {
     opts = {
       keymap = {
           preset = 'super-tab',
-          ['<CR>'] = {'accept'}
+          ['<CR>'] = {'accept', 'fallback'}
       },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
         ghost_text = { enabled = true },
-        -- menu = {
-        --     draw = {
-        --         components = {
-        --
-        --
-        --         },
-        --         columns = {
-        --           { "kind_icon", "label", gap = 1},
-        --           {"label_description"}
-        --         },
-        --     },
-        -- },
       },
       sources = {
         default = { 'snippets', 'lsp', 'path', 'buffer' },
@@ -164,6 +163,10 @@ return {
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = { signs = false },
+    keys = {
+        vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo comment" }),
+        vim.keymap.set("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Previous todo comment" })
+    }
   },
   {
     'kawre/leetcode.nvim',
