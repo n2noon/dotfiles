@@ -1,5 +1,5 @@
--- another comment bind (may change this, it's a bit 
-vim.keymap.set({ 'n', 'v' }, '<C-/>', ':norm gcc<CR>')
+-- another comment bind (may change this, it's a bit hacky)
+vim.keymap.set({ 'n', 'v' }, '<C-/>', 'gcc')
 
 -- clear highlights on search when pressing <Esc> in normal mode (and also dismiss lsp.buf.hover - this is hacky there's probably a better way to do it)
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>hl')
@@ -36,8 +36,7 @@ vim.keymap.set('n', '<leader>e', '%')
 -- Exit terminal mode with double Esc
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-
--- Indent file (= indents? wow)
+-- format file (= formats? wow)
 vim.keymap.set("n", "<leader>L", "gg=G<C-o>")
 
 --- WINDOW ---
