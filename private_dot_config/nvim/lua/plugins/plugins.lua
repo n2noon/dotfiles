@@ -141,8 +141,7 @@ return {
     version = '*',
     opts = {
       keymap = {
-          preset = 'super-tab',
-          ['<CR>'] = {'accept', 'fallback'}
+          preset = 'super-tab'
       },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 500 },
@@ -151,8 +150,8 @@ return {
       sources = {
         default = { 'snippets', 'lsp', 'path', 'buffer' },
         min_keyword_length = function(ctx)
-          -- don't complete commands < 3 chars long
-          if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then return 3 end
+          -- don't complete commands < 2 chars long
+          if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then return 2 end
           return 0
         end,
       },
