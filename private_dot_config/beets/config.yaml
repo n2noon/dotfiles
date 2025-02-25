@@ -95,9 +95,10 @@ zero:
 fetchart: # pip install requests
     sources: filesystem coverart albumart itunes amazon lastfm wikipedia google
     cover_format: jpeg
-    cautious: yes
-    minwidth: 600
-    maxwidth: 600
+    cautious: no
+    lastfm_key: a3e2feadb3085caac96cd32cf955f795
+    minwidth: 500
+    maxwidth: 500
 pluginpath: ~/.config/beets/plugins
 
 item_fields:
