@@ -4,6 +4,8 @@ local o = vim.o
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+vim.cmd('colorscheme retrobox')
+
 o.title = true
 o.number = true
 o.relativenumber = true
