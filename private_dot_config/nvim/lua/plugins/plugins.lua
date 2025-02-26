@@ -12,20 +12,21 @@ return {
           preset = {
               -- header = [[]]
               keys = {
-                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
                     { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
                     { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-                    { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                    { icon = " ", key = "y", desc = "Yazi", action = ":Yazi"}, -- TODO - this properly
                     { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
                     -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-                    { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                    -- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                    { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
                     -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
               },
           },
           sections = {
-              { section = "keys", gap = 1, padding = 1 },
+              { section = "keys", gap = 1, },
+              { icon = " ", section = "recent_files", indent = 2, padding = 2 },
               { section = "startup" },
-              { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
           }
       },
       -- debug = { enabled = true },
@@ -137,7 +138,7 @@ return {
   -- },
   {
     'mikavilpas/yazi.nvim',
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     keys = {
       -- <C-s> greps inside the directory!
       { '<leader>-', '<cmd>Yazi<cr>', desc = 'Open yazi at the current file' },

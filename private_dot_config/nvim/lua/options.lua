@@ -31,7 +31,7 @@ o.updatetime = 700
 
 -- Folding
 o.foldmethod = "expr"
-o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+o.foldexpr = "v:lua.Foldexpr()"
 o.foldcolumn = "0"
 o.foldtext = ""
 o.foldlevel = 99

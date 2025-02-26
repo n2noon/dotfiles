@@ -28,13 +28,13 @@ autocmd('FileType', {
     command = 'wincmd L'
 })
 
-autocmd({ "BufEnter", "BufRead" }, {
-    desc = 'File associations!',
-    pattern = ".nvimrc",
-    callback = function()
-        vim.bo.filetype = "lua"
-    end,
-})
+-- autocmd({ "BufEnter", "BufRead" }, {
+--     desc = 'File associations!',
+--     pattern = ".nvimrc",
+--     callback = function()
+--         vim.bo.filetype = "lua"
+--     end,
+-- })
 
 -- Persistent folds
 autocmd("BufWinLeave", {
@@ -53,7 +53,7 @@ autocmd("BufWinEnter", {
 -- Show LSP status
 autocmd("LspProgress", {
     callback = function()
-        vim.notify(vim.lsp.status(), vim.log.levels.TRACE, {
+        vim.notify(vim.lsp.status(), vim.log.levels.OFF, {
             id = "lsp_progress",
             title = "LSP Progress",
         })
@@ -68,17 +68,12 @@ autocmd("FileType", {
 })
 
 -- shorter columns in text because it reads better that way
-local text = vim.api.nvim_create_augroup('text', { clear = true })
-for _, pat in ipairs({ 'text', 'markdown', 'mail' }) do
-    autocmd('Filetype', {
-        pattern = pat,
-        group = text,
-        command = 'setlocal spell tw=120',
-    })
-end
+autocmd('Filetype', {
+    pattern = {'text', 'markdown', 'mail'},
+    command = 'setlocal spell tw=120',
+})
 
 autocmd('Filetype', {
     pattern = 'gitcommit',
-    group = text,
     command = 'setlocal spell tw=72',
 })
