@@ -11,7 +11,6 @@ vim.keymap.set('n', '*', '*zz', { silent = true })
 vim.keymap.set('n', '#', '#zz', { silent = true })
 vim.keymap.set('n', 'g*', 'g*zz', { silent = true })
 
-
 -- more friendly line begin/end binds
 vim.keymap.set('n', 'H', '_')
 vim.keymap.set('n', 'L', '$')
@@ -27,8 +26,8 @@ vim.keymap.set('n', '<Tab>', ':b#<CR>', { silent = true })
 vim.keymap.set('n', '<Backspace>', 'ciw', { silent = true })
 
 -- make j and k move by visual line, not actual line, when text is soft-wrapped
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'k', 'gk')
+-- vim.keymap.set('n', 'j', 'gj')
+-- vim.keymap.set('n', 'k', 'gk')
 
 -- More accessible %
 vim.keymap.set('n', '<leader>e', '%')

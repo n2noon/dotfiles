@@ -1,13 +1,14 @@
 -- see https://github.com/Piotr1215/dotfiles/blob/master/.config/nvim/lua/autocommands.lua
---
-vim.api.nvim_create_autocmd('TextYankPost', {
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
     callback = function()
         vim.highlight.on_yank()
     end,
 })
 
-vim.api.nvim_create_autocmd('BufReadPost', {
+autocmd('BufReadPost', {
     desc = 'Jump to last edit position when opepning a file',
     pattern = '*',
     callback = function()
@@ -21,13 +22,13 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
+autocmd('FileType', {
     desc = 'Open man or help pages in a right split',
     pattern = { 'help', 'man' },
     command = 'wincmd L'
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
+autocmd({ "BufEnter", "BufRead" }, {
     desc = 'File associations!',
     pattern = ".nvimrc",
     callback = function()
@@ -35,8 +36,22 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
     end,
 })
 
+-- Persistent folds
+autocmd("BufWinLeave", {
+  pattern = "*.*",
+  callback = function()
+    vim.cmd.mkview()
+  end,
+})
+autocmd("BufWinEnter", {
+  pattern = "*.*",
+  callback = function()
+    vim.cmd.loadview({ mods = { emsg_silent = true } })
+  end,
+})
+
 -- Show LSP status
-vim.api.nvim_create_autocmd("LspProgress", {
+autocmd("LspProgress", {
     callback = function()
         vim.notify(vim.lsp.status(), vim.log.levels.TRACE, {
             id = "lsp_progress",
@@ -46,7 +61,7 @@ vim.api.nvim_create_autocmd("LspProgress", {
 })
 
 -- Remove auto comment insertion
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     callback = function()
         vim.opt.formatoptions:remove({ "o", "r" })
     end
@@ -55,14 +70,14 @@ vim.api.nvim_create_autocmd("FileType", {
 -- shorter columns in text because it reads better that way
 local text = vim.api.nvim_create_augroup('text', { clear = true })
 for _, pat in ipairs({ 'text', 'markdown', 'mail' }) do
-    vim.api.nvim_create_autocmd('Filetype', {
+    autocmd('Filetype', {
         pattern = pat,
         group = text,
         command = 'setlocal spell tw=120',
     })
 end
 
-vim.api.nvim_create_autocmd('Filetype', {
+autocmd('Filetype', {
     pattern = 'gitcommit',
     group = text,
     command = 'setlocal spell tw=72',

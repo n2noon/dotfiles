@@ -6,36 +6,57 @@ return {
     lazy = false,
     opts = {
       bigfile = { enabled = true },
-      dashboard = { enabled = true },
-      debug = { enabled = true },
-      lazygit = { enabled = true },
+      dashboard = {
+          enabled = true,
+          -- row = 5
+          preset = {
+              -- header = [[]]
+              keys = {
+                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                    { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                    { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                    { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                    { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                    -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                    { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                    -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+              },
+          },
+          sections = {
+              { section = "keys", gap = 1, padding = 1 },
+              { section = "startup" },
+              { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+          }
+      },
+      -- debug = { enabled = true },
+      -- lazygit = { enabled = true },
       quickfile = { enabled = true },
       rename = { enabled = true },
       scope = { enabled = true },
-      scratch = { enabled = true },
+      -- scratch = { enabled = true },
       statuscolumn = { enabled = true },
-      terminal = { enabled = true },
-      toggle = { enabled = true },
+      -- terminal = { enabled = true },
+      -- toggle = { enabled = true },
     },
     keys = {
-      { '<leader>g', function() Snacks.lazygit() end, desc = 'Lazygit', },
-      { '<leader>..', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer', },
-      { '<leader>.,', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer', },
+      -- { '<leader>g', function() Snacks.lazygit() end, desc = 'Lazygit', },
+      -- { '<leader>..', function() Snacks.scratch() end, desc = 'Toggle Scratch Buffer', },
+      -- { '<leader>.,', function() Snacks.scratch.select() end, desc = 'Select Scratch Buffer', },
       { '<leader>N', function() Snacks.rename.rename_file() end, desc = 'Rename File', },
-      { "<c-'>", function() Snacks.terminal() end, desc = 'Toggle Terminal', },
-      { '<leader>§', function() Snacks.terminal() end, desc = 'Toggle Terminal', },
+      -- { "<c-'>", function() Snacks.terminal() end, desc = 'Toggle Terminal', },
+      -- { '<leader>§', function() Snacks.terminal() end, desc = 'Toggle Terminal', },
     },
   },
   {
     'echasnovski/mini.nvim',
     version = false,
     priority = 1000,
-    lazy = false,
+    -- lazy = false,
     config = function ()
       -- allows for q as a quote object and b selects all brackets
       require('mini.ai').setup()
       -- require('mini.clue').setup() needs triggers
-      require('mini.pairs').setup()
+      -- require('mini.pairs').setup()
       -- gj splits or joins
       require('mini.splitjoin').setup({mappings = {toggle = 'gj'}})
       -- saiw' adds ' to word surrounding
@@ -102,18 +123,18 @@ return {
       },
     },
   },
-  {
-    'smoka7/hop.nvim',
-    event = 'BufRead',
-    version = "*",
-    opts = {
-        keys = 'asdfqwertyghjkluiopvbnm'
-    },
-    keys = {
-        {'<leader>h', '<cmd>HopAnywhere<cr>', desc = '[H]op'}
-
-    },
-  },
+  -- {
+  --   'smoka7/hop.nvim',
+  --   event = 'BufRead',
+  --   version = "*",
+  --   opts = {
+  --       keys = 'asdfqwertyghjkluiopvbnm'
+  --   },
+  --   keys = {
+  --       {'<leader>h', '<cmd>HopAnywhere<cr>', desc = '[H]op'}
+  --
+  --   },
+  -- },
   {
     'mikavilpas/yazi.nvim',
     event = 'VeryLazy',

@@ -5,9 +5,8 @@ bind \cz 'fg 2> /dev/null'
 set -gx GLFW_IM_MODULE ibus
 
 abbr -a pk pkill
-abbr -a im beet im
-abbr -a bim beet im
-
+#abbr -a im beet im
+#abbr -a bim beet im
 
 if type -q brew
     fish_add_path /opt/homebrew/bin/
@@ -43,7 +42,6 @@ if type -q chezmoi
     abbr -a cmr chezmoi re-add
 end
 
-
 if type -q yazi
     function y
         set tmp (mktemp -t "yazi-cwd.XXXXXX")
@@ -66,16 +64,17 @@ if type -q fzf
 end
 
 if type -q eza
-    abbr -a l eza --icons always
-    abbr -a ls eza --icons always
-    abbr -a ll eza --icons always -l
+    abbr -a l eza --icons
+    abbr -a ls eza --icons
+    abbr -a ll eza --icons -l
+    abbr -a --set-cursor tree eza --icons --tree --level=%
 end
 
 abbr -a c cat
 
 # bat for coloured man pages
 if type -q bat
-    set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"
+    set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
     abbr -a b bat
 end
 
@@ -102,6 +101,7 @@ abbr -a lg lazygit
 abbr -a gcm git commit --message
 
 abbr -a --position anywhere pbcopy fish_clipboard_copy
+abbr -a --position anywhere xclip fish_clipboard_copy
 abbr -a --position anywhere pbpaste fish_clipboard_paste
 
 abbr -a proj cd ~/projects/

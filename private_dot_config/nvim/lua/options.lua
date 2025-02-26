@@ -29,6 +29,14 @@ o.expandtab = true
 o.shada = "'1000,f1,<500"
 o.updatetime = 700
 
+-- Folding
+o.foldmethod = "expr"
+o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+o.foldcolumn = "0"
+o.foldtext = ""
+o.foldlevel = 99
+-- o.foldlevelstart = 10
+-- o.foldnestmax = 4
 
 
 -- o.timeoutlen = 400 -- Displays which-key popup sooner
