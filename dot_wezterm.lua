@@ -1,64 +1,47 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
-
 local config = wezterm.config_builder()
 
--- Themes I like
-config.color_scheme = 'Tokyo Night'
--- config.color_scheme = 'Monokai Remastered'
--- config.color_scheme = 'Monokai (base16)'
--- config.color_scheme = 'Catppuccin Mocha'
--- config.color_scheme = 'Tomorrow Night Bright'
+config = {
+    color_scheme = 'Tokyo Night',
+    -- color_scheme = 'Monokai Remastered',
+-- color_scheme = 'Monokai (base16)',
+-- color_scheme = 'Catppuccin Mocha',
+    -- color_scheme = 'Tomorrow Night Bright',
+    -- color_scheme = 'Rosé Pine (Gogh)',
 
--- Spawn a fish shell in login mode (mac only, TODO change)
-config.default_prog = { '/opt/homebrew/bin/fish', '-l' }
-config.launch_menu = {
-  {
-    label = 'fish',
-    args = { '/opt/homebrew/bin/fish', '-l' },
-  },
-  {
-    label = 'bash',
-    args = { '/bin/bash', '-l' },
-  }
+    window_background_opacity = 0.96,
+
+    -- Spawn a fish shell in login mode (mac only, TODO change)
+    default_prog = { '/opt/homebrew/bin/fish', '-l' },
+    launch_menu = {
+      {
+        label = 'fish',
+        args = { '/opt/homebrew/bin/fish', '-l' },
+      },
+      {
+        label = 'bash',
+        args = { '/bin/bash', '-l' },
+      }
+    },
+
+    use_fancy_tab_bar = true,
+    hide_tab_bar_if_only_one_tab = true,
+    show_new_tab_button_in_tab_bar = true,
+    window_close_confirmation = 'NeverPrompt',
+    window_decorations = 'RESIZE',
+    window_frame = {
+        font_size = 17
+    },
+
+    -- Tab/window settings
+    front_end = "WebGpu",
+    font_size = 15.5,
+    max_fps = 120,
+
+
+    window_padding = { top = '5px', bottom = '0px' },
 }
-
--- Tab/window settings
-config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
-config.window_background_opacity = 0.93
-config.show_new_tab_button_in_tab_bar = false
-config.window_close_confirmation = 'NeverPrompt'
-config.window_decorations = 'RESIZE'
-config.window_frame = { font_size = 18 }
-
-config.front_end = "WebGpu"
-config.font_size = 15.5
-
--- Add powerbar
-wezterm.on('update-status', function(window)
-  -- Grab the current window's configuration, and from it the
-  -- palette (this is the combination of your chosen colour scheme
-  -- including any overrides).
-  local color_scheme = window:effective_config().resolved_palette
-  local bg = color_scheme.background
-  local fg = color_scheme.foreground
-
-  window:set_right_status(wezterm.format({
-    { Background = { Color = bg } },
-    { Foreground = { Color = fg } },
-    { Text = ' ' .. wezterm.hostname() .. ' ' },
-  }))
-end)
-
--- Maximise on startup
-local mux = wezterm.mux
-wezterm.on('gui-startup', function(cmd)
-  local _, _, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
-end)
-
-config.window_padding = { top = '9px', bottom = '0px' }
 
 -- Cmd + , to open config in neovim
 -- (hardcoded in editor because lol...)
@@ -201,20 +184,49 @@ config.keys = {
 
 -- Mouse
 config.mouse_bindings = {
-	-- Change the default click behavior so that it only selects
-	-- text and doesn't open hyperlinks
-	{
-		event = { Up = { streak = 1, button = 'Left' } },
-		mods = 'NONE',
-		action = wezterm.action.CompleteSelection('ClipboardAndPrimarySelection'),
-	},
+  -- Change the default click behavior so that it only selects
+  -- text and doesn't open hyperlinks
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.CompleteSelection('ClipboardAndPrimarySelection'),
+  },
 
-	-- Open links on Cmd+click
-	{
-		event = { Up = { streak = 1, button = 'Left' } },
-		mods = 'CMD',
-		action = wezterm.action.OpenLinkAtMouseCursor,
-	},
+  -- Open links on Cmd+click
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CMD',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
 }
--- Misc
+
+-- Maximise on startup (TODO: add aerospace check)
+
+-- local mux = wezterm.mux
+-- wezterm.on('gui-startup', function(cmd)
+--   local _, _, window = mux.spawn_window(cmd or {})
+--   window:gui_window():maximize()
+-- end)
+
+
+-- Add powerbar
+-- wezterm.on('update-status', function(window)
+--   -- Grab the current window's configuration, and from it the
+--   -- palette (this is the combination of your chosen colour scheme
+--   -- including any overrides).
+--   local color_scheme = window:effective_config().resolved_palette
+--   local bg = color_scheme.background
+--   local fg = color_scheme.foreground
+--
+--   window:set_right_status(wezterm.format({
+--     { Background = { Color = bg } },
+--     { Foreground = { Color = fg } },
+--     { Text = ' ' .. wezterm.hostname() .. ' ' },
+--   }))
+-- end)
+
+
+
+
+
 return config
