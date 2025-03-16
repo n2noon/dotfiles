@@ -25,7 +25,9 @@ import:
     languages: en jp
 match:
     strong_rec_thresh: 0.005
-plugins: the fish convert fetchart inline zero fromfilename albumtypes edit importreplace extrafiles missing rewrite embedart lastgenre # plexupdate
+plugins: the fish convert fetchart inline zero fromfilename albumtypes edit importreplace extrafiles missing rewrite embedart lastgenre lyrics # plexupdate
+lyrics:
+  synced: yes
 embedart:
   auto: no
   remove_art_file: yes
@@ -89,7 +91,7 @@ importreplace: # pip install git+https://github.com/edgars-supe/beets-importrepl
 #     port: 32400
 #     token: "TOKEN"
 zero:
-    fields: month day genre comments
+    fields: month day comments
     comments: [EAC, LAME]
     update_database: true
 fetchart: # pip install requests

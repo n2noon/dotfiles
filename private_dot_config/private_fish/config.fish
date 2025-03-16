@@ -88,6 +88,8 @@ if type -q wine
     abbr -a vn WINEPREFIX=~/VNs LC_MESSAGES=ja_JP.UTF-8 wine
 end
 
+abbr -a todo $EDITOR ~/Notes/todo.md
+
 # Git
 abbr -a g git
 abbr -a gc git commit

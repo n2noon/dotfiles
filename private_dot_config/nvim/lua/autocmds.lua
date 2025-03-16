@@ -85,10 +85,12 @@ autocmd("FileType", {
 -- shorter columns in text because it reads better that way
 autocmd('Filetype', {
     pattern = {'text', 'markdown', 'mail'},
-    command = 'setlocal spell tw=120',
+    -- command = 'setlocal spell tw=120',
+    command = 'tw=120'
 })
 
 autocmd('Filetype', {
     pattern = 'gitcommit',
-    command = 'setlocal spell tw=72',
+    -- command = 'setlocal spell tw=72',
+    command = 'tw=72'
 })

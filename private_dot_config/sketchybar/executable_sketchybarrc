@@ -20,7 +20,8 @@ GAP=6
 
 # Bar appearance
 # https://felixkratz.github.io/SketchyBar/config/bar
-sketchybar --bar position=top height=39 color=0x50000000 blur_radius=10 sticky=true # topmost=true 
+# sketchybar --bar position=top height=39 color=0x50000000 blur_radius=10 sticky=true # topmost=true 
+sketchybar --bar position=top height=39 blur_radius=30 color=0xA0000000 sticky=true
 
 # Defaults
 # https://felixkratz.github.io/SketchyBar/config/items
