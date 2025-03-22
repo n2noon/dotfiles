@@ -4,7 +4,7 @@ local o = vim.o
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-vim.cmd('colorscheme retrobox')
+vim.cmd('colorscheme unokai')
 
 o.title = true
 o.number = true
