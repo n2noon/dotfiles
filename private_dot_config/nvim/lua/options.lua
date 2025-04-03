@@ -4,15 +4,14 @@ local o = vim.o
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-vim.cmd('colorscheme unokai')
-
 o.title = true
 o.number = true
 o.relativenumber = true
 o.wrap = false
 o.mouse = 'a'
 o.showmode = false
--- o.breakindent = true
+o.breakindent = true
+o.winborder = 'single'
 o.undofile = true
 o.laststatus = 1
 o.ignorecase = true
@@ -45,6 +44,11 @@ o.foldlevel = 99
 -- o.timeoutlen = 400 -- Displays which-key popup sooner
 -- This is delayed so startup time is quicker
 vim.schedule(function()
-  o.clipboard = 'unnamedplus'
+    o.clipboard = 'unnamedplus'
 end)
+
+vim.diagnostic.config({
+    virtual_lines = { current_line = true }
+})
+
 

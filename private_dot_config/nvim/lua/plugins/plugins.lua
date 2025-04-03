@@ -203,4 +203,12 @@ return {
     "OXY2DEV/markview.nvim",
     lazy = false
   },
+  {
+    "https://gitlab.com/Biggybi/nvim-smartcd.git",
+    event = { "BufEnter" },
+    lazy = false,
+    opts = {create_keymaps=true},
+    cmd = { "SmartCd" },
+    keys = { { "<leader>cd" } },
+  },
 }

@@ -1,19 +1,19 @@
 -- see https://github.com/Piotr1215/dotfiles/blob/master/.config/nvim/lua/autocommands.lua
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd('ColorScheme', {
-    -- pattern = { 'retrobox' },
-    callback = function()
-        vim.api.nvim_set_hl(0, 'ColorScheme', {cterm=bold, ctermfg=3})
-
-    -- if vim.opt.bg:get() == 'light' then return end
-    -- local bg = '#555555'
-    -- vim.api.nvim_set_hl(0, 'CurSearch', { fg = '#ffffff', bg = bg, underline = true, bold = true })
-    -- vim.api.nvim_set_hl(0, 'Search', { fg = '#ffffff', bg = bg })
-    -- vim.cmd 'highlight! link NormalFloat Normal'
-    -- vim.cmd 'highlight! link FloatBorder NormalFloat'
-    end,
-})
+-- autocmd('ColorScheme', {
+--     -- pattern = { 'retrobox' },
+--     callback = function()
+--         vim.api.nvim_set_hl(0, 'ColorScheme', {cterm=bold, ctermfg=3})
+--
+--     -- if vim.opt.bg:get() == 'light' then return end
+--     -- local bg = '#555555'
+--     -- vim.api.nvim_set_hl(0, 'CurSearch', { fg = '#ffffff', bg = bg, underline = true, bold = true })
+--     -- vim.api.nvim_set_hl(0, 'Search', { fg = '#ffffff', bg = bg })
+--     -- vim.cmd 'highlight! link NormalFloat Normal'
+--     -- vim.cmd 'highlight! link FloatBorder NormalFloat'
+--     end,
+-- })
 
 
 autocmd('TextYankPost', {
