@@ -1,0 +1,14 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "theme",
+        "Snacks",
+        "local",
+        "config",
+        "FzfLua",
+        "require"
+    ],
+    "diagnostics.disable": [
+        "missing-fields"
+    ]
+}
