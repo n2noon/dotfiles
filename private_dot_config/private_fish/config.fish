@@ -48,6 +48,7 @@ if type -q chezmoi
     abbr -a cm chezmoi
     # abbr -a cmr chezmoi re-add
     abbr -a cme chezmoi edit
+    chezmoi completion fish | source
 end
 
 if type -q yazi
