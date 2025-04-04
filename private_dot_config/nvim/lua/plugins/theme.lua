@@ -7,7 +7,7 @@ return {
     --   -- "rose-pine/neovim",
     config = function()
       local scheme =
-            "gruvbox"
+        "gruvbox"
         -- require("gruvbox").setup({contrast = "soft"})
         -- "catppuccin-mocha"
         -- "monokai-pro"

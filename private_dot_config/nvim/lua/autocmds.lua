@@ -15,32 +15,31 @@ local autocmd = vim.api.nvim_create_autocmd
 --     end,
 -- })
 
-
-autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
-autocmd('BufReadPost', {
-    desc = 'Jump to last edit position when opepning a file',
-    pattern = '*',
-    callback = function()
-        if vim.fn.line '\'"' > 1 and vim.fn.line '\'"' <= vim.fn.line '$' then
-            -- except for in git commit messages
-            -- https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
-            if not vim.fn.expand('%:p'):find('.git', 1, true) then
-                vim.cmd 'exe "normal! g\'\\""'
-            end
-        end
-    end,
+autocmd("BufReadPost", {
+  desc = "Jump to last edit position when opepning a file",
+  pattern = "*",
+  callback = function()
+    if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
+      -- except for in git commit messages
+      -- https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+      if not vim.fn.expand("%:p"):find(".git", 1, true) then
+        vim.cmd('exe "normal! g\'\\""')
+      end
+    end
+  end,
 })
 
-autocmd('FileType', {
-    desc = 'Open man or help pages in a right split',
-    pattern = { 'help', 'man' },
-    command = 'wincmd L'
+autocmd("FileType", {
+  desc = "Open man or help pages in a right split",
+  pattern = { "help", "man" },
+  command = "wincmd L",
 })
 
 -- autocmd({ "BufEnter", "BufRead" }, {
@@ -66,31 +65,29 @@ autocmd("BufWinEnter", {
 })
 
 -- Show LSP status
-autocmd("LspProgress", {
-    callback = function()
-        vim.notify(vim.lsp.status(), vim.log.levels.OFF, {
-            id = "lsp_progress",
-            title = "LSP Progress",
-        })
-    end,
-})
+-- autocmd("LspProgress", {
+--   callback = function()
+--     vim.notify(vim.lsp.status(), vim.log.levels.OFF, {
+--       id = "lsp_progress",
+--       title = "LSP Progress",
+--     })
+--   end,
+-- })
 
 -- Remove auto comment insertion
 autocmd("FileType", {
-    callback = function()
-        vim.opt.formatoptions:remove({ "o", "r" })
-    end
+  callback = function()
+    vim.opt.formatoptions:remove({ "o", "r" })
+  end,
 })
 
 -- shorter columns in text because it reads better that way
-autocmd('Filetype', {
-    pattern = {'text', 'markdown', 'mail'},
-    -- command = 'setlocal spell tw=120',
-    command = 'setlocal tw=120'
+autocmd("Filetype", {
+  pattern = { "text", "markdown", "mail" },
+  command = "setlocal tw=120",
 })
 
-autocmd('Filetype', {
-    pattern = 'gitcommit',
-    -- command = 'setlocal spell tw=72',
-    command = 'setlocal tw=72'
+autocmd("Filetype", {
+  pattern = "gitcommit",
+  command = "setlocal tw=72",
 })
