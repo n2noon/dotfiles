@@ -46,7 +46,8 @@ end
 
 if type -q chezmoi
     abbr -a cm chezmoi
-    abbr -a cmr chezmoi re-add
+    # abbr -a cmr chezmoi re-add
+    abbr -a cme chezmoi edit
 end
 
 if type -q yazi
