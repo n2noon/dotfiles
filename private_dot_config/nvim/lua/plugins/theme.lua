@@ -1,4 +1,5 @@
-vim.o.background = "light"
+-- vim.o.background = "light"
+vim.o.background = "dark"
 
 return {
   {
