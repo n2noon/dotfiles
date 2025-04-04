@@ -14,8 +14,9 @@ prepend_keymap = [
     { on = ["g","n"], run = "cd ~/Notes/",    desc = "~/Notes" },
     # These are all for plugins
     { on = ["T"],     run = "plugin --sync max-preview", desc = "Maximize or restore preview" },
-    { on = ["c","a"], run = "plugin compare",            desc = "Archive selected files" },
-    { on = ["c","x"], run = "chmod+x",                   desc = "Archive selected files" },
+    { on = ["c", "a"], run = "plugin archive", desc = "Archive file" },
+    # { on = ["c","a"], run = "plugin compare",            desc = "Archive selected files" },
+    # { on = ["c","x"], run = "chmod+x",                   desc = "Archive selected files" },
     ## glow.yazi
     { on = ["<C-p>"], run = "seek -5",        desc = "Scroll up the markdown preview" },
     { on = ["<C-n>"], run = "seek 5",         desc = "Scroll down the markdown preview" },
