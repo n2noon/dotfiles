@@ -1,0 +1,12 @@
+# {{- $dev_computer := promptBoolOnce . "dev_computer" "Do you do development on this computer? (true/false)" -}}
+# {{- $email := promptStringOnce . "email" "Email address" -}}
+
+[add]
+    secrets = "error"
+
+[edit]
+    apply = true
+
+[git]
+    autoCommit = true
+    autoPush = true
