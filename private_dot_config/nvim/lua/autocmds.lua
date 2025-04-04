@@ -17,9 +17,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+  callback = function() vim.highlight.on_yank() end,
 })
 
 autocmd("BufReadPost", {
@@ -29,9 +27,7 @@ autocmd("BufReadPost", {
     if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
       -- except for in git commit messages
       -- https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
-      if not vim.fn.expand("%:p"):find(".git", 1, true) then
-        vim.cmd('exe "normal! g\'\\""')
-      end
+      if not vim.fn.expand("%:p"):find(".git", 1, true) then vim.cmd('exe "normal! g\'\\""') end
     end
   end,
 })
@@ -53,15 +49,11 @@ autocmd("FileType", {
 -- Persistent folds
 autocmd("BufWinLeave", {
   pattern = "*.*",
-  callback = function()
-    vim.cmd.mkview()
-  end,
+  callback = function() vim.cmd.mkview() end,
 })
 autocmd("BufWinEnter", {
   pattern = "*.*",
-  callback = function()
-    vim.cmd.loadview({ mods = { emsg_silent = true } })
-  end,
+  callback = function() vim.cmd.loadview({ mods = { emsg_silent = true } }) end,
 })
 
 -- Show LSP status
@@ -76,9 +68,7 @@ autocmd("BufWinEnter", {
 
 -- Remove auto comment insertion
 autocmd("FileType", {
-  callback = function()
-    vim.opt.formatoptions:remove({ "o", "r" })
-  end,
+  callback = function() vim.opt.formatoptions:remove({ "o", "r" }) end,
 })
 
 -- shorter columns in text because it reads better that way
@@ -90,4 +80,9 @@ autocmd("Filetype", {
 autocmd("Filetype", {
   pattern = "gitcommit",
   command = "setlocal tw=72",
+})
+
+autocmd("BufWritePost", {
+  pattern = "~/.local/share/chezmoi/*",
+  command = "!chezmoi apply --source-path %; or for f in (rg -l 'template \"%:t\"'); chezmoi apply --source-path $f; end",
 })
