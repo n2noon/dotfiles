@@ -121,6 +121,8 @@ return {
   {
     "mikavilpas/yazi.nvim",
     -- event = 'VeryLazy',
+    priority = 1000,
+    lazy = false,
     opts = {
       -- instead of netrw
       open_for_directories = true,
