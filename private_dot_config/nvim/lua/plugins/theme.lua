@@ -1,3 +1,5 @@
+vim.o.background = "light"
+
 return {
   {
     -- "catppuccin/nvim",
