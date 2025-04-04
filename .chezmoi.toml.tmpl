@@ -7,3 +7,7 @@
 [git]
     autoCommit = true
     autoPush = true
+
+[hooks.edit-config-template.post]
+    command = "chezmoi"
+    args = ["init"]
