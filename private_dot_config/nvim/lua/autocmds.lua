@@ -83,6 +83,6 @@ autocmd("Filetype", {
 })
 
 autocmd("BufWritePost", {
-  pattern = "~/.local/share/chezmoi/*",
+  pattern = vim.fn.expand("~") .. "/.local/share/chezmoi/*",
   command = "!chezmoi apply --source-path %; or for f in (rg -l 'template \"%:t\"'); chezmoi apply --source-path $f; end",
 })
