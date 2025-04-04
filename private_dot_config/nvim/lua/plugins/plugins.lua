@@ -123,7 +123,7 @@ return {
     -- event = 'VeryLazy',
     opts = {
       -- instead of netrw
-      -- open_for_directories = true,
+      open_for_directories = true,
       keymaps = {
         show_help = "±", -- TODO: this
         open_file_in_horizontal_split = "<c-s>",
