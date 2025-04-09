@@ -51,64 +51,12 @@ return {
     end,
   },
   {
-    "stevearc/conform.nvim",
-    -- see https://github.com/stevearc/conform.nvim/issues/192
-    dependencies = { "mason.nvim" },
-    -- lazy = true,
-    cmd = "ConformInfo",
-    keys = require("keymaps").conform,
-    opts = {
-      format_on_save = {
-        -- I recommend these options. See :help conform.format for details.
-        lsp_format = "fallback",
-        timeout_ms = 500,
-      },
-      formatters_by_ft = require("lsp").formatters_by_ft,
-      formatters = require("lsp").formatters,
-    },
-  },
-  {
     -- Can do :set filetype=json to set stuff manually (just a reminder)
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     -- dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = M.treesitter,
-    -- textobjects = {
-    --     select = {
-    --         enable = true,
-    --         keymaps = {
-    --             ["af"] = { query = "@function.outer", desc = "a function" },
-    --             ["if"] = { query = "@function.inner", desc = "inner function" },
-    --             ["ac"] = { query = "@comment.outer", desc = "a comment" },
-    --             ["ic"] = { query = "@comment.inner", desc = "inner comment" },
-    --         },
-    --     },
-    --     swap = {
-    --         enable = true,
-    --         swap_next = {
-    --             ["<LEADER>a"] = "@parameter.inner",
-    --         },
-    --         swap_previous = {
-    --             ["<LEADER>A"] = "@parameter.inner",
-    --         },
-    --     },
-    --     move = {
-    --         enable = true,
-    --         goto_next_start = {
-    --             ["]f"] = "@function.outer",
-    --         },
-    --         goto_next_end = {
-    --             ["]F"] = "@function.outer",
-    --         },
-    --         goto_previous_start = {
-    --             ["[f"] = "@function.outer",
-    --         },
-    --         goto_previous_end = {
-    --             ["[F"] = "@function.outer",
-    --         },
-    --     },
-    -- },
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
