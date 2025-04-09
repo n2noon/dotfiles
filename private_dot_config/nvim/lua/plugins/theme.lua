@@ -20,6 +20,7 @@ return {
       require("gruvbox").setup({
         palette_overrides = {
           bright_red = "#e35a39",
+          bright_green = "#aeb541",
         },
       })
       -- "catppuccin-mocha"
