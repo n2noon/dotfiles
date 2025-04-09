@@ -11,11 +11,15 @@ return {
         width = 0.93,
         border = "double",
         preview = { title_pos = "left" },
+        number = false,
+        relativenumber = false
       },
+      previewer = bat_async
     },
     -- VSCode-like file name first
     files = {
       formatter = "path.filename_first",
+      file_icons = false,
       winopts = {},
     },
     blines = { previewer = false, winopts = { row = 0.4, height = 0.9, width = 0.8 } },

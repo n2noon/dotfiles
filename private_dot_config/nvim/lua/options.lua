@@ -25,7 +25,7 @@ g.maplocalleader = " "
 g.snacks_animate = false
 
 o.title = true
-o.number = true
+-- o.number = true
 o.relativenumber = true
 o.wrap = false
 o.mouse = "a"
@@ -53,11 +53,11 @@ o.updatetime = 700
 o.spell = false
 
 -- Folding
-o.foldmethod = "expr"
-o.foldexpr = "v:lua.Foldexpr()"
-o.foldcolumn = "0"
-o.foldtext = ""
-o.foldlevel = 99
+-- o.foldmethod = "expr"
+-- o.foldexpr = "v:lua.Foldexpr()"
+-- o.foldcolumn = "0"
+-- o.foldtext = ""
+-- o.foldlevel = 99
 -- o.foldlevelstart = 10
 -- o.foldnestmax = 4
 
