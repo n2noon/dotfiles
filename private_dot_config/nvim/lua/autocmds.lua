@@ -1,19 +1,6 @@
 -- see https://github.com/Piotr1215/dotfiles/blob/master/.config/nvim/lua/autocommands.lua
-local autocmd = vim.api.nvim_create_autocmd
 
--- autocmd('ColorScheme', {
---     -- pattern = { 'retrobox' },
---     callback = function()
---         vim.api.nvim_set_hl(0, 'ColorScheme', {cterm=bold, ctermfg=3})
---
---     -- if vim.opt.bg:get() == 'light' then return end
---     -- local bg = '#555555'
---     -- vim.api.nvim_set_hl(0, 'CurSearch', { fg = '#ffffff', bg = bg, underline = true, bold = true })
---     -- vim.api.nvim_set_hl(0, 'Search', { fg = '#ffffff', bg = bg })
---     -- vim.cmd 'highlight! link NormalFloat Normal'
---     -- vim.cmd 'highlight! link FloatBorder NormalFloat'
---     end,
--- })
+local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
@@ -32,25 +19,12 @@ autocmd("BufReadPost", {
   end,
 })
 
-autocmd("FileType", {
-  desc = "Open man or help pages in a right split",
-  pattern = { "help", "man" },
-  command = "wincmd L",
-})
-
--- autocmd({ "BufEnter", "BufRead" }, {
---     desc = 'File associations!',
---     pattern = ".nvimrc",
---     callback = function()
---         vim.bo.filetype = "lua"
---     end,
--- })
-
 -- Persistent folds
 autocmd("BufWinLeave", {
   pattern = "*.*",
   callback = function() vim.cmd.mkview() end,
 })
+
 autocmd("BufWinEnter", {
   pattern = "*.*",
   callback = function() vim.cmd.loadview({ mods = { emsg_silent = true } }) end,
@@ -71,18 +45,50 @@ autocmd("FileType", {
   callback = function() vim.opt.formatoptions:remove({ "o", "r" }) end,
 })
 
--- shorter columns in text because it reads better that way
-autocmd("Filetype", {
+-- Open all new windows as vertical splits
+vim.api.nvim_create_augroup("numbertoggle", { clear = true })
+
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, {
+  callback = function()
+    if vim.bo.buftype == "" then vim.opt.relativenumber = true end
+  end,
+  group = "numbertoggle",
+})
+
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+  callback = function()
+    if vim.bo.buftype == "" then vim.opt.relativenumber = false end
+  end,
+  group = "numbertoggle",
+})
+
+-- Shorter columns in text because it reads better that way.
+autocmd("FileType", {
   pattern = { "text", "markdown", "mail" },
   command = "setlocal tw=120",
 })
-
-autocmd("Filetype", {
+--
+autocmd("FileType", {
   pattern = "gitcommit",
   command = "setlocal tw=72",
 })
 
-autocmd("BufWritePost", {
-  pattern = { os.getenv("HOME") .. "/.local/share/chezmoi/*" },
-  command = "!chezmoi apply --source-path %; or for f in (rg -l 'template \"%:t\"'); chezmoi apply --source-path $f; end",
+-- Keep splits the same when nvim is resized.
+autocmd("VimResized", {
+  command = "wincmd ="
+})
+
+-- autocmd({ "BufWinEnter", "BufEnter", "FocusGained" }, {
+--   command = "setlocal number relativenumber",
+-- })
+--
+-- autocmd({ "BufWinLeave", "BufLeave", "FocusLost" }, {
+--   command = "setlocal nonumber norelativenumber",
+-- })
+
+autocmd("FileType", {
+  desc = "Open man or help pages in a right split",
+  pattern = { "help", "man" },
+  -- command = "wincmd L | wincmd 3<",
+  command = "wincmd L",
 })

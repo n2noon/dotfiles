@@ -11,7 +11,8 @@ return {
       open_file_in_horizontal_split = "<c-s>",
     },
     integrations = {
-      grep_in_directory = "fzf-lua",
+      -- grep_in_directory = "fzf-lua",
+      grep_in_directory = "snacks.picker",
     },
     yazi_floating_window_winblend = 0,
   },

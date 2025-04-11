@@ -1,19 +1,18 @@
+---@module "snacks.nvim"
 return {
   -- see https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  ---@type snacks.Config
   opts = {
-    bigfile = { enabled = true },
+    bigfile = {},
     dashboard = {
-      enabled = true,
-      -- row = 5
       preset = {
-        -- header = [[]]
         keys = {
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep_native')" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('grep')" },
           { icon = " ", key = "y", desc = "Yazi", action = ":Yazi" }, -- TODO - this properly
           {
             icon = " ",
@@ -33,15 +32,72 @@ return {
         { section = "startup" },
       },
     },
-    -- debug = { enabled = true },
-    -- lazygit = { enabled = true },
-    quickfile = { enabled = true },
-    rename = { enabled = true },
-    scope = { enabled = true },
-    -- scratch = { enabled = true },
-    statuscolumn = { enabled = true },
-    -- terminal = { enabled = true },
-    -- toggle = { enabled = true },
+    -- debug = {},
+    -- lazygit = {},
+    quickfile = {},
+    -- rename = {},
+    scope = {},
+    -- scratch = {},
+    picker = {
+      layout = {
+        preset = "sidebar",
+      },
+      -- layouts = {
+      --
+      --
+      -- }
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<c-p>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<c-n>"] = { "preview_scroll_down", mode = { "i", "n" } },
+          },
+        },
+      },
+      -- layouts = {
+      --   { "wider-sidebar", preset = "sidebar", layout = { width = 0.6 } },
+      -- },
+      ---@type Snacks.picker.formatters.Config
+      formatters = {
+        file = { filename_first = true },
+      },
+      previewers = { diff = { builtin = false }, git = { builtin = false } },
+      sources = {
+        diagnostics = {
+          layout = "ivy_split",
+        },
+        diagnostics_buffer = {
+          layout = "ivy_split",
+        },
+        git_branches = {
+          layout = "ivy_split",
+        },
+        git_log = {
+          layout = "ivy_split",
+        },
+        git_log_line = {
+          layout = "ivy_split",
+        },
+        git_log_file = {
+          layout = "ivy_split",
+        },
+        grep = {
+          layout = "ivy_split",
+        },
+        grep_buffers = {
+          layout = "ivy_split",
+        },
+        grep_word = {
+          layout = "ivy_split",
+        },
+      },
+      icons = { files = { enabled = false } },
+    },
+    statuscolumn = {},
+    terminal = {},
+    -- toggle = {},
+    -- words = {}
   },
   keys = require("keymaps").snacks,
 }

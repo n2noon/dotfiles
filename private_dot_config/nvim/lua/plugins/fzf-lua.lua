@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  enabled = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = require("keymaps").fzflua,
   opts = {
@@ -12,9 +13,9 @@ return {
         border = "double",
         preview = { title_pos = "left" },
         number = false,
-        relativenumber = false
+        relativenumber = false,
       },
-      previewer = bat_async
+      previewer = bat_async,
     },
     -- VSCode-like file name first
     files = {

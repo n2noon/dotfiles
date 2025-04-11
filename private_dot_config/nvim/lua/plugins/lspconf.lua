@@ -24,8 +24,8 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)
-          local fzflua = require("fzf-lua")
-          require("keymaps").ext_lsp(event, fzflua)
+          -- local fzflua = require("fzf-lua")
+          -- require("keymaps").ext_lsp(event, fzflua)
           require("keymaps").lsp(event)
           -- Highlight under cursor
           local client = vim.lsp.get_client_by_id(event.data.client_id)
