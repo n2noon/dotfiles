@@ -91,6 +91,9 @@ return {
         grep_word = {
           layout = "ivy_split",
         },
+        qflist = {
+          layout = "ivy_split",
+        },
       },
       icons = { files = { enabled = false } },
     },

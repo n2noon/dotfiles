@@ -1,6 +1,10 @@
 local g = vim.g
 local o = vim.o
 
+-- Use ripgrep for vimgrep
+vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading"
+vim.opt.grepformat = "%f:%l:%c:%m"
+
 if g.neovide then
   o.guifont = "JetBrainsMonoNL Nerd Font Mono:h16"
   g.neovide_cursor_animate_command_line = false

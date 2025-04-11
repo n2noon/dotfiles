@@ -3,7 +3,7 @@ require("options")
 require("keymaps").init()
 require("autocmds")
 
------ PLUGINS -----
+----- LAZY -----
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -12,32 +12,41 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.api.nvim_set_hl(0, "SnacksPickerDir", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "SnacksDashboardDir", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "SnacksPickerBufFlags", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusIgnored", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusUntracked", { fg = "#928374" })
+
 -- Configure plugins.
-require('lazy').setup("plugins", {
-    ui = { border = 'rounded' },
-    -- dev = { path = vim.g.projects_dir },
-    install = {
-        -- Do not automatically install on startup.
-        missing = false,
+---@type Lazy
+require("lazy").setup("plugins", {
+  -- ui = { border = "rounded" },
+  -- dev = { path = vim.g.projects_dir },
+  install = {
+    -- Do not automatically install on startup.
+    missing = false,
+  },
+  -- This gets annoying when editing plugins
+  change_detection = { notify = false },
+  -- I don't use luarocks
+  rocks = {
+    enabled = false,
+  },
+  performance = {
+    rtp = {
+      -- Stuff I don't use.
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "rplugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
     },
-    -- Don't bother me when tweaking plugins.
-    change_detection = { notify = false },
-    -- None of my plugins use luarocks so disable this.
-    rocks = {
-        enabled = false,
-    },
-    performance = {
-        rtp = {
-            -- Stuff I don't use.
-            disabled_plugins = {
-                'gzip',
-                'netrwPlugin',
-                'rplugin',
-                'tarPlugin',
-                'tohtml',
-                'tutor',
-                'zipPlugin',
-            },
-        },
-    },
+  },
 })
