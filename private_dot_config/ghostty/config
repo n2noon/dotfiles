@@ -1,0 +1,9 @@
+font-family = JetBrains Mono NL
+theme = dark:Tomorrow Night,light:GruvboxLight
+
+# macos specific
+keybind = global:cmd+enter=toggle_quick_terminal
+macos-option-as-alt = true
+macos-window-shadow = false
+
+command = /opt/homebrew/bin/fish --login
