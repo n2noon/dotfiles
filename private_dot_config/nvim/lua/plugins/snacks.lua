@@ -94,6 +94,9 @@ return {
         qflist = {
           layout = "ivy_split",
         },
+        registers = {
+          layout = "vscode",
+        },
       },
       icons = { files = { enabled = false } },
     },

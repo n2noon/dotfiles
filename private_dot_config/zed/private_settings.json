@@ -8,10 +8,6 @@
 // command palette
 {
   "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
-    },
     "version": "2"
   },
   "features": { "inline_completion_provider": "zed" },

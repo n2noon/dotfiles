@@ -126,3 +126,6 @@ set PATH $PATH /Users/kalk/.local/bin
 
 # launch my music daemons...
 #mpd & mpdscribble &
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/kalk/.lmstudio/bin

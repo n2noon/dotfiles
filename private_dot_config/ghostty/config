@@ -1,9 +1,12 @@
-font-family = JetBrains Mono NL
-theme = dark:Tomorrow Night,light:GruvboxLight
+font-family = "JetBrains Mono NL"
+font-size = 17
+theme = dark:Tomorrow Night,light:Apple System Colors Light
 
 # macos specific
-keybind = global:cmd+enter=toggle_quick_terminal
+# keybind = global:cmd+enter=toggle_quick_terminal
 macos-option-as-alt = true
 macos-window-shadow = false
+macos-titlebar-style = tabs
 
 command = /opt/homebrew/bin/fish --login
+

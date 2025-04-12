@@ -44,7 +44,7 @@ o.splitbelow = true
 o.splitright = true
 o.list = true -- Sets how neovim will display certain whitespace characters
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.wildignore:append { '.DS_Store' }
+vim.opt.wildignore:append({ ".DS_Store" })
 o.inccommand = "split" -- Preview substitutions live
 o.cursorline = true
 o.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.

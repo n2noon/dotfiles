@@ -140,17 +140,17 @@ cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
-# ctrl-minus = 'exec-and-forget kitty -1 yazi ~'
-# alt-minus = 'exec-and-forget kitty -1 yazi ~'
+# ctrl-minus = 'exec-and-forget ghostty yazi ~'
+# alt-minus = 'exec-and-forget ghostty yazi ~'
 alt-m = 'exec-and-forget open /System/Applications/Mail.app'
 # alt-c = 'exec-and-forget open /System/Applications/Calendar.app'
 alt-r = 'exec-and-forget open /System/Applications/Reminders.app'
 alt-b = 'exec-and-forget firefox -new-window'
-# alt-n = 'exec-and-forget kitty -1 nvim ~/Notes/'
-alt-g = 'exec-and-forget kitty -1 lazygit'
-# cmd-enter = 'exec-and-forget kitty -1 -d ~'
-ctrl-shift-esc = 'exec-and-forget kitty -1 btop' 
-# alt-f = 'exec-and-forget firefox -new-window'
+# alt-n = 'exec-and-forget ghostty nvim ~/Notes/'
+alt-g = 'exec-and-forget ghostty lazygit'
+# cmd-enter = 'exec-and-forget ghostty -d ~'
+ctrl-shift-esc = 'exec-and-forget ghostty btop' 
+alt-f = 'exec-and-forget firefox -new-window'
 alt-y = 'exec-and-forget firefox -new-window moz-extension://4c6a77e3-ff26-461c-b8e4-4f6ab68e4f5f/search.html'
 alt-o = 'exec-and-forget open /Applications/Obsidian.app' 
 alt-d = 'exec-and-forget open /Applications/Discord.app'
@@ -221,6 +221,11 @@ run = "layout floating"
 [[on-window-detected]]
 if.app-id = "com.coteditor.CotEditor"
 run = "layout floating"
+
+# Disable hiding apps
+[mode.main.binding]
+    cmd-h = [] # Disable "hide application"
+    cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 # External monitors

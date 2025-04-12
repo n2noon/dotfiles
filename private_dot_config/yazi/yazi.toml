@@ -14,9 +14,7 @@ cache_dir       = ""
 image_delay     = 20
 image_filter    = "triangle"
 image_quality   = 75
-sixel_fraction  = 15
-# ueberzug_scale  = 1
-# ueberzug_offset = [ 0, 0, 0, 0 ]
+# sixel_fraction  = 15
 
 # also see https://yazi-rs.github.io/docs/configuration/yazi#open
 # [opener]
@@ -38,11 +36,12 @@ enabled = false
 [plugin]
 prepend_previewers = [
     # { mime = "{image,audio,video}/*", run = "mediainfo"},
-    { mime = "application/subrip", run = "mediainfo"},
+    # { mime = "application/subrip", run = "mediainfo"},
     { mime = "application/epub+zip", run = "archive"},
     { name = "*.md", run = "glow" },
     # { name = "*/", run = "eza-preview" }
 ]
+
 
 append_previewers = [
     { name = "*", run = "hexyl" }
