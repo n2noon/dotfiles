@@ -48,8 +48,8 @@ vim.opt.wildignore:append({ ".DS_Store" })
 o.inccommand = "split" -- Preview substitutions live
 o.cursorline = true
 o.scrolloff = 8 -- Minimal number of screen lines to keep above and below the cursor.
--- o.softtabstop = 4
--- o.shiftwidth = 4
+o.softtabstop = 4
+o.shiftwidth = 4
 o.conceallevel = 1
 o.expandtab = true
 o.shada = "'1000,f1,<500"

@@ -3,9 +3,7 @@
 
 # TODOs:
 # - sort out multi monitor
-# - musikcube integration?
 # - less granular battery? (maybe mouse over)
-# - obsidian tasks integration?
 # - scroll on bar = change workspace?
 
 # https://github.com/FelixKratz/dotfiles
@@ -16,28 +14,28 @@ FONT_COLOR=0xffcba6f7
 AERO_TILE_COLOR=0x99000000
 
 # Unused
-GAP=6 
+GAP=6
 
 # Bar appearance
 # https://felixkratz.github.io/SketchyBar/config/bar
-# sketchybar --bar position=top height=39 color=0x50000000 blur_radius=10 sticky=true # topmost=true 
+# sketchybar --bar position=top height=39 color=0x50000000 blur_radius=10 sticky=true # topmost=true
 sketchybar --bar position=top height=39 blur_radius=30 color=0xA0000000 sticky=true
 
 # Defaults
 # https://felixkratz.github.io/SketchyBar/config/items
 
 default=(
-  padding_left=5
-  padding_right=5
-  label.color=$FONT_COLOR
-  label.font="JetBrainsMono NF:Bold:14.0"
-  icon.color=$FONT_COLOR
-  icon.font="JetBrainsMono NF:Bold:17.0"
-  icon.padding_left=4
-  icon.padding_right=4
-  # icon.background.color=0x40000000
-  label.padding_left=4
-  label.padding_right=4
+    padding_left=5
+    padding_right=5
+    label.color=$FONT_COLOR
+    label.font="JetBrainsMono NF:Bold:14.0"
+    icon.color=$FONT_COLOR
+    icon.font="JetBrainsMono NF:Bold:17.0"
+    icon.padding_left=4
+    icon.padding_right=4
+    # icon.background.color=0x40000000
+    label.padding_left=4
+    label.padding_right=4
 )
 sketchybar --default "${default[@]}"
 
@@ -47,36 +45,73 @@ sketchybar --default "${default[@]}"
 
 # Currently focused app
 sketchybar --add item front_app left \
-           --subscribe front_app front_app_switched \
-           --set front_app script="$PLUGIN_DIR/front_app.sh" \
+    --subscribe front_app front_app_switched \
+    --set front_app script="$PLUGIN_DIR/front_app.sh"
 
-# Aerospace 
+# Aerospace
+
 sketchybar --add event aerospace_workspace_change
-for sid in $(aerospace list-workspaces --all);
-do
+for sid in $(aerospace list-workspaces --all); do
     sketchybar --add item space.$sid left \
         --subscribe space.$sid aerospace_workspace_change \
         --set space.$sid \
-        background.color=$AERO_TILE_COLOR \
-        background.padding_right=5 \
-        background.corner_radius=5 \
-        background.height=20 \
-        background.drawing=off \
-        label="$sid" \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+            background.color=$AERO_TILE_COLOR \
+            background.padding_right=5 \
+            background.corner_radius=5 \
+            background.height=20 \
+            background.drawing=off \
+            label="$sid" \
+            click_script="aerospace workspace $sid" \
+            script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
-# Clock
-sketchybar --add item clock right \
-           --set clock update_freq=20 icon=  script="$PLUGIN_DIR/clock.sh" \
-           --add item volume right \
-           --set volume script="$PLUGIN_DIR/volume.sh" \
-           --subscribe volume volume_change \
-           --add item battery right \
-           --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-           --subscribe battery system_woke power_source_change
+# sketchybar --add event aerospace_workspace_change \
+#         --add item space left \
+#         --subscribe space aerospace_workspace_change \
+#         --set space \
+#             background.color=$AERO_TILE_COLOR \
+#             background.padding_right=5 \
+#             background.corner_radius=5 \
+#             background.height=20 \
+#             background.drawing=off \
+#             label="$sid" \
+#             click_script="aerospace workspace space" \
+#             script="$CONFIG_DIR/plugins/aerospace.sh space"
 
+# for sid in $(aerospace list-workspaces --all); do
+#     sketchybar --add item space.$sid left \
+#         --subscribe space.$sid aerospace_workspace_change \
+#         --set space.$sid \
+#             background.color=$AERO_TILE_COLOR \
+#             background.padding_right=5 \
+#             background.corner_radius=5 \
+#             background.height=20 \
+#             background.drawing=off \
+#             label="$sid" \
+#             click_script="aerospace workspace $sid" \
+#             script="$CONFIG_DIR/plugins/aerospace.sh $sid"
+# done
+
+sketchybar --add item media e \
+    --set media label.color=$FONT_COLOR \
+        label.max_chars=50 \
+        icon.padding_left=50 \
+        scroll_texts=off \
+        icon= \
+        icon.color=$FONT_COLOR \
+        background.drawing=off \
+        script="$PLUGIN_DIR/media.sh" \
+        --subscribe media media_change
+
+# Clock, volume, battery
+sketchybar --add item clock right \
+    --set clock update_freq=20 icon= script="$PLUGIN_DIR/clock.sh" \
+    --add item volume right \
+    --set volume script="$PLUGIN_DIR/volume.sh" \
+    --subscribe volume volume_change \
+    --add item battery right \
+    --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+    --subscribe battery system_woke power_source_change
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update

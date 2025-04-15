@@ -3,6 +3,8 @@ return {
     -- configures Lua LSP for Neovim config
     "folke/lazydev.nvim",
     ft = "lua",
+    ---@module 'lazydev'
+    ---@type lazydev.Config
     opts = {
       library = {
         -- Load luvit types when the `vim.uv` word is found
@@ -19,6 +21,8 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
     },
+    ---@module 'lspconfig'
+    ---@type lspconfig.Config
     opts = { servers = require("lsp").servers },
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -43,9 +47,17 @@ return {
       require("mason-tool-installer").setup({})
       require("mason-lspconfig").setup()
 
+      local blink = require("blink.cmp")
       local lspconfig = require("lspconfig")
+
+      -- This is just for Apple Xcode stuff, kinda ugly might remove
+      -- lspconfig["sourcekit"].setup({
+      --   capabilities = blink.get_lsp_capabilities(),
+      --   cmd = vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")),
+      -- })
+
       for server, config in pairs(opts.servers) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+        config.capabilities = blink.get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
       end
     end,
@@ -56,11 +68,15 @@ return {
     build = ":TSUpdate",
     main = "nvim-treesitter.configs",
     -- dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+    ---@module 'nvim-treesitter'
+    ---@type TSConfig
     opts = M.treesitter,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
+    ---@module 'nvim-treesitter-context'
+    ---@type TSContext.Config
     opts = {},
   },
 }

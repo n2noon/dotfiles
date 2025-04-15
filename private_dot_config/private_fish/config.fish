@@ -35,6 +35,7 @@ if type -q cargo
 end
 
 fish_add_path ~/.scripts
+fish_add_path ~/.bin
 
 # maybe i should move to helix...
 if type -q nvim
@@ -120,12 +121,9 @@ abbr -a home cd ~/
 
 abbr -a j just
 
-set PATH $PATH /Users/kalk/.local/bin
-
-# fish_update_completions
-
+fish_add_path /Users/kalk/.local/bin
 # launch my music daemons...
 #mpd & mpdscribble &
 
 # Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/kalk/.lmstudio/bin
+fish_add_path -g /Users/kalk/.lmstudio/bin

@@ -19,6 +19,7 @@ M.formatters_by_ft = {
 
 M.formatters = {}
 
+---@type TSConfig
 M.treesitter = {
   ensure_installed = {
     "bash",

@@ -5,6 +5,7 @@ return {
     -- "saghen/blink.compat"
   },
   version = "*",
+  ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
     keymap = {

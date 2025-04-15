@@ -14,7 +14,12 @@ return {
     config = function()
       local dap = require("dap")
       require("dbg").adapters(dap)
+
+      --- UI ---
+      -- TODO: make this cleaner
       local ui = require("dapui")
+      ---@module "dap.ui"
+      ---@type dapui.Config
       ui.setup()
       dap.listeners.before.attach.dapui_config = function() ui.open() end
       dap.listeners.before.launch.dapui_config = function() ui.open() end

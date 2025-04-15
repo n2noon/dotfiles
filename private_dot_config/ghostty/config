@@ -7,6 +7,6 @@ theme = dark:Tomorrow Night,light:Apple System Colors Light
 macos-option-as-alt = true
 macos-window-shadow = false
 macos-titlebar-style = tabs
+confirm-close-surface = false
 
 command = /opt/homebrew/bin/fish --login
-

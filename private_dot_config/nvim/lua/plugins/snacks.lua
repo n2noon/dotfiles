@@ -1,9 +1,9 @@
----@module "snacks.nvim"
 return {
   -- see https://github.com/folke/snacks.nvim?tab=readme-ov-file#-usage
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  ---@module 'snacks'
   ---@type snacks.Config
   opts = {
     bigfile = {},
@@ -34,6 +34,7 @@ return {
     },
     -- debug = {},
     -- lazygit = {},
+    -- git = {},
     quickfile = {},
     -- rename = {},
     scope = {},
@@ -58,7 +59,6 @@ return {
       -- layouts = {
       --   { "wider-sidebar", preset = "sidebar", layout = { width = 0.6 } },
       -- },
-      ---@type Snacks.picker.formatters.Config
       formatters = {
         file = { filename_first = true },
       },

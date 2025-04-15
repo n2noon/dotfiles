@@ -38,11 +38,11 @@ prepend_previewers = [
     # { mime = "{image,audio,video}/*", run = "mediainfo"},
     # { mime = "application/subrip", run = "mediainfo"},
     { mime = "application/epub+zip", run = "archive"},
-    { name = "*.md", run = "glow" },
+    # { name = "*.md", run = "glow" },
     # { name = "*/", run = "eza-preview" }
 ]
 
 
 append_previewers = [
-    { name = "*", run = "hexyl" }
+    # { name = "*", run = "hexyl" }
 ]

@@ -87,7 +87,7 @@ M.snacks = {
   { "<C-P>", function() Snacks.picker.files() end, desc = "Find Files" },
   { "<C-S>", function() Snacks.picker.explorer() end, desc = "Explorer" },
   { "<leader>e", function() Snacks.picker.explorer() end, desc = "Explorer" },
-  { "<leader><tab>", function() Snacks.picker.smart() end, desc = "Smart" },
+  { "<leader><tab>", function() Snacks.picker.recent() end, desc = "Oldfiles" },
   { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
   { "<leader><leader>", function() Snacks.picker.grep() end, desc = "Grep" },
   { "<C-S-F>", function() Snacks.picker.grep() end, desc = "Grep" },
@@ -99,6 +99,7 @@ M.snacks = {
   { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
   { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
   { "<leader>fn", function() Snacks.picker.notifications() end, desc = "Notification History" },
+  { "<leader>fs", function() Snacks.picker.smart() end, desc = "Search smart" },
   -- { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
   -- git
   { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },

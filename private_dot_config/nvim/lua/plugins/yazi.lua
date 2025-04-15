@@ -3,6 +3,8 @@ return {
   -- event = 'VeryLazy',
   priority = 1000,
   lazy = false,
+  ---@module "yazi"
+  ---@type YaziConfig
   opts = {
     -- instead of netrw
     open_for_directories = true,

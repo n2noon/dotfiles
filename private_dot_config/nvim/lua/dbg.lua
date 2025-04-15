@@ -2,6 +2,8 @@ M = {}
 
 -- https://github.com/mfussenegger/nvim-dap?tab=readme-ov-file#supported-languages
 
+---@module "nvim-dap"
+---@param dap dap.Configuration
 M.adapters = function(dap)
   dap.adapters.lldb = {
     type = "executable",

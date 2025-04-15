@@ -3,6 +3,7 @@ return {
   enabled = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = require("keymaps").fzflua,
+  ---@module 'fzf-lua'
   opts = {
     -- see https://github.com/ibhagwan/fzf-lua?tab=readme-ov-file#customization
     defaults = {

@@ -136,7 +136,6 @@ cmd-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 cmd-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
-
 cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/goodness#open-a-new-window-with-applescript
@@ -222,10 +221,6 @@ run = "layout floating"
 if.app-id = "com.coteditor.CotEditor"
 run = "layout floating"
 
-# Disable hiding apps
-[mode.main.binding]
-    cmd-h = [] # Disable "hide application"
-    cmd-alt-h = [] # Disable "hide others"
 
 # See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 # External monitors

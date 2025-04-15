@@ -9,6 +9,14 @@ return {
     "ellisonleao/gruvbox.nvim",
     -- "neanias/everforest-nvim",
     --   -- "rose-pine/neovim",
+    ---@module "gruvbox"
+    ---@type GruvboxConfig
+    opts = {
+      palette_overrides = {
+        bright_red = "#e35a39",
+        bright_green = "#aeb541",
+      },
+    },
     config = function()
       local scheme =
         -- "everforest"
@@ -17,12 +25,6 @@ return {
       --   background = "hard",
       --   ui_contrast = "high"
       -- })
-      require("gruvbox").setup({
-        palette_overrides = {
-          bright_red = "#e35a39",
-          bright_green = "#aeb541",
-        },
-      })
       -- "catppuccin-mocha"
       -- "monokai-pro"
       -- "tokyonight-moon"
