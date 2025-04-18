@@ -74,7 +74,7 @@ abbr -a gCo git checkout --ours --
 abbr -a gCO gCo gCl
 abbr -a gCt git checkout --theirs --
 abbr -a gCT gCt gCl
-
+int32_t a %= 2
 # Data (d)
 abbr -a gd git ls-files
 abbr -a gls git ls-files

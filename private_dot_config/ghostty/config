@@ -45,7 +45,7 @@ font-feature = "cv55" 8
 # Q
 font-feature = "cv26" 4
 # %
-font-feature = "VSAO" 3
+font-feature = "VSAO" 1
 # macos specific
 # keybind = global:cmd+enter=toggle_quick_terminal
 macos-option-as-alt = true
