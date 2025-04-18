@@ -4,14 +4,28 @@ return {
   priority = 1000,
   -- lazy = false,
   config = function()
+    --------------------------------- ai -------------------------------
     -- q is for quotes
     -- b is for brackets
     -- ? is custom
     require("mini.ai").setup()
+    ------------------------------- align ------------------------------
+    -- Filter specifies which delimiter in the split we should work with
+    --   (also makes it so trim doesn't affect everything after that)
+    -- Split separates into array of delimiters and Words
+    -- Merge adds... delimiters? Keep testing
+    -- Justify... justifies
+    -- Trim ignores whitespace when aligning
+    -- Ignore ignores some stuff
+    -- Pair smushes things together
     require("mini.align").setup()
-    -- require("mini.bracketed").setup()
-    -- require('mini.clue').setup()
-    -- do things like swapping words
+
+    ----------------------------- operators ----------------------------
+    -- Evaluate text and replace with output.
+    -- Exchange text regions.
+    -- Multiply (duplicate) text.
+    -- Replace text with register.
+    -- Sort text.
     require("mini.operators").setup({
       evaluate = {
         prefix = "t=",
@@ -30,7 +44,6 @@ return {
         prefix = "ts",
       },
     })
-    -- require("mini.git").setup()
     require("mini.pairs").setup()
     require("mini.splitjoin").setup({ mappings = { toggle = "gj" } })
     -- saiw' adds ' to word surrounding

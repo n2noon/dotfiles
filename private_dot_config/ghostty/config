@@ -1,17 +1,51 @@
+             ### REFERENCE ###
 # https://ghostty.org/docs/config/reference
 # ghostty +show-config --default --docs
 # ghostty +list-themes
 
-# font-family = "JetBrains Mono NL"
-font-family = "Iosevka NFM"
-font-style-bold = "SemiBold"
-# font-feature = liga
-font-size = 22
-# font-thicken = true
-# font-thicken-strength = 0
 # theme = dark:Tomorrow Night,light:Apple System Colors Light
 theme = Tomorrow Night
 
+# font-family = "JetBrains Mono NL"
+font-family = "Iosevka Fixed"
+font-style-bold = "SemiBold"
+font-size = 22
+
+# This is for Iosevka! Comment out if no longer using.
+# abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789
+# qwertyuiop[] asdfghjkl;'\ zxcvbnm,./  => <=> <= >= != !== === $
+# The quick brown fox jumped over the lazy dog.
+
+# 0
+font-feature = "cv10" 19
+# 1
+font-feature = "cv01" 3
+# 5
+font-feature = "cv05" 5
+# 8
+font-feature = "cv08" 2
+# f
+font-feature = "cv41" 11
+# i
+font-feature = "cv44" 6
+# j
+font-feature = "cv45" 6
+# l
+font-feature = "cv47" 4
+# k
+font-feature = "cv46" 1
+# m
+font-feature = "cv48" 8
+# n
+font-feature = "cv49" 8
+# t
+font-feature = "cv54" 7
+# u
+font-feature = "cv55" 8
+# Q
+font-feature = "cv26" 4
+# %
+font-feature = "VSAO" 3
 # macos specific
 # keybind = global:cmd+enter=toggle_quick_terminal
 macos-option-as-alt = true

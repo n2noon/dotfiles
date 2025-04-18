@@ -21,247 +21,243 @@ set -g _git_log_brief_format '%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(re
 set -g _git_status_ignore_submodules 'none'
 
 # Git
-alias g='git'
+abbr -a g git
 
 # Branch (b)
-alias gb='git branch'
-alias gba='git branch --all --verbose'
-alias gbc='git checkout -b'
-alias gbd='git branch --delete'
-alias gbD='git branch --delete --force'
-alias gbl='git branch --verbose'
-alias gbL='git branch --all --verbose'
-alias gbm='git branch --move'
-alias gbM='git branch --move --force'
-alias gbr='git branch --move'
-alias gbR='git branch --move --force'
-alias gbs='git show-branch'
-alias gbS='git show-branch --all'
-alias gbv='git branch --verbose'
-alias gbV='git branch --verbose --verbose'
-alias gbx='git branch --delete'
-alias gbX='git branch --delete --force'
+abbr -a gb git branch
+abbr -a gba git branch --all --verbose
+abbr -a gbc git checkout -b
+abbr -a gbd git branch --delete
+abbr -a gbD git branch --delete --force
+abbr -a gbl git branch --verbose
+abbr -a gbL git branch --all --verbose
+abbr -a gbm git branch --move
+abbr -a gbM git branch --move --force
+abbr -a gbr git branch --move
+abbr -a gbR git branch --move --force
+abbr -a gbs git show-branch
+abbr -a gbS git show-branch --all
+abbr -a gbv git branch --verbose
+abbr -a gbV git branch --verbose --verbose
+abbr -a gbx git branch --delete
+abbr -a gbX git branch --delete --force
 
 # Commit (c)
-alias gc='git commit --verbose'
-alias gcS='git commit --verbose --gpg-sign'
-alias gca='git commit --verbose --all'
-alias gcaS='git commit --verbose --all --gpg-sign'
-alias gcm='git commit --message'
-alias gcmS='git commit --message --gpg-sign'
-alias gcam='git commit --all --message'
-alias gco='git checkout'
-alias gcO='git checkout --patch'
-alias gcf='git commit --amend --reuse-message HEAD'
-alias gcfS='git commit --amend --reuse-message HEAD --gpg-sign'
-alias gcF='git commit --verbose --amend'
-alias gcFS='git commit --verbose --amend --gpg-sign'
-alias gcp='git cherry-pick --ff'
-alias gcP='git cherry-pick --no-commit'
-alias gcr='git revert'
-alias gcR='git reset "HEAD^"'
-alias gcs='git show'
-alias gcsS='git show --pretty=short --show-signature'
-alias gcl='git-commit-lost'
-alias gcy='git cherry --verbose --abbrev'
-alias gcY='git cherry --verbose'
+abbr -a gc git commit --verbose
+abbr -a gcS git commit --verbose --gpg-sign
+abbr -a gca git commit --verbose --all
+abbr -a gcaS git commit --verbose --all --gpg-sign
+abbr -a gcm git commit --message
+abbr -a gcmS git commit --message --gpg-sign
+abbr -a gcam git commit --all --message
+abbr -a gco git checkout
+abbr -a gcO git checkout --patch
+abbr -a gcf git commit --amend --reuse-message HEAD
+abbr -a gcfS git commit --amend --reuse-message HEAD --gpg-sign
+abbr -a gcF git commit --verbose --amend
+abbr -a gcFS git commit --verbose --amend --gpg-sign
+abbr -a gcp git cherry-pick --ff
+abbr -a gcP git cherry-pick --no-commit
+abbr -a gcr git revert
+abbr -a gcR git reset "HEAD^"
+abbr -a gcs git show
+abbr -a gcsS git show --pretty=short --show-signature
+abbr -a gcl git-commit-lost
+abbr -a gcy git cherry --verbose --abbrev
+abbr -a gcY git cherry --verbose
 
 # Conflict (C)
-alias gCl='git --no-pager diff --ext-diff --name-only --diff-filter=U'
-alias gCa='git add (gCl)'
-alias gCe='git mergetool (gCl)'
-alias gCo='git checkout --ours --'
-alias gCO='gCo (gCl)'
-alias gCt='git checkout --theirs --'
-alias gCT='gCt (gCl)'
+alias gCl="git --no-pager diff --ext-diff --name-only --diff-filter=U"
+abbr -a gCa git add gCl
+abbr -a gCe git mergetool gCl
+abbr -a gCo git checkout --ours --
+abbr -a gCO gCo gCl
+abbr -a gCt git checkout --theirs --
+abbr -a gCT gCt gCl
 
 # Data (d)
-alias gd='git ls-files'
-alias gdc='git ls-files --cached'
-alias gdx='git ls-files --deleted'
-alias gdm='git ls-files --modified'
-alias gdu='git ls-files --other --exclude-standard'
-alias gdk='git ls-files --killed'
-alias gdi='git status --porcelain --short --ignored | sed -n "s/^!! //p"'
+abbr -a gd git ls-files
+abbr -a gls git ls-files
+abbr -a gdc git ls-files --cached
+abbr -a gdx git ls-files --deleted
+abbr -a gdm git ls-files --modified
+abbr -a gdu git ls-files --other --exclude-standard
+abbr -a gdk git ls-files --killed
+abbr -a gdi git status --porcelain --short --ignored \| sed -n \"s/^!! //p\"
 
 # Fetch (f)
-alias gf='git fetch'
-alias gfa='git fetch --all'
-alias gfc='git clone'
-alias gfcr='git clone --recurse-submodules'
-alias gfm='git pull'
-alias gfma='git pull --autostash'
-alias gfr='git pull --rebase'
-alias gfra='git pull --rebase --autostash'
+abbr -a gf git fetch
+abbr -a gfa git fetch --all
+abbr -a gfc git clone
+abbr -a gfcr git clone --recurse-submodules
+abbr -a gfm git pull
+abbr -a gfma git pull --autostash
+abbr -a gfr git pull --rebase
+abbr -a gfra git pull --rebase --autostash
 
 # Flow (F)
-alias gFi='git flow init'
-alias gFf='git flow feature'
-alias gFb='git flow bugfix'
-alias gFl='git flow release'
-alias gFh='git flow hotfix'
-alias gFs='git flow support'
-
-alias gFfl='git flow feature list'
-alias gFfs='git flow feature start'
-alias gFff='git flow feature finish'
-alias gFfp='git flow feature publish'
-alias gFft='git flow feature track'
-alias gFfd='git flow feature diff --ext-diff'
-alias gFfr='git flow feature rebase'
-alias gFfc='git flow feature checkout'
-alias gFfm='git flow feature pull'
-alias gFfx='git flow feature delete'
-
-alias gFbl='git flow bugfix list'
-alias gFbs='git flow bugfix start'
-alias gFbf='git flow bugfix finish'
-alias gFbp='git flow bugfix publish'
-alias gFbt='git flow bugfix track'
-alias gFbd='git flow bugfix diff --ext-diff'
-alias gFbr='git flow bugfix rebase'
-alias gFbc='git flow bugfix checkout'
-alias gFbm='git flow bugfix pull'
-alias gFbx='git flow bugfix delete'
-
-alias gFll='git flow release list'
-alias gFls='git flow release start'
-alias gFlf='git flow release finish'
-alias gFlp='git flow release publish'
-alias gFlt='git flow release track'
-alias gFld='git flow release diff --ext-diff'
-alias gFlr='git flow release rebase'
-alias gFlc='git flow release checkout'
-alias gFlm='git flow release pull'
-alias gFlx='git flow release delete'
-
-alias gFhl='git flow hotfix list'
-alias gFhs='git flow hotfix start'
-alias gFhf='git flow hotfix finish'
-alias gFhp='git flow hotfix publish'
-alias gFht='git flow hotfix track'
-alias gFhd='git flow hotfix diff --ext-diff'
-alias gFhr='git flow hotfix rebase'
-alias gFhc='git flow hotfix checkout'
-alias gFhm='git flow hotfix pull'
-alias gFhx='git flow hotfix delete'
-
-alias gFsl='git flow support list'
-alias gFss='git flow support start'
-alias gFsf='git flow support finish'
-alias gFsp='git flow support publish'
-alias gFst='git flow support track'
-alias gFsd='git flow support diff --ext-diff'
-alias gFsr='git flow support rebase'
-alias gFsc='git flow support checkout'
-alias gFsm='git flow support pull'
-alias gFsx='git flow support delete'
+# abbr -a gFi git flow init
+# abbr -a gFf git flow feature
+# abbr -a gFb git flow bugfix
+# abbr -a gFl git flow release
+# abbr -a gFh git flow hotfix
+# abbr -a gFs git flow support
+# abbr -a gFfl git flow feature list
+# abbr -a gFfs git flow feature start
+# abbr -a gFff git flow feature finish
+# abbr -a gFfp git flow feature publish
+# abbr -a gFft git flow feature track
+# abbr -a gFfd git flow feature diff --ext-diff
+# abbr -a gFfr git flow feature rebase
+# abbr -a gFfc git flow feature checkout
+# abbr -a gFfm git flow feature pull
+# abbr -a gFfx git flow feature delete
+# abbr -a gFbl git flow bugfix list
+# abbr -a gFbs git flow bugfix start
+# abbr -a gFbf git flow bugfix finish
+# abbr -a gFbp git flow bugfix publish
+# abbr -a gFbt git flow bugfix track
+# abbr -a gFbd git flow bugfix diff --ext-diff
+# abbr -a gFbr git flow bugfix rebase
+# abbr -a gFbc git flow bugfix checkout
+# abbr -a gFbm git flow bugfix pull
+# abbr -a gFbx git flow bugfix delete
+# abbr -a gFll git flow release list
+# abbr -a gFls git flow release start
+# abbr -a gFlf git flow release finish
+# abbr -a gFlp git flow release publish
+# abbr -a gFlt git flow release track
+# abbr -a gFld git flow release diff --ext-diff
+# abbr -a gFlr git flow release rebase
+# abbr -a gFlc git flow release checkout
+# abbr -a gFlm git flow release pull
+# abbr -a gFlx git flow release delete
+# abbr -a gFhl git flow hotfix list
+# abbr -a gFhs git flow hotfix start
+# abbr -a gFhf git flow hotfix finish
+# abbr -a gFhp git flow hotfix publish
+# abbr -a gFht git flow hotfix track
+# abbr -a gFhd git flow hotfix diff --ext-diff
+# abbr -a gFhr git flow hotfix rebase
+# abbr -a gFhc git flow hotfix checkout
+# abbr -a gFhm git flow hotfix pull
+# abbr -a gFhx git flow hotfix delete
+# abbr -a gFsl git flow support list
+# abbr -a gFss git flow support start
+# abbr -a gFsf git flow support finish
+# abbr -a gFsp git flow support publish
+# abbr -a gFst git flow support track
+# abbr -a gFsd git flow support diff --ext-diff
+# abbr -a gFsr git flow support rebase
+# abbr -a gFsc git flow support checkout
+# abbr -a gFsm git flow support pull
+# abbr -a gFsx git flow support delete
 
 # Grep (g)
-alias gg='git grep'
-alias ggi='git grep --ignore-case'
-alias ggl='git grep --files-with-matches'
-alias ggL='git grep --files-without-matches'
-alias ggv='git grep --invert-match'
-alias ggw='git grep --word-regexp'
+abbr -a gg git grep
+abbr -a ggi git grep --ignore-case
+abbr -a ggl git grep --files-with-matches
+abbr -a ggL git grep --files-without-matches
+abbr -a ggv git grep --invert-match
+abbr -a ggw git grep --word-regexp
 
 # Index (i)
-alias gia='git add'
-alias giA='git add --patch'
-alias giu='git add --update'
-alias gid='git diff --ext-diff --cached'
-alias giD='git diff --ext-diff --cached --word-diff'
-alias gii='git update-index --assume-unchanged'
-alias giI='git update-index --no-assume-unchanged'
-alias giR='git reset --patch'
-alias gix='git rm -r --cached'
-alias giX='git rm -r --force --cached'
+abbr -a gia git add
+abbr -a giA git add --patch
+abbr -a giu git add --update
+abbr -a gid git diff --ext-diff --cached
+abbr -a giD git diff --ext-diff --cached --word-diff
+abbr -a gii git update-index --assume-unchanged
+abbr -a giI git update-index --no-assume-unchanged
+abbr -a giR git reset --patch
+abbr -a gix git rm -r --cached
+abbr -a giX git rm -r --force --cached
 
 # Log (l)
-alias gl='git log --topo-order --pretty=format:"$_git_log_medium_format"'
-alias gls='git log --topo-order --stat --pretty=format:"$_git_log_medium_format"'
-alias gld='git log --topo-order --stat --patch --full-diff --pretty=format:"$_git_log_medium_format"'
-alias glo='git log --topo-order --pretty=format:"$_git_log_oneline_format"'
-alias glg='git log --topo-order --graph --pretty=format:"$_git_log_oneline_format"'
-alias glb='git log --topo-order --pretty=format:"$_git_log_brief_format"'
-alias glc='git shortlog --summary --numbered'
-alias glS='git log --show-signature'
+abbr -a gl git log --topo-order --pretty=format:"$_git_log_medium_format"
+abbr -a gls git log --topo-order --stat --pretty=format:"$_git_log_medium_format"
+abbr -a gld git log --topo-order --stat --patch --full-diff --pretty=format:"$_git_log_medium_format"
+abbr -a glo git log --topo-order --pretty=format:"$_git_log_oneline_format"
+abbr -a glg git log --topo-order --graph --pretty=format:"$_git_log_oneline_format"
+abbr -a glb git log --topo-order --pretty=format:"$_git_log_brief_format"
+abbr -a glc git shortlog --summary --numbered
+abbr -a glS git log --show-signature
 
 # Merge (m)
-alias gm='git merge'
-alias gmC='git merge --no-commit'
-alias gmF='git merge --no-ff'
-alias gma='git merge --abort'
-alias gmt='git mergetool'
+abbr -a gm git merge
+abbr -a gmC git merge --no-commit
+abbr -a gmF git merge --no-ff
+abbr -a gma git merge --abort
+abbr -a gmt git mergetool
 
 # Push (p)
-alias gp='git push'
-alias gpf='git push --force-with-lease'
-alias gpF='git push --force'
-alias gpa='git push --all'
-alias gpA='git push --all && git push --tags'
-alias gpt='git push --tags'
-alias gpc='git push --set-upstream origin "(git-branch-current 2> /dev/null)"'
-alias gpp='git pull origin "(git-branch-current 2> /dev/null)" && git push origin "(git-branch-current 2> /dev/null)"'
+abbr -a gp git push
+abbr -a gpf git push --force-with-lease
+abbr -a gpF git push --force
+abbr -a gpa git push --all
+abbr -a gpA git push --all \&\& git push --tags
+abbr -a gpt git push --tags
+abbr -a gpc git push --set-upstream origin "(git-branch-current 2> /dev/null)"
+abbr -a gpp git pull origin "(git-branch-current 2> /dev/null)" \&\& git push origin "(git-branch-current 2> /dev/null)"
 
 # Rebase (r)
-alias gr='git rebase'
-alias gra='git rebase --abort'
-alias grc='git rebase --continue'
-alias gri='git rebase --interactive'
-alias grs='git rebase --skip'
+abbr -a gr git rebase
+abbr -a gra git rebase --abort
+abbr -a grc git rebase --continue
+abbr -a gri git rebase --interactive
+abbr -a grs git rebase --skip
 
 # Remote (R)
-alias gR='git remote'
-alias gRl='git remote --verbose'
-alias gRa='git remote add'
-alias gRx='git remote rm'
-alias gRm='git remote rename'
-alias gRu='git remote update'
-alias gRp='git remote prune'
-alias gRs='git remote show'
-alias gRb='git-hub-browse'
+abbr -a gR git remote
+abbr -a gRl git remote --verbose
+abbr -a gRa git remote add
+abbr -a gRx git remote rm
+abbr -a gRm git remote rename
+abbr -a gRu git remote update
+abbr -a gRp git remote prune
+abbr -a gRs git remote show
+abbr -a gRb git-hub-browse
 
 # Stash (s)
-alias gs='git stash'
-alias gsa='git stash apply'
-alias gsx='git stash drop'
-alias gsX='git-stash-clear-interactive'
-alias gsl='git stash list'
-alias gsL='git-stash-dropped'
-alias gsd='git stash show --patch --stat'
-alias gsp='git stash pop'
-alias gsr='git-stash-recover'
-alias gss='git stash save --include-untracked'
-alias gsS='git stash save --patch --no-keep-index'
-alias gsw='git stash save --include-untracked --keep-index'
+abbr -a gs git stash
+abbr -a gsa git stash apply
+abbr -a gsx git stash drop
+abbr -a gsX git-stash-clear-interactive
+abbr -a gsl git stash list
+abbr -a gsL git-stash-dropped
+abbr -a gsd git stash show --patch --stat
+abbr -a gsp git stash pop
+abbr -a gsr git-stash-recover
+abbr -a gss git stash save --include-untracked
+abbr -a gsS git stash save --patch --no-keep-index
+abbr -a gsw git stash save --include-untracked --keep-index
 
 # Submodule (S)
-alias gS='git submodule'
-alias gSa='git submodule add'
-alias gSf='git submodule foreach'
-alias gSi='git submodule init'
-alias gSI='git submodule update --init --recursive'
-alias gSl='git submodule status'
-alias gSm='git-submodule-move'
-alias gSs='git submodule sync'
-alias gSu='git submodule update --remote --recursive'
-alias gSx='git-submodule-remove'
+abbr -a gS git submodule
+abbr -a gSa git submodule add
+abbr -a gSf git submodule foreach
+abbr -a gSi git submodule init
+abbr -a gSI git submodule update --init --recursive
+abbr -a gSl git submodule status
+abbr -a gSm git-submodule-move
+abbr -a gSs git submodule sync
+abbr -a gSu git submodule update --remote --recursive
+abbr -a gSx git-submodule-remove
 
 # Tag (t)
-alias gt='git tag'
-alias gtl='git tag --list'
-alias gts='git tag --sign'
-alias gtv='git verify-tag'
+abbr -a gt git tag
+abbr -a gtl git tag --list
+abbr -a gts git tag --sign
+abbr -a gtv git verify-tag
 
 # Working Copy (w)
-alias gws='git status --ignore-submodules=$_git_status_ignore_submodules --short'
-alias gwS='git status --ignore-submodules=$_git_status_ignore_submodules'
-alias gwd='git diff --ext-diff'
-alias gwD='git diff --ext-diff --word-diff'
-alias gwr='git reset --soft'
-alias gwR='git reset --hard'
-alias gwc='git clean --dry-run'
-alias gwC='git clean --force'
-alias gwx='git rm -r'
-alias gwX='git rm -r --force'
+abbr -a gws git status --ignore-submodules=$_git_status_ignore_submodules --short
+abbr -a gwS git status --ignore-submodules=$_git_status_ignore_submodules
+abbr -a gwd git diff --ext-diff
+abbr -a gwD git diff --ext-diff --word-diff
+abbr -a gwr git reset --soft
+abbr -a gwR git reset --hard
+abbr -a gwc git clean --dry-run
+abbr -a gwC git clean --force
+abbr -a gwx git rm -r
+abbr -a gwX git rm -r --force
