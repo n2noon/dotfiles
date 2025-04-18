@@ -29,7 +29,7 @@ g.maplocalleader = " "
 g.snacks_animate = false
 
 o.title = true
--- o.number = true
+o.number = true
 o.relativenumber = true
 o.wrap = false
 o.mouse = "a"

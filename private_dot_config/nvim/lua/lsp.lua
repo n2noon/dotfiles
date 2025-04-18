@@ -5,6 +5,7 @@ M.servers = {
   rust_analyzer = {},
   basedpyright = {},
   bashls = {},
+  lemminx = {},
   ts_ls = {},
   lua_ls = {},
 }
@@ -15,6 +16,7 @@ M.formatters_by_ft = {
   fish = { "fish_indent" },
   sh = { "shfmt" },
   rust = { "rustfmt", lsp_format = "fallback" },
+  xml = { "lemminx" },
 }
 
 M.formatters = {}

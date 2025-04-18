@@ -70,6 +70,9 @@ return {
         diagnostics_buffer = {
           layout = "ivy_split",
         },
+        files = {
+          layout = "telescope"
+        },
         git_branches = {
           layout = "ivy_split",
         },
@@ -96,6 +99,9 @@ return {
         },
         registers = {
           layout = "vscode",
+        },
+        lsp_symbols = {
+          layout = "right",
         },
       },
       icons = { files = { enabled = false } },

@@ -15,6 +15,10 @@ M.init = function()
   m("n", "#", "#zz", { silent = true })
   m("n", "g*", "g*zz", { silent = true })
 
+  -- search is one key up (nicer on the pinky)
+  m({"n", "x"}, "\\", "/")
+  m({"n", "x"}, "|", "?")
+
   -- save file
   m({ "n" }, "<Enter>", "<cmd>w<cr><esc>", { desc = "Save File" })
 

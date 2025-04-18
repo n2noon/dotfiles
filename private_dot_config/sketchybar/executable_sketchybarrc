@@ -24,6 +24,7 @@ sketchybar --bar position=top height=39 blur_radius=30 color=0xA0000000 sticky=t
 # Defaults
 # https://felixkratz.github.io/SketchyBar/config/items
 
+# https://felixkratz.github.io/SketchyBar/config/bar
 default=(
     padding_left=5
     padding_right=5
@@ -94,9 +95,10 @@ done
 
 sketchybar --add item media e \
     --set media label.color=$FONT_COLOR \
-        label.max_chars=50 \
-        icon.padding_left=50 \
+        align=center \
+        label.max_chars=44 \
         scroll_texts=off \
+        icon.padding_left=42 \
         icon= \
         icon.color=$FONT_COLOR \
         background.drawing=off \

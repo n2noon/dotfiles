@@ -12,19 +12,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.api.nvim_set_hl(0, "SnacksPickerDir", { fg = "#928374" })
-vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { fg = "#928374" })
-vim.api.nvim_set_hl(0, "SnacksDashboardDir", { fg = "#928374" })
-vim.api.nvim_set_hl(0, "SnacksPickerBufFlags", { fg = "#928374" })
-vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored", { fg = "#928374" })
-vim.api.nvim_set_hl(0, "SnacksPickerGitStatusIgnored", { fg = "#928374" })
-vim.api.nvim_set_hl(0, "SnacksPickerGitStatusUntracked", { fg = "#928374" })
+local grey = "#928374"
+vim.api.nvim_set_hl(0, "SnacksPickerDir",                { fg = grey })
+vim.api.nvim_set_hl(0, "SnacksPickerPathHidden",         { fg = grey })
+vim.api.nvim_set_hl(0, "SnacksDashboardDir",             { fg = grey })
+vim.api.nvim_set_hl(0, "SnacksPickerBufFlags",           { fg = grey })
+vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored",        { fg = grey })
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusIgnored",   { fg = grey })
+vim.api.nvim_set_hl(0, "SnacksPickerGitStatusUntracked", { fg = grey })
 
 -- Configure plugins.
 ---@type Lazy
 require("lazy").setup("plugins", {
-  -- ui = { border = "rounded" },
-  -- dev = { path = vim.g.projects_dir },
   install = {
     -- Do not automatically install on startup.
     missing = false,
@@ -35,9 +34,9 @@ require("lazy").setup("plugins", {
   rocks = {
     enabled = false,
   },
+  -- Unused
   performance = {
     rtp = {
-      -- Stuff I don't use.
       disabled_plugins = {
         "gzip",
         "netrwPlugin",

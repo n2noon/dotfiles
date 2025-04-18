@@ -18,6 +18,7 @@ return {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { "williamboman/mason.nvim", opts = {} }, -- NOTE: Must be loaded before dependants
       "williamboman/mason-lspconfig.nvim",
+      "mfussenegger/nvim-jdtls", -- NOTE: This is for Java specifically
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
     },

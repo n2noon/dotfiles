@@ -74,18 +74,18 @@ if type -q fzf
 end
 
 if type -q eza
-    abbr -a l eza --icons
-    abbr -a ls eza --icons
-    abbr -a ll eza --icons -l
+    alias ls="eza --icons --group-directories-first"
+    abbr -a l eza --icons --group-directories-first
+    abbr -a ll eza --icons -l --group-directories-first
     abbr -a --set-cursor tree eza --icons --tree --level=%
 end
-
-abbr -a c cat
 
 # bat for coloured man pages
 if type -q bat
     set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
     abbr -a b bat
+    abbr -a c bat
+    abbr -a cat bat
 end
 
 # muscle memory...

@@ -6,10 +6,12 @@ return {
   config = function()
     -- q is for quotes
     -- b is for brackets
-    -- ? lets you customise
+    -- ? is custom
     require("mini.ai").setup()
+    require("mini.align").setup()
     -- require("mini.bracketed").setup()
     -- require('mini.clue').setup()
+    -- do things like swapping words
     require("mini.operators").setup({
       evaluate = {
         prefix = "t=",
@@ -38,7 +40,11 @@ return {
     -- sh highlights
     -- can use q and b also
     require("mini.surround").setup()
-    require("mini.statusline").setup()
+    ---@module "mini.statusline"
+    require("mini.statusline").setup({
+      use_icons = false,
+      content = {},
+    })
     -- require('mini.sessions').setup()
   end,
 }

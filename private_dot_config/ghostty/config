@@ -1,6 +1,16 @@
-font-family = "JetBrains Mono NL"
-font-size = 17
-theme = dark:Tomorrow Night,light:Apple System Colors Light
+# https://ghostty.org/docs/config/reference
+# ghostty +show-config --default --docs
+# ghostty +list-themes
+
+# font-family = "JetBrains Mono NL"
+font-family = "Iosevka NFM"
+font-style-bold = "SemiBold"
+# font-feature = liga
+font-size = 22
+# font-thicken = true
+# font-thicken-strength = 0
+# theme = dark:Tomorrow Night,light:Apple System Colors Light
+theme = Tomorrow Night
 
 # macos specific
 # keybind = global:cmd+enter=toggle_quick_terminal
