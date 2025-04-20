@@ -27,7 +27,7 @@ if type -q brew
     fish_add_path /opt/homebrew/sbin/
     fish_add_path /opt/homebrew/opt/openjdk/bin/
     set -gx SHELL /opt/homebrew/bin/fish
-    set -gx HOMEBREW_AUTO_UPDATE_SECS 60*60*24*7
+    set -gx HOMEBREW_AUTO_UPDATE_SECS 604800
     set -gx HOMEBREW_NO_ENV_HINTS y
     abbr -a bi brew install
     abbr -a bup brew upgrade
@@ -151,3 +151,8 @@ if type -q git
 end
 abbr -a lg lazygit
 # abbr -a --set-cursor={} gcm git commit --message \"{}\"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/kalk/.lmstudio/bin
+# End of LM Studio CLI section
+

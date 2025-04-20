@@ -16,8 +16,8 @@ M.init = function()
   m("n", "g*", "g*zz", { silent = true })
 
   -- search is one key up (nicer on the pinky)
-  m({"n", "x"}, "\\", "/")
-  m({"n", "x"}, "|", "?")
+  m({ "n", "x" }, "\\", "/")
+  m({ "n", "x" }, "|", "?")
 
   -- save file
   m({ "n" }, "<Enter>", "<cmd>w<cr><esc>", { desc = "Save File" })
@@ -35,7 +35,10 @@ M.init = function()
   m("n", "-", "*Ncgn", { silent = true, desc = "Substitute word under cursor" })
 
   -- Normal mode Tab alternates buffers
-  m("n", "<Tab>", ":b#<CR>", { silent = true })
+  ---@type vim.keymap.set.Opts
+  local nnormap = { silent = true, remap = false }
+  m("n", "<C-I>", "<C-I>", nnormap)
+  m("n", "<Tab>", ":b#<CR>", nnormap)
 
   -- ciw shortcut
   m("n", "<Backspace>", "ciw", { silent = true })
@@ -239,7 +242,8 @@ M.nvim_dap = {
   { "<leader>do", function() require("dap").step_out() end },
   { "<leader>db", function() require("dap").step_back() end },
   { "<leader>dr", function() require("dap").restart() end },
-  { "<leader>dp", "<cmd>FzfLua dap_configurations<CR>" },
+  { "<leader>ds", function() require("dap").terminate() end },
+  -- { "<leader>dp", "<cmd>FzfLua dap_configurations<CR>" },
   -- Eval var under cursor
   { "<space>?", function() require("dapui").eval(nil, { enter = true }) end },
 }

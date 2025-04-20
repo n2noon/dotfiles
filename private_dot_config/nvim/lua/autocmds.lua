@@ -50,14 +50,20 @@ vim.api.nvim_create_augroup("numbertoggle", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained" }, {
   callback = function()
-    if vim.bo.buftype == "" then vim.opt.relativenumber = true end
+    if vim.bo.buftype == "" then
+      vim.opt.relativenumber = true
+      vim.opt.number = true
+    end
   end,
   group = "numbertoggle",
 })
 
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
   callback = function()
-    if vim.bo.buftype == "" then vim.opt.relativenumber = false end
+    if vim.bo.buftype == "" then
+      vim.opt.relativenumber = false
+      vim.opt.number = false
+    end
   end,
   group = "numbertoggle",
 })
@@ -75,7 +81,7 @@ autocmd("FileType", {
 
 -- Keep splits the same when nvim is resized.
 autocmd("VimResized", {
-  command = "wincmd ="
+  command = "wincmd =",
 })
 
 -- autocmd({ "BufWinEnter", "BufEnter", "FocusGained" }, {

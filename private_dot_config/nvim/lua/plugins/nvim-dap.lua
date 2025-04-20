@@ -6,6 +6,7 @@ return {
     event = "VeryLazy",
     dependencies = {
       "rcarriga/nvim-dap-ui",
+      -- { "igorlfs/nvim-dap-view", opts = {} },
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
       "williamboman/mason.nvim",
@@ -16,15 +17,17 @@ return {
       require("dbg").adapters(dap)
 
       --- UI ---
-      -- TODO: make this cleaner
+      -- TODO: considering nvim-dap-view instead
+      -- local ui = require("dap-view-config")
       local ui = require("dapui")
-      ---@module "dap.ui"
-      ---@type dapui.Config
+      -- ---@module "dap.ui"
+      -- ---@type dapui.Config
       ui.setup()
       dap.listeners.before.attach.dapui_config = function() ui.open() end
       dap.listeners.before.launch.dapui_config = function() ui.open() end
       dap.listeners.before.event_terminated.dapui_config = function() ui.close() end
       dap.listeners.before.event_exited.dapui_config = function() ui.close() end
+
     end,
   },
 }

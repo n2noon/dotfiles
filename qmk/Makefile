@@ -9,6 +9,7 @@ endif
 
 QMK_FIRMWARE_ROOT = $(shell qmk config -ro user.qmk_home | cut -d= -f2 | sed -e 's@^None$$@@g')
 ifeq ($(QMK_FIRMWARE_ROOT),)
+
     $(error Cannot determine qmk_firmware location. `qmk config -ro user.qmk_home` is not set)
 endif
 

@@ -2,6 +2,7 @@ M = {}
 
 M.servers = {
   clangd = {},
+  -- Disable if using rustaceanvim
   rust_analyzer = {},
   basedpyright = {},
   bashls = {},

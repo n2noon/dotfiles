@@ -37,6 +37,7 @@
                     },
                     {
                         "description": "<c-'> is enter",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -50,6 +51,7 @@
                     },
                     {
                         "description": "<c-[> is backspace",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -63,6 +65,7 @@
                     },
                     {
                         "description": "<c-backslash> is enter",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

@@ -63,18 +63,22 @@ extrafiles: # pip install beets-extrafiles
           - '[aA]rtwork/'
     paths:
         artworkdir: $albumpath/artwork
+# Bugged? https://www.reddit.com/r/musichoarder/comments/1hp2zpn/trouble_with_opus_output_from_opusenc_output/
+# command: opusenc --bitrate 192 $source $dest
 convert:
     auto: yes
     quiet: yes
     copy_album_art: no
     embed: no
     never_convert_lossy_files: yes
-    format: opus
     delete_originals: true
-    formats:
-        opus:
-            command: opusenc --bitrate 192 $source $dest
-            extension: opus
+    command: ffmpeg -i $source -c:a libopus -y -b:a 192k -map_metadata 0 $dest
+    extension: opus
+# format: opus
+# formats:
+#     opus:
+#         command: ffmpeg -i $source -c:a libopus -b:a 192k -map_metadata 0 $dest
+#         extension: opus
 edit:
     itemfields: track title artist albumartist album year
     albumfields: track title artist albumartist album year

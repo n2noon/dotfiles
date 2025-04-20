@@ -61,7 +61,7 @@ o.spell = false
 -- o.foldexpr = "v:lua.Foldexpr()"
 -- o.foldcolumn = "0"
 -- o.foldtext = ""
--- o.foldlevel = 99
+o.foldlevel = 99
 -- o.foldlevelstart = 10
 -- o.foldnestmax = 4
 
