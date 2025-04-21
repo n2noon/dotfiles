@@ -1,0 +1,112 @@
+" Allows for argument textobj
+set mini-ai
+set surround
+Plug 'dbakker/vim-paragraph-motion'
+set NERDTree
+set highlightedyank
+set functiontextobj
+set commentary
+set ideajoin
+set ideaglobalmode
+" set ideastatusicon="disabled"
+" set history=500
+
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Common settings -------------------------
+set showmode
+set so=5
+set incsearch
+set nu
+set smartcase
+set cursorline
+set clipboard+=unnamedplus
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+" Do incremental searching.
+set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+""" Mappings --------------------------------
+
+"" Keys ---------------------------
+nnoremap H _
+xnoremap H _
+nnoremap L $
+xnoremap L $
+nnoremap ; :
+xnoremap ; :
+
+
+"" Actions ------------------------
+" nnoremap left <C-w>h
+map <leader>cf <Action>(ReformatCode)
+map <CR> <Action>(ReformatCode)
+
+map <leader>n <Action>(RenameElement)
+map <leader>N <Action>(RenameFile)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <A-k> <Action>(MoveLineUp)
+map <A-j> <Action>(MoveLineDown)
+
+map <leader><leader> <Action>(SearchEverywhere)
+map <leader>wq <Action>(CloseEditor)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+map <S-Space> <Action>(GotoNextError)
+map <leader>ii <Action>(OptimizeImports)
+"map [b <Action>(PreviousWindow)
+"map ]b <Action>(NextWindow)
+
+map gh <Action>(ShowErrorDescription)
+map <leader>o <Action>(FileStructurePopup)
+
+"" Navigation ---------------------
+map <Tab> <Action>(EditorToggleShowWhitespaces)
+map [[ <Action>(MethodUp)
+map ]] <Action>(MethodDown)
+map ]d <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
+map ]b <Action>(NextTab)
+map [b <Action>(PreviousTab)
+map ]h <Action>(VcsShowNextChangeMarker)
+map [h <Action>(VcsShowPrevChangeMarker)
+
+"" Debugging ---------------------
+map <leader>da <Action>(ToggleLineBreakpoint)
+map <leader>di <Action>(StepInto)
+map <leader>dl <Action>(RunToCursor)
+map <leader>d? <Action>(Debugger.AddInlineWatch)
+map <leader>do <Action>(StepOut)
+map <leader>dv <Action>(StepOver)
+map <leader>dd <Action>(DebugMainMenu)
+map <leader>ds <Action>(Debug)
+map <leader>dt <Action>(Stop)
+
+"" Git -----------------------------
+map <leader>gg <Action>(Vcs.MainMenu)
+map <leader>gf <Action>(Vcs.FileHistory.ContextMenu)
+map <leader>gP <Action>(Vcs.Push)
+map <leader>gg <Action>(Vcs.Browse)
+
+
+"" LSP ------------------------------
+map gr <Action>(ShowUsages)
+map gi <Action>(GotoImplementation)
+
+
+
+" map Right <Action>rightpane
