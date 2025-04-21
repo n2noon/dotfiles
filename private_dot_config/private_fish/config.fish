@@ -22,6 +22,10 @@ abbr -a proj cd ~/projects/
 abbr -a home cd ~/
 
 ### Program specific ###
+if type -q yt-dlp
+    abbr -a yt yt-dlp
+end
+
 if type -q brew
     fish_add_path /opt/homebrew/bin/
     fish_add_path /opt/homebrew/sbin/
@@ -155,4 +159,3 @@ abbr -a lg lazygit
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/kalk/.lmstudio/bin
 # End of LM Studio CLI section
-

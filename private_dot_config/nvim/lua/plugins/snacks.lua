@@ -6,7 +6,7 @@ return {
   ---@module 'snacks'
   ---@type snacks.Config
   opts = {
-    bigfile = {},
+    bigfile = { notify = false },
     dashboard = {
       preset = {
         keys = {
@@ -33,7 +33,8 @@ return {
       },
     },
     -- debug = {},
-    -- lazygit = {},
+    gitbrowse = {},
+    lazygit = {},
     -- git = {},
     quickfile = {},
     -- rename = {},
@@ -53,8 +54,20 @@ return {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<c-p>"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["<c-n>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<a-c>"] = { "toggle_cwd", mode = { "n", "i" } },
           },
         },
+      },
+      actions = {
+        ---@param p snacks.Picker
+        toggle_cwd = function(p)
+          -- TODO: buggy
+          local root = vim.fs.normalize(vim.fn.expand("%:p"))
+          local cwd = vim.fs.normalize((vim.uv or vim.loop).cwd() or ".")
+          local current = p:cwd()
+          p:set_cwd(current == root and cwd or root)
+          p:find()
+        end,
       },
       -- layouts = {
       --   { "wider-sidebar", preset = "sidebar", layout = { width = 0.6 } },
@@ -71,7 +84,7 @@ return {
           layout = "ivy_split",
         },
         files = {
-          layout = "telescope"
+          layout = "telescope",
         },
         git_branches = {
           layout = "ivy_split",

@@ -112,10 +112,12 @@ M.snacks = {
   { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
   { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
   { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
+  { "<leader>gh", function() Snacks.gitbrowse() end, desc = "Git Browse" },
   { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
   { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
   { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
   { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+  { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
   -- Grep
   { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
   { "<leader>sf", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
@@ -129,6 +131,7 @@ M.snacks = {
   { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
   { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
   { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
+  { "<C-S-P>", function() Snacks.picker.commands() end, desc = "Commands" },
   { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
   { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
   { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
@@ -229,6 +232,8 @@ M.lsp = function(event)
     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
   end
   m("gh", vim.lsp.buf.hover, "Show hover")
+  m("<leader>ca", vim.lsp.buf.code_action, "Code Actions")
+  m("<C-.>", vim.lsp.buf.code_action, "Code Actions")
   m("<leader>n", vim.lsp.buf.rename, "Re[n]ame")
 end
 
@@ -242,7 +247,8 @@ M.nvim_dap = {
   { "<leader>do", function() require("dap").step_out() end },
   { "<leader>db", function() require("dap").step_back() end },
   { "<leader>dr", function() require("dap").restart() end },
-  { "<leader>ds", function() require("dap").terminate() end },
+  { "<leader>dt", function() require("dap").terminate() end },
+  { "<leader>ds", function() require("dap").run() end },
   -- { "<leader>dp", "<cmd>FzfLua dap_configurations<CR>" },
   -- Eval var under cursor
   { "<space>?", function() require("dapui").eval(nil, { enter = true }) end },

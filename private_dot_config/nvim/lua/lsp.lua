@@ -6,6 +6,8 @@ M.servers = {
   rust_analyzer = {},
   basedpyright = {},
   bashls = {},
+  -- For java
+  -- jdtls = {},
   lemminx = {},
   ts_ls = {},
   lua_ls = {},
