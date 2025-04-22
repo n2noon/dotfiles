@@ -52,6 +52,7 @@ return {
     -- fs finds
     -- sh highlights
     -- can use q and b also
+    require("mini.diff").setup()
     require("mini.surround").setup()
     local statusline = function()
       local git = MiniStatusline.section_git({ trunc_width = 40 })

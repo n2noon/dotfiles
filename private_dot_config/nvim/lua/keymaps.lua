@@ -60,6 +60,8 @@ M.init = function()
   m("n", "<leader>wq", "<cmd>q<CR>", { desc = "Quit" })
   m("n", "<leader>wv", ":vsplit<CR>", { desc = "Vsplit" })
   m("n", "<leader>wh", ":split<CR>", { desc = "Split" })
+  m("n", "]T", ":tabnext<CR>", { desc = "Next Tab" })
+  m("n", "[T", ":tabprev<CR>", { desc = "Prev Tab" })
   -- Resize window using <ctrl> arrow keys
   -- m("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
   -- m("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
@@ -111,13 +113,13 @@ M.snacks = {
   -- git
   { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
   { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
+  { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
   { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
   { "<leader>gh", function() Snacks.gitbrowse() end, desc = "Git Browse" },
   { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
   { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
   { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
   { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
-  { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
   -- Grep
   { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
   { "<leader>sf", function() Snacks.picker.lines() end, desc = "Buffer Lines" },

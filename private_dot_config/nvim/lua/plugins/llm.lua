@@ -1,6 +1,6 @@
 return {
   "ggml-org/llama.vim",
-  enabled = true,
+  enabled = false,
   init = function()
     vim.g.llama_config = {
       -- auto_fim = false,
