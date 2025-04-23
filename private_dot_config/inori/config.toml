@@ -1,0 +1,23 @@
+qwerty_keybindings = true
+
+[keybindings]
+up = "k"
+down = "j"
+left = "h"
+right = "l"
+toggle_playpause = "<space>"
+next_song = "L"
+previous_song = "H"
+seek = "."
+seek_backwards = ","
+fold = "["
+local_search = "f"
+global_search = "C-f"
+top = "g g"
+bottom = "G"
+
+# [theme.item_to_color]
+# fg = "#ffffff"
+
+
+
