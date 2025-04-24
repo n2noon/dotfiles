@@ -1,0 +1,6 @@
+Library/
+**/venv/**
+steam/
+VNs/
+.wine/
+.git
