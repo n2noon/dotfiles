@@ -1,0 +1,9 @@
+splitter horizontal style=thin
+ splitter vertical style=thin
+  splitter horizontal style=thin
+   refacets font-size=15 
+  splitter horizontal style=thin   
+   albumart
+   playback-controls
+   splitter horizontal style=thin
+    playlist font-size=14
