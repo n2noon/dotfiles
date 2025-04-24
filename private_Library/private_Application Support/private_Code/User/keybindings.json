@@ -1,0 +1,125 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": ";",
+    "command": "vim.showQuickpickCmdLine",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  { "key": "ctrl+shift+p", "command": "workbench.action.showCommands" },
+  { "key": "ctrl+shift+s", "command": "workbench.action.toggleAuxiliaryBar"},
+  { "key": "ctrl+s", "command": "workbench.action.toggleSidebarVisibility" },
+  {
+    "key": "tab",
+    "command": "workbench.action.previousEditorInGroup",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "right",
+    "command": "workbench.action.focusRightGroup",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "left",
+    "command": "workbench.action.focusLeftGroup",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "up",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "down",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  // Normal mode binds
+  {
+    "key": "space c f",
+    "command": "editor.action.format",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d a",
+    "command": "editor.debug.action.toggleBreakpoint",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d b",
+    "command": "workbench.action.debug.stepBack",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  { "key": "ctrl+p", "command": "workbench.action.quickOpen" },
+  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup" },
+  {
+    "key": "space d p",
+    "command": "workbench.action.debug.selectRepl",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d c",
+    "command": "workbench.action.debug.continue",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d s",
+    "command": "workbench.action.debug.stop",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d i",
+    "command": "workbench.action.debug.stepInto",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d o",
+    "command": "workbench.action.debug.stepOut",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d v",
+    "command": "workbench.action.debug.stepOver",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d r",
+    "command": "workbench.action.debug.restart",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d u",
+    "command": "workbench.action.debug.repl",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space d w",
+    "command": "workbench.action.debug.runToCursor",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "[ d",
+    "command": "editor.action.marker.prev",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "] d",
+    "command": "editor.action.marker.next",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "[ b",
+    "command": "workbench.action.previousEditor",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "] b",
+    "command": "workbench.action.nextEditor",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+
+  // {
+  //   "key": "space g g",
+  //   "command": "git.branch",
+  //   "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  // }
+]
