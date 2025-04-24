@@ -1,0 +1,9 @@
+cargo install 
+
+{{ if eq .chezmoi.os "linux" }}
+
+{{ else if eq .chezmoi.os "darwin" }}
+
+{{ else if -eq .chezmoi.os "windows" }}
+
+{{ end }}
