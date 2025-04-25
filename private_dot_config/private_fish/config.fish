@@ -153,6 +153,11 @@ if type -q git
     # abbr -a gf git fetch
     # abbr -a gr git rebase
 end
+
+if type -q orbctl
+    orbctl completion fish | source
+end
+
 abbr -a lg lazygit
 # abbr -a --set-cursor={} gcm git commit --message \"{}\"
 

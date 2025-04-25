@@ -57,6 +57,9 @@ return {
       --   cmd = vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")),
       -- })
 
+      -- Fish (not in Mason yet and I'm lazy)
+      opts.servers.fish_lsp = {}
+
       for server, config in pairs(opts.servers) do
         config.capabilities = blink.get_lsp_capabilities(config.capabilities)
         lspconfig[server].setup(config)
