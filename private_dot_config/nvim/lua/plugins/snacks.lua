@@ -34,7 +34,9 @@ return {
     },
     -- debug = {},
     gitbrowse = {},
-    lazygit = {},
+    lazygit = {
+      theme = {},
+    },
     -- git = {},
     quickfile = {},
     -- rename = {},

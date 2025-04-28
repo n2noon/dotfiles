@@ -1,6 +1,7 @@
 return {
   "wojciech-kulik/xcodebuild.nvim",
   enabled = false,
+  cond = vim.fn.executable("xcodebuild") == 1,
   dependencies = {
     -- "nvim-telescope/telescope.nvim",
     "MunifTanjim/nui.nvim",
@@ -11,8 +12,7 @@ return {
   },
   ---@module 'xcodebuild'
   ---@type XcodeBuildOptions
-  opts = {
-  },
+  opts = {},
   config = function()
     vim.keymap.set("n", "<leader>X", "<cmd>XcodebuildPicker<cr>", { desc = "Show Xcodebuild Actions" })
     vim.keymap.set("n", "<leader>xf", "<cmd>XcodebuildProjectManager<cr>", { desc = "Show Project Manager Actions" })
@@ -28,7 +28,12 @@ return {
 
     vim.keymap.set("n", "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", { desc = "Toggle Xcodebuild Logs" })
     vim.keymap.set("n", "<leader>xc", "<cmd>XcodebuildToggleCodeCoverage<cr>", { desc = "Toggle Code Coverage" })
-    vim.keymap.set("n", "<leader>xC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", { desc = "Show Code Coverage Report" })
+    vim.keymap.set(
+      "n",
+      "<leader>xC",
+      "<cmd>XcodebuildShowCodeCoverageReport<cr>",
+      { desc = "Show Code Coverage Report" }
+    )
     vim.keymap.set("n", "<leader>xe", "<cmd>XcodebuildTestExplorerToggle<cr>", { desc = "Toggle Test Explorer" })
     vim.keymap.set("n", "<leader>xs", "<cmd>XcodebuildFailingSnapshots<cr>", { desc = "Show Failing Snapshots" })
 

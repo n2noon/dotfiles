@@ -23,8 +23,8 @@
     "bindings": {
       "right": "workspace::ActivatePaneRight",
       "left": "workspace::ActivatePaneLeft",
-      "up": "workspace::ActivatePaneUp",
-      "down": "workspace::ActivatePaneDown",
+      // "up": "workspace::ActivatePaneUp",
+      // "down": "workspace::ActivatePaneDown",
       "ctrl-.": "editor::ToggleCodeActions",
       "ctrl-shift-p": "command_palette::Toggle",
       "ctrl-p": "file_finder::Toggle",

@@ -1,6 +1,7 @@
 return {
   "ibhagwan/fzf-lua",
   enabled = false,
+  cond = vim.fn.executable("fzf") == 1,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = require("keymaps").fzflua,
   ---@module 'fzf-lua'

@@ -1,3 +1,4 @@
+-- https://github.com/stevearc/overseer.nvim/tree/master?tab=readme-ov-file#tutorials
 return {
   "stevearc/overseer.nvim",
   cmd = {

@@ -106,7 +106,6 @@ cmd-9 = 'workspace 9'
 cmd-semicolon = 'workspace T --auto-back-and-forth'
 alt-semicolon = 'workspace T --auto-back-and-forth'
 cmd-shift-semicolon = 'move-node-to-workspace T'
-alt-shift-semicolon = 'move-node-to-workspace T'
 cmd-m = 'workspace M --auto-back-and-forth'
 # alt-m = 'workspace M --auto-back-and-forth'
 
@@ -130,7 +129,7 @@ cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-alt-tab = 'workspace-back-and-forth'
+# alt-tab = 'workspace-back-and-forth'
 cmd-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -186,7 +185,7 @@ enter = 'mode main'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
-cmd-shift-semicolon = 'mode service'
+ctrl-shift-m = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -213,9 +212,9 @@ run = 'layout floating'
 if.app-id = 'com.apple.TextEdit'
 run = 'layout floating'
 
-[[on-window-detected]]
-if.app-id = "com.mitchellh.ghostty"
-run = "layout floating"
+# [[on-window-detected]]
+# if.app-id = "com.mitchellh.ghostty"
+# run = "layout floating"
 
 [[on-window-detected]]
 if.app-id = "com.coteditor.CotEditor"

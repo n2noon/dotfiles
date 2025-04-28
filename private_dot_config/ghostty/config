@@ -6,6 +6,8 @@
 # theme = dark:Tomorrow Night,light:Apple System Colors Light
 theme = Tomorrow Night
 
+# image-storage-limit 50000000
+
 # font-family = "JetBrains Mono NL"
 font-family = "Iosevka Fixed"
 font-style-bold = "SemiBold"

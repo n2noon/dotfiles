@@ -1,8 +1,11 @@
+-- https://cmp.saghen.dev/configuration/general.html
 return {
   "saghen/blink.cmp",
   dependencies = {
     "rafamadriz/friendly-snippets",
+    "mikavilpas/blink-ripgrep.nvim",
     -- "saghen/blink.compat"
+    "folke/snacks.nvim",
   },
   version = "*",
   ---@module 'blink.cmp'
@@ -11,19 +14,48 @@ return {
     keymap = {
       preset = "super-tab",
       ["<C-E>"] = { "show_and_insert" },
+      ["<C-F>"] = { function() require("blink-cmp").show({ providers = { "ripgrep" } }) end },
+      ["<C-D>"] = { function() require("blink-cmp").show() end },
+      ["<C-N>"] = { "scroll_documentation_down" },
+      ["<C-P>"] = { "scroll_documentation_up" },
     },
     completion = {
       documentation = { auto_show = true, auto_show_delay_ms = 500 },
+
       -- ghost_text = { enabled = true },
     },
     sources = {
-      default = { "lazydev", "snippets", "lsp", "path", "buffer" },
+      default = {
+        "lazydev",
+        "snippets",
+        "lsp",
+        "path",
+        "buffer",
+      },
       providers = {
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           -- make lazydev completions top priority (see `:h blink.cmp`)
-          score_offset = 100,
+          score_offset = 10,
+        },
+        ripgrep = {
+          module = "blink-ripgrep",
+          name = "Ripgrep",
+          -- the options below are optional, some default values are shown
+          ---@module "blink-ripgrep"
+          ---@type blink-ripgrep.Options
+          opts = {
+            project_root_marker = { ".git", "package.json", "Cargo.toml", "pyproject.toml", ".svn" },
+            future_features = {
+              backend = {
+                use = "gitgrep-or-ripgrep",
+              },
+            },
+          },
+        },
+        snippets = {
+          score_offset = 2,
         },
       },
       min_keyword_length = function(ctx)
@@ -33,7 +65,7 @@ return {
         -- return 0
       end,
     },
-    signature = { enabled = true },
+    signature = { enabled = false },
   },
   opts_extend = { "sources.default" },
 }

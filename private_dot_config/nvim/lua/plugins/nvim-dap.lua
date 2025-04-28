@@ -10,11 +10,15 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
       "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap-python",
     },
     keys = require("keymaps").nvim_dap,
     config = function()
       local dap = require("dap")
+      require("dap-python").setup("uv")
       require("dbg").adapters(dap)
+      -- NOTE: If using Overseer
+      require("overseer").enable_dap()
 
       --- UI ---
       -- TODO: considering nvim-dap-view instead
@@ -27,7 +31,6 @@ return {
       dap.listeners.before.launch.dapui_config = function() ui.open() end
       dap.listeners.before.event_terminated.dapui_config = function() ui.close() end
       dap.listeners.before.event_exited.dapui_config = function() ui.close() end
-
     end,
   },
 }

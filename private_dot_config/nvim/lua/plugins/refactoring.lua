@@ -1,3 +1,4 @@
+-- https://github.com/ThePrimeagen/refactoring.nvim?tab=readme-ov-file#table-of-contents
 return {
   "ThePrimeagen/refactoring.nvim",
   event = { "BufReadPre", "BufNewFile" },

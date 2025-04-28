@@ -3,6 +3,7 @@ return {
   -- event = 'VeryLazy',
   priority = 1000,
   lazy = false,
+  cond = vim.fn.executable('yazi') == 1,
   ---@module "yazi"
   ---@type YaziConfig
   opts = {

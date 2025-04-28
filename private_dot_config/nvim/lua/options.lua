@@ -2,8 +2,10 @@ local g = vim.g
 local o = vim.o
 
 -- Use ripgrep for vimgrep
+if vim.fn.executable('rg') == 1 then
 vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading"
 vim.opt.grepformat = "%f:%l:%c:%m"
+end
 
 if g.neovide then
   o.guifont = "JetBrainsMonoNL Nerd Font Mono:h16"
