@@ -2,25 +2,23 @@
 # https://github.com/jorgebucaran/cookbook.fish
 # https://fishshell.com/docs/current/interactive.html#interactive
 # https://fishshell.com/docs/current/faq.html
-set --local wd "$(dirname (status --current-filename))"
+# run bind to see keybindings!
+
+set --local wd ~/.config/fish
 
 ### Source extra scripts ###
-source $wd/os.fish
+source $wd/source_once.fish
 
 ### Keybinds ###
 # bind ctrl+z to toggle fg
 bind \cz 'fg 2> /dev/null'
+bind alt-l 'eza --group-directories-first'
 
 ### Environment variables ###
 # kitty needs this for ime input
 if set -q KITTY_WINDOW_ID
     set -gx GLFW_IM_MODULE ibus
 end
-
-### Path ###
-fish_add_path ~/.bin
-fish_add_path ~/.local/bin
-fish_add_path ~/.lmstudio/bin
 
 ### Abbreviations ###
 abbr -a pk pkill
@@ -34,9 +32,6 @@ abbr -a home cd ~/
 
 ### Program specific ###
 if type -q brew
-    fish_add_path /opt/homebrew/bin/
-    fish_add_path /opt/homebrew/sbin/
-    fish_add_path /opt/homebrew/opt/openjdk/bin/
     set -gx SHELL /opt/homebrew/bin/fish
     set -gx HOMEBREW_AUTO_UPDATE_SECS 604800
     set -gx HOMEBREW_NO_ENV_HINTS y
@@ -46,12 +41,8 @@ if type -q brew
     abbr -a bs brew search
     abbr -a bl brew list
     abbr -a binf brew info
-    if test -d (brew --prefix)"/share/fish/completions"
-        set -p fish_complete_path (brew --prefix)/share/fish/completions
-    end
-    if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-        set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-    end
+    set -p fish_complete_path /opt/homebrew/share/fish/completions
+    set -p fish_complete_path /opt/homebrew/share/fish/vendor_completions.d
 end
 
 if type -q just
@@ -59,7 +50,6 @@ if type -q just
 end
 
 if type -q cargo
-    fish_add_path ~/.cargo/bin/
     abbr -a ci cargo init
     abbr -a cil cargo init --lib
     abbr -a ca cargo add
@@ -81,7 +71,6 @@ if type -q chezmoi
     abbr -a cm chezmoi
     abbr -a cmr chezmoi re-add
     abbr -a cme chezmoi edit
-    chezmoi completion fish | source
 end
 
 if type -q yazi
@@ -95,19 +84,12 @@ if type -q yazi
     end
 end
 
-if type -q zoxide
-    zoxide init fish | source
-end
-
 if type -q fzf
-    fzf --fish | source
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-    set -g FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
+    set -gx FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
 end
 
 if type -q eza
-    # This is an alias to make Alt+L work
-    alias ls="eza --group-directories-first"
     abbr -a l eza --group-directories-first
     abbr -a ll eza -l --group-directories-first
     abbr -a tree --set-cursor eza --tree --level=%
@@ -159,10 +141,6 @@ if type -q git
     # abbr -a gp git pull
     # abbr -a gf git fetch
     # abbr -a gr git rebase
-end
-
-if type -q orbctl
-    orbctl completion fish | source
 end
 
 if type -q yt-dlp
