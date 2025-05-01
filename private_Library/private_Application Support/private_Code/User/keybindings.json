@@ -57,6 +57,11 @@
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
+    "key": "enter",
+    "command": "workbench.action.files.save",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
     "key": "space d c",
     "command": "workbench.action.debug.continue",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
@@ -115,11 +120,5 @@
     "key": "] b",
     "command": "workbench.action.nextEditor",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
-  },
-
-  // {
-  //   "key": "space g g",
-  //   "command": "git.branch",
-  //   "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
-  // }
+  }
 ]

@@ -1,31 +1,38 @@
+# https://fishshell.com/docs/current/language.html
+# https://github.com/jorgebucaran/cookbook.fish
+# https://fishshell.com/docs/current/interactive.html#interactive
+# https://fishshell.com/docs/current/faq.html
+set --local wd "$(dirname (status --current-filename))"
+
+### Source extra scripts ###
+source $wd/os.fish
+
 ### Keybinds ###
 # bind ctrl+z to toggle fg
 bind \cz 'fg 2> /dev/null'
 
 ### Environment variables ###
 # kitty needs this for ime input
-set -gx GLFW_IM_MODULE ibus
-set --local wd "$(dirname (status --current-filename))"
+if set -q KITTY_WINDOW_ID
+    set -gx GLFW_IM_MODULE ibus
+end
 
 ### Path ###
-fish_add_path ~/.scripts
 fish_add_path ~/.bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.lmstudio/bin
 
 ### Abbreviations ###
 abbr -a pk pkill
+abbr -a cl clear
 abbr -a --position anywhere xclip fish_clipboard_copy
 abbr -a --position anywhere pbpaste fish_clipboard_paste
 ## Some directories
 abbr -a proj cd ~/projects/
 abbr -a home cd ~/
 
-### Program specific ###
-if type -q yt-dlp
-    abbr -a yt yt-dlp
-end
 
+### Program specific ###
 if type -q brew
     fish_add_path /opt/homebrew/bin/
     fish_add_path /opt/homebrew/sbin/
@@ -100,10 +107,10 @@ end
 
 if type -q eza
     # This is an alias to make Alt+L work
-    alias ls="eza --icons --group-directories-first"
-    abbr -a l eza --icons --group-directories-first
-    abbr -a ll eza --icons -l --group-directories-first
-    abbr -a tree --set-cursor eza --icons --tree --level=%
+    alias ls="eza --group-directories-first"
+    abbr -a l eza --group-directories-first
+    abbr -a ll eza -l --group-directories-first
+    abbr -a tree --set-cursor eza --tree --level=%
 end
 
 # bat 
@@ -158,9 +165,16 @@ if type -q orbctl
     orbctl completion fish | source
 end
 
-abbr -a lg lazygit
-# abbr -a --set-cursor={} gcm git commit --message \"{}\"
+if type -q yt-dlp
+    abbr -a yt yt-dlp
+    abbr -a dl "yt-dlp --write-auto-sub -4 --sub-lang 'en.*' --embed-subs --cookies-from-browser firefox"
+    abbr -a dlj "yt-dlp --write-auto-sub -4 --sub-lang 'en.*,ja' --embed-subs --cookies-from-browser firefox"
+end
 
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/kalk/.lmstudio/bin
-# End of LM Studio CLI section
+if type -q lazygit
+    abbr -a lg lazygit
+end
+
+# Sudo last command with just !!
+function last_history_item; echo $history[1]; end
+abbr -a !! --position anywhere --function last_history_item
