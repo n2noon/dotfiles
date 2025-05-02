@@ -73,17 +73,6 @@ if type -q chezmoi
     abbr -a cme chezmoi edit
 end
 
-if type -q yazi
-    function y
-        set tmp (mktemp -t "yazi-cwd.XXXXXX")
-        yazi $argv --cwd-file="$tmp"
-        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            builtin cd -- "$cwd"
-        end
-        rm -f -- "$tmp"
-    end
-end
-
 if type -q fzf
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
     set -gx FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
@@ -104,12 +93,8 @@ if type -q bat
     abbr -a c bat
     abbr -a cat bat
 
-    # See tail of log, refreshed realtime
-    function batlog -a file
-        tail -f $file | bat --paging=never -l log
-    end
-    abbr -a catlog -f batlog
-    abbr -a clog -f batlog
+    abbr -a catlog batlog
+    abbr -a clog batlog
     abbr -a blog batlog
 
     # Help files
@@ -154,5 +139,9 @@ if type -q lazygit
 end
 
 # Sudo last command with just !!
-function last_history_item; echo $history[1]; end
 abbr -a !! --position anywhere --function last_history_item
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/kalk/.lmstudio/bin
+# End of LM Studio CLI section
+
