@@ -13,13 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local grey = "#928374"
-vim.api.nvim_set_hl(0, "SnacksPickerDir",                { fg = grey })
-vim.api.nvim_set_hl(0, "SnacksPickerPathHidden",         { fg = grey })
 vim.api.nvim_set_hl(0, "SnacksDashboardDir",             { fg = grey })
-vim.api.nvim_set_hl(0, "SnacksPickerBufFlags",           { fg = grey })
-vim.api.nvim_set_hl(0, "SnacksPickerPathIgnored",        { fg = grey })
-vim.api.nvim_set_hl(0, "SnacksPickerGitStatusIgnored",   { fg = grey })
-vim.api.nvim_set_hl(0, "SnacksPickerGitStatusUntracked", { fg = grey })
 
 -- Configure plugins.
 ---@type Lazy

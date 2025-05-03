@@ -71,7 +71,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
 -- Shorter columns in text because it reads better that way.
 autocmd("FileType", {
   pattern = { "text", "markdown", "mail" },
-  command = "setlocal tw=120",
+  command = "setlocal tw=120 cc=120",
 })
 --
 autocmd("FileType", {
