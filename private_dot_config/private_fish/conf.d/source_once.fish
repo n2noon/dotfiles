@@ -4,8 +4,8 @@ return
 end
 
 set -gx SOURCED_ONCE
-
-source $wd/os.fish
+set --local wd "$(dirname (status --current-filename))"
+source $wd/../os.fish
 
 if type -q chezmoi
     chezmoi completion fish | source
