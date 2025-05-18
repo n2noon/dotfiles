@@ -3,8 +3,8 @@ local o = vim.o
 
 -- Use ripgrep for vimgrep
 if vim.fn.executable('rg') == 1 then
-vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading"
-vim.opt.grepformat = "%f:%l:%c:%m"
+  vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading"
+  vim.opt.grepformat = "%f:%l:%c:%m"
 end
 
 if g.neovide then
@@ -30,6 +30,7 @@ g.mapleader = " "
 g.maplocalleader = " "
 g.snacks_animate = false
 
+o.cmdheight = 0
 o.title = true
 o.number = true
 o.relativenumber = true

@@ -9,17 +9,24 @@ M.servers = {
   -- For java
   -- jdtls = {},
   lemminx = {},
+  -- nil_ls = {},
   ts_ls = {},
   lua_ls = {},
 }
 
 -- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
+-- TODO: maybe have some auto-install, mason-tool-installer does this
 M.formatters_by_ft = {
-  lua = { "stylua" },
+  css = { "biome" },
   fish = { "fish_indent" },
-  sh = { "shfmt" },
+  just = { "just" },
+  json = { "biome" },
+  lua = { "stylua" },
+  nix = { "alejandra" },
+  python = { "ruff_fix", "ruff_format" },
   rust = { "rustfmt", lsp_format = "fallback" },
-  xml = { "lemminx" },
+  sh = { "shfmt" },
+  xml = { "xmlformatter" },
 }
 
 M.formatters = {}

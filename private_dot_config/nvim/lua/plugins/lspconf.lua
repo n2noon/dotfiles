@@ -13,6 +13,11 @@ return {
     },
   },
   {
+    "williamboman/mason.nvim",
+    opts = {},
+    branch = "v1.x",
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
@@ -24,7 +29,9 @@ return {
     },
     ---@module 'lspconfig'
     ---@type lspconfig.Config
-    opts = { servers = require("lsp").servers },
+    opts = {
+      servers = require("lsp").servers,
+    },
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -46,7 +53,7 @@ return {
 
       require("mason").setup()
       require("mason-tool-installer").setup({})
-      require("mason-lspconfig").setup()
+      -- require("mason-lspconfig").setup()
 
       local blink = require("blink.cmp")
       local lspconfig = require("lspconfig")
@@ -56,6 +63,9 @@ return {
       --   capabilities = blink.get_lsp_capabilities(),
       --   cmd = vim.trim(vim.fn.system("xcrun -f sourcekit-lsp")),
       -- })
+
+      -- Nix and I'm lazy
+      opts.servers.nixd = {}
 
       -- Fish (not in Mason yet and I'm lazy)
       opts.servers.fish_lsp = {}

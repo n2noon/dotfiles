@@ -130,12 +130,17 @@ end
 
 if type -q yt-dlp
     abbr -a yt yt-dlp
-    abbr -a dl "yt-dlp --write-auto-sub -4 --sub-lang 'en.*' --embed-subs --cookies-from-browser firefox"
+    # abbr -a dl "yt-dlp --write-auto-sub -4 --sub-lang 'en.' --embed-subs --cookies-from-browser firefox"
+    abbr -a dl yt-dlp
     abbr -a dlj "yt-dlp --write-auto-sub -4 --sub-lang 'en.*,ja' --embed-subs --cookies-from-browser firefox"
 end
 
 if type -q lazygit
     abbr -a lg lazygit
+end
+
+if type -q tmux
+    abbr -a tm tmux
 end
 
 # Sudo last command with just !!
