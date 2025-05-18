@@ -27,7 +27,7 @@ return {
         desc = "Neogit",
       },
       {
-        "<leader>gf",
+        "<leader>gF",
         "<cmd>NeogitLogCurrent<cr>",
         mode = { "n", "v" },
         desc = "Neogit: Current file log",

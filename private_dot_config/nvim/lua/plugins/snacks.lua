@@ -95,10 +95,10 @@ return {
           layout = "ivy_split",
         },
         git_log_line = {
-          layout = "ivy_split",
+          layout = "left",
         },
         git_log_file = {
-          layout = "ivy_split",
+          layout = "left",
         },
         grep = {
           layout = "ivy_split",
@@ -122,7 +122,6 @@ return {
       icons = { files = { enabled = false } },
     },
     statuscolumn = {},
-    terminal = {},
     -- toggle = {},
     -- words = {}
   },

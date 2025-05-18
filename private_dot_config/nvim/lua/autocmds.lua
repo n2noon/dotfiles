@@ -30,6 +30,11 @@ autocmd("BufWinEnter", {
   callback = function() vim.cmd.loadview({ mods = { emsg_silent = true } }) end,
 })
 
+-- Auto insert mode for terminals
+-- autocmd({ "TermOpen", "TermEnter" }, {
+--   callback = function() vim.cmd.startinsert() end,
+-- })
+
 -- Show LSP status
 -- autocmd("LspProgress", {
 --   callback = function()

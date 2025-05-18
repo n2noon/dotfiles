@@ -18,7 +18,10 @@ end
 ### Abbreviations ###
 abbr -a pk pkill
 abbr -a cl clear
+abbr -a mkd mkdir -pv
+abbr -a mkdir mkdir -pv
 abbr -a --position anywhere xclip fish_clipboard_copy
+abbr -a --position anywhere xpaste fish_clipboard_paste
 abbr -a --position anywhere pbpaste fish_clipboard_paste
 ## Some directories
 abbr -a proj cd ~/projects/
@@ -42,6 +45,11 @@ end
 
 if type -q just
     abbr -a j just
+end
+
+if type -q firefox
+    set -gx BROWSER firefox
+    abbr -a fi firefox
 end
 
 if type -q cargo

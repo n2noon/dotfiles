@@ -7,6 +7,12 @@ set -gx SOURCED_ONCE
 set --local wd "$(dirname (status --current-filename))"
 source $wd/../os.fish
 
+if type -q brew
+    fish_add_path /opt/homebrew/bin/
+    fish_add_path /opt/homebrew/sbin/
+    fish_add_path /opt/homebrew/opt/openjdk/bin/
+end
+
 if type -q chezmoi
     chezmoi completion fish | source
 end
@@ -21,12 +27,6 @@ end
 
 if type -q orbctl
     orbctl completion fish | source
-end
-
-if type -q brew
-    fish_add_path /opt/homebrew/bin/
-    fish_add_path /opt/homebrew/sbin/
-    fish_add_path /opt/homebrew/opt/openjdk/bin/
 end
 
 if type -q cargo
