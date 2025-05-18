@@ -136,7 +136,7 @@ end
 
 if type -q newsboat
     abbr -a rss newsboat
-    abbr -a --set-cursor={} 'rss-add' "echo {} >> ~/.config/newsboat/urls"
+    abbr -a --set-cursor={} 'add-rss' "echo {} >> ~/.config/newsboat/urls"
 end
 
 # Sudo last command with just !!
