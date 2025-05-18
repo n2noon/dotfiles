@@ -141,6 +141,7 @@ end
 
 if type -q tmux
     abbr -a tm tmux
+    abbr -a ta tmux a
 end
 
 # Sudo last command with just !!
