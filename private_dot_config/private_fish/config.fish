@@ -4,11 +4,6 @@
 # https://fishshell.com/docs/current/faq.html
 # run bind to see keybindings!
 
-set --local wd ~/.config/fish
-
-### Source extra scripts ###
-source $wd/source_once.fish
-
 ### Keybinds ###
 # bind ctrl+z to toggle fg
 bind \cz 'fg 2> /dev/null'
@@ -115,19 +110,6 @@ if type -q cht.sh
     abbr -a cht --set-cursor 'cht.sh % &| bat'
 end
 
-if type -q git
-    source $wd/git-alias.fish
-    # abbr -a g git
-    # abbr -a gc git commit
-    # abbr -a gcm git commit --message
-    # abbr -a ga git add
-    # abbr -a gs git status
-    # abbr -a gl git log
-    # abbr -a gp git pull
-    # abbr -a gf git fetch
-    # abbr -a gr git rebase
-end
-
 if type -q yt-dlp
     abbr -a yt yt-dlp
     # abbr -a dl "yt-dlp --write-auto-sub -4 --sub-lang 'en.' --embed-subs --cookies-from-browser firefox"
@@ -147,7 +129,8 @@ end
 # Sudo last command with just !!
 abbr -a !! --position anywhere --function last_history_item
 
-# Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/kalk/.lmstudio/bin
-# End of LM Studio CLI section
+# add function subdirs to fish_function_path
+set fish_function_path (path resolve $__fish_config_dir/functions/*/) $fish_function_path
 
+# add completion subdirs to fish_completion_path
+set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_complete_path
