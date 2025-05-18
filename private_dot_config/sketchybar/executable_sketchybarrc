@@ -101,7 +101,7 @@ sketchybar --add item media e \
         label.max_chars=44 \
         scroll_texts=off \
         icon.padding_left=42 \
-        icon= \
+        icon=\
         icon.color=$FONT_COLOR \
         background.drawing=off \
         script="$PLUGIN_DIR/media.sh" \
