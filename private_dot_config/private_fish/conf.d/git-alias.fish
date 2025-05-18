@@ -10,3 +10,5 @@ abbr -a gl git log
 abbr -a gp git pull
 abbr -a gf git fetch
 abbr -a gr git rebase
+
+abbr --command git co checkout

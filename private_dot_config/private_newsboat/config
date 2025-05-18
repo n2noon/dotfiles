@@ -17,7 +17,7 @@ highlight article "\\((link|image|video)\\)" color8 default
 highlight article "https?://[^ ]+" color4 default
 highlight article "\[[0-9]+\]" color6 default bold
 
-browser "firefox %u"
+browser "$BROWSER --new-window %u"
 
 auto-reload yes
 

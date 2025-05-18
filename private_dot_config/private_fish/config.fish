@@ -27,7 +27,6 @@ abbr -a --position anywhere pbpaste fish_clipboard_paste
 abbr -a proj cd ~/projects/
 abbr -a home cd ~/
 
-
 ### Program specific ###
 if type -q brew
     set -gx SHELL /opt/homebrew/bin/fish
@@ -50,6 +49,7 @@ end
 if type -q firefox
     set -gx BROWSER firefox
     abbr -a fi firefox
+    abbr -a web firefox
 end
 
 if type -q cargo
@@ -132,6 +132,11 @@ end
 if type -q tmux
     abbr -a tm tmux
     abbr -a ta tmux a
+end
+
+if type -q newsboat
+    abbr -a rss newsboat
+    abbr -a --set-cursor={} 'rss-add' "echo {} >> ~/.config/newsboat/urls"
 end
 
 # Sudo last command with just !!
