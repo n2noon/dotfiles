@@ -11,12 +11,6 @@ return {
     --   -- "rose-pine/neovim",
     ---@module "gruvbox"
     ---@type GruvboxConfig
-    opts = {
-      palette_overrides = {
-        bright_red = "#e35a39",
-        bright_green = "#aeb541",
-      },
-    },
     config = function()
       local scheme =
         -- "everforest"
@@ -30,6 +24,13 @@ return {
       -- "tokyonight-moon"
       -- "tokyonight-storm"
       -- "rose-pine"
+      require("gruvbox").setup({
+        palette_overrides = {
+          bright_red = "#e35a29",
+          bright_green = "#aeb541",
+          bright_yellow = "#ffc020",
+        },
+      })
       vim.cmd.colorscheme(scheme)
     end,
     lazy = false,

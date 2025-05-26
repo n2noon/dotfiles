@@ -147,3 +147,8 @@ set fish_function_path (path resolve $__fish_config_dir/functions/*/) $fish_func
 
 # add completion subdirs to fish_completion_path
 set fish_complete_path (path resolve $__fish_config_dir/completions/*/) $fish_complete_path
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/kalk/.lmstudio/bin
+# End of LM Studio CLI section
+

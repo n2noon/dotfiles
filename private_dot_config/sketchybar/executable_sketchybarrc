@@ -95,6 +95,17 @@ done
 #             script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 # done
 
+# sketchybar --add item disk e \
+#     --set disk label.color=$FONT_COLOR \
+#         align=center \
+#         label.max_chars=44 \
+#         scroll_texts=off \
+#         icon.padding_left=42 \
+#         icon=\
+#         icon.color=$FONT_COLOR \
+#         background.drawing=off \
+#         script="$PLUGIN_DIR/disk.sh" 
+
 sketchybar --add item media e \
     --set media label.color=$FONT_COLOR \
         align=center \

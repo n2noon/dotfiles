@@ -77,6 +77,10 @@ M = {
         snippets = {
           score_offset = 2,
         },
+        buffer = {
+          max_items=1500
+
+        }
       },
       min_keyword_length = function(ctx)
         -- don't complete commands < 2 chars long

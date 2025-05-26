@@ -12,7 +12,15 @@
   },
   "collaboration_panel": { "button": false },
   "notification_panel": { "button": false },
-  "assistant": {
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "lmstudio",
+      "model": "qwen/qwen3-30b-a3b"
+    },
+    "default_model": {
+      "provider": "lmstudio",
+      "model": "qwen/qwen3-32b"
+    },
     "version": "2",
     "button": false
   },
@@ -21,7 +29,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Gruvbox Dark"
+    "dark": "Tomorrow Night"
   },
   "ui_font_size": 18,
   "ui_font_family": "Aporetic Sans",
@@ -59,6 +67,7 @@
     "git_gutter": "tracked_files",
     // "gutter_debounce": null,
     "inline_blame": {
+      "enabled": false,
       "delay_ms": 2000
     }
   },

@@ -96,7 +96,7 @@
     "workbench.colorCustomizations": {
         "terminal.background": "#00000000"
     },
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
     "workbench.editor.showTabs": "none",
     "workbench.layoutControl.enabled": false,
     "workbench.settings.applyToAllProfiles": [

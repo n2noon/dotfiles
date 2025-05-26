@@ -30,7 +30,7 @@ g.mapleader = " "
 g.maplocalleader = " "
 g.snacks_animate = false
 
-o.cmdheight = 0
+o.cmdheight = 1
 o.title = true
 o.number = true
 o.relativenumber = true
