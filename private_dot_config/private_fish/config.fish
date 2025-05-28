@@ -78,7 +78,9 @@ end
 
 if type -q fzf
     set -gx FZF_DEFAULT_COMMAND 'fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-    set -gx FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
+    # set -gx FZF_CTRL_T_COMMAND "command find -L \$dir -type f 2> /dev/null | sed '1d; s#^\./##'"
+    set -gx FZF_CTRL_T_COMMAND "fd --type f --hidden --exclude .git"
+    set -gx FZF_ALT_C_COMMAND "fd --type d"
 end
 
 if type -q eza
