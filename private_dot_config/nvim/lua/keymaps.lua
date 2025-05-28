@@ -57,33 +57,30 @@ M.init = function()
   m("n", "<leader>L", "gg=G<C-o>")
 
   --- WINDOW ---
-  m("n", "<leader>wq", "<cmd>q<CR>", { desc = "Quit" })
-  m("n", "<leader>wv", ":vsplit<CR>", { desc = "Vsplit" })
-  m("n", "<leader>wh", ":split<CR>", { desc = "Split" })
-  m("n", "]T", ":tabnext<CR>", { desc = "Next Tab" })
-  m("n", "[T", ":tabprev<CR>", { desc = "Prev Tab" })
-  -- Resize window using <ctrl> arrow keys
-  -- m("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-  -- m("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-  -- m("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-  -- m("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+  m("n", "<leader>wq", "<cmd>q<CR>",   { desc = "Quit" })
+  m("n", "<leader>wv", ":vsplit<CR>",  { desc = "Vsplit" })
+  m("n", "<leader>wh", ":split<CR>",   { desc = "Split" })
+  m("n", "]T",         ":tabnext<CR>", { desc = "Next Tab" })
+  m("n", "[T",         ":tabprev<CR>", { desc = "Prev Tab" })
+  m("n", "<leader>q",  ":cnext<CR>",   { desc = "Next Quickfix" })
+  m("n", "<leader>Q",  ":cprev<CR>",   { desc = "Previous Quickfix" })
 
   -- Move Lines
-  m("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-  m("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-  m("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-  m("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-  m("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-  m("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+  m("n", "<A-j>",   "<cmd>execute 'move .+' . v:count1<cr>==",       { desc = "Move Down" })
+  m("n", "<A-k>",   "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+  m("i", "<A-j>",   "<esc><cmd>m .+1<cr>==gi",                       { desc = "Move Down" })
+  m("i", "<A-k>",   "<esc><cmd>m .-2<cr>==gi",                       { desc = "Move Up" })
+  m("v", "<A-j>",   ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv",       { desc = "Move Down" })
+  m("v", "<A-k>",   ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
-  m("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left window" })
-  m("n", "<left>", "<C-w><C-h>", { desc = "Focus left window" })
-  m("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right window" })
+  m("n", "<C-h>",   "<C-w><C-h>", { desc = "Focus left window" })
+  m("n", "<left>",  "<C-w><C-h>", { desc = "Focus left window" })
+  m("n", "<C-l>",   "<C-w><C-l>", { desc = "Focus right window" })
   m("n", "<right>", "<C-w><C-l>", { desc = "Focus right window" })
-  m("n", "<C-j>", "<C-w><C-j>", { desc = "Focus lower window" })
-  m("n", "<down>", "<C-w><C-j>", { desc = "Focus lower window" })
-  m("n", "<C-k>", "<C-w><C-k>", { desc = "Focus upper window" })
-  m("n", "<up>", "<C-w><C-k>", { desc = "Focus upper window" })
+  m("n", "<C-j>",   "<C-w><C-j>", { desc = "Focus lower window" })
+  m("n", "<down>",  "<C-w><C-j>", { desc = "Focus lower window" })
+  m("n", "<C-k>",   "<C-w><C-k>", { desc = "Focus upper window" })
+  m("n", "<up>",    "<C-w><C-k>", { desc = "Focus upper window" })
 
   -- Save file with sudo permissions
   m("ca", "w!!", "w !sudo tee % > /dev/null")
@@ -91,74 +88,72 @@ end
 
 --- PLUGINS ---
 M.snacks = {
-  { "<leader>N", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-  { "<leader>p", function() Snacks.picker.files() end, desc = "Find Files" },
-  { "<C-P>", function() Snacks.picker.files() end, desc = "Find Files" },
-  { "<C-S>", function() Snacks.picker.explorer() end, desc = "Explorer" },
-  { "<leader>e", function() Snacks.picker.explorer() end, desc = "Explorer" },
-  { "<leader><tab>", function() Snacks.picker.recent() end, desc = "Oldfiles" },
-  { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-  { "<leader><leader>", function() Snacks.picker.grep() end, desc = "Grep" },
-  { "<C-S-F>", function() Snacks.picker.grep() end, desc = "Grep" },
-  { "<leader>;", function() Snacks.picker.command_history() end, desc = "Command History" },
-  -- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+  { "<leader>N",        function() Snacks.rename.rename_file() end,     desc = "Rename File" },
+  { "<C-P>",            function() Snacks.picker.files() end,           desc = "Find Files" },
+  -- { "<C-S>",         function() Snacks.picker.explorer() end,        desc = "Explorer" },
+  { "<leader>e",        function() Snacks.picker.explorer() end,        desc = "Explorer" },
+  { "<leader><tab>",    function() Snacks.picker.recent() end,          desc = "Oldfiles" },
+  { "<leader>,",        function() Snacks.picker.buffers() end,         desc = "Buffers" },
+  { "<leader><leader>", function() Snacks.picker.grep() end,            desc = "Grep" },
+  { "<C-S-F>",          function() Snacks.picker.grep() end,            desc = "Grep" },
+  { "<leader>;",        function() Snacks.picker.command_history() end, desc = "Command History" },
+  -- { "<leader>e",     function() Snacks.explorer() end,               desc = "File Explorer" },
   -- find
-  { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
-  { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+  { "<leader>b",  function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+  { "<leader>fb", function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
   { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-  { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-  { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
-  { "<leader>fn", function() Snacks.picker.notifications() end, desc = "Notification History" },
-  { "<leader>fs", function() Snacks.picker.smart() end, desc = "Search smart" },
-  -- { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
+  { "<leader>ff", function() Snacks.picker.files() end,                                   desc = "Find Files" },
+  { "<leader>fg", function() Snacks.picker.git_files() end,                               desc = "Find Git Files" },
+  { "<leader>fn", function() Snacks.picker.notifications() end,                           desc = "Notification History" },
+  { "<leader>fs", function() Snacks.picker.smart() end,                                   desc = "Search smart" },
   -- git
-  { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-  { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
-  { "<leader>lg", function() Snacks.lazygit() end, desc = "Lazygit" },
-  { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git Log Line" },
-  { "<leader>gh", function() Snacks.gitbrowse() end, desc = "Git Browse" },
-  { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-  { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-  { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-  { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+  { "<leader>gb",    function() Snacks.picker.git_branches() end,          desc = "Git Branches" },
+  { "<leader>gl",    function() Snacks.picker.git_log() end,               desc = "Git Log" },
+  { "<leader>lg",    function() Snacks.lazygit() end,                      desc = "Lazygit" },
+  { "<leader>gL",    function() Snacks.picker.git_log_line() end,          desc = "Git Log Line" },
+  { "<leader>gh",    function() Snacks.gitbrowse() end,                    desc = "Git Browse" },
+  { "<leader>gs",    function() Snacks.picker.git_status() end,            desc = "Git Status" },
+  { "<leader>gS",    function() Snacks.picker.git_stash() end,             desc = "Git Stash" },
+  { "<leader>gd",    function() Snacks.picker.git_diff() end,              desc = "Git Diff (Hunks)" },
+  { "<leader>gf",    function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
   -- Grep
-  { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-  { "<leader>sf", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-  { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
-  -- { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
-  { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+  { "<leader>sb",    function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
+  { "<leader>sf",    function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
+  { "<leader>sB",    function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
+  { "<leader>sw",    function() Snacks.picker.grep_word() end,             desc = "Visual selection or word", mode = { "n", "x" } },
+  -- { "<leader>sg", function() Snacks.picker.grep() end,                  desc = "Grep" },
   -- search
-  { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
-  { "<leader>s/", function() Snacks.picker.search_history() end, desc = "Search History" },
-  { "<leader>sa", function() Snacks.picker.autocmds() end, desc = "Autocmds" },
-  { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-  { "<leader>sc", function() Snacks.picker.command_history() end, desc = "Command History" },
-  { "<leader>sC", function() Snacks.picker.commands() end, desc = "Commands" },
-  { "<C-S-P>", function() Snacks.picker.commands() end, desc = "Commands" },
-  { "<leader>sD", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
-  { "<leader>sd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
-  { "<leader>sh", function() Snacks.picker.help() end, desc = "Help Pages" },
-  { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
-  { "<leader>si", function() Snacks.picker.icons() end, desc = "Icons" },
-  { "<leader>sj", function() Snacks.picker.jumps() end, desc = "Jumps" },
-  { "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
-  { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
-  { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
-  { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
-  { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
-  { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
-  { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
-  { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
-  { "<leader>sz", function() Snacks.picker.zoxide() end, desc = "Undo History" },
-  { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+  { '<leader>s"',    function() Snacks.picker.registers() end,             desc = "Registers" },
+  { "<leader>s/",    function() Snacks.picker.search_history() end,        desc = "Search History" },
+  { "<leader>sa",    function() Snacks.picker.autocmds() end,              desc = "Autocmds" },
+  { "<leader>sb",    function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
+  { "<leader>sc",    function() Snacks.picker.command_history() end,       desc = "Command History" },
+  { "<leader>sC",    function() Snacks.picker.commands() end,              desc = "Commands" },
+  { "<C-S-P>",       function() Snacks.picker.commands() end,              desc = "Commands" },
+  { "<leader>sD",    function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
+  { "<leader>sd",    function() Snacks.picker.diagnostics_buffer() end,    desc = "Buffer Diagnostics" },
+  { "<leader>sh",    function() Snacks.picker.help() end,                  desc = "Help Pages" },
+  { "<leader>sH",    function() Snacks.picker.highlights() end,            desc = "Highlights" },
+  { "<leader>si",    function() Snacks.picker.icons() end,                 desc = "Icons" },
+  { "<leader>sj",    function() Snacks.picker.jumps() end,                 desc = "Jumps" },
+  { "<leader>sk",    function() Snacks.picker.keymaps() end,               desc = "Keymaps" },
+  { "<leader>sl",    function() Snacks.picker.loclist() end,               desc = "Location List" },
+  { "<leader>sm",    function() Snacks.picker.marks() end,                 desc = "Marks" },
+  { "<leader>sM",    function() Snacks.picker.man() end,                   desc = "Man Pages" },
+  { "<leader>sp",    function() Snacks.picker.lazy() end,                  desc = "Search for Plugin Spec" },
+  { "<leader>sq",    function() Snacks.picker.qflist() end,                desc = "Quickfix List" },
+  { "<leader>sR",    function() Snacks.picker.resume() end,                desc = "Resume" },
+  { "<leader>su",    function() Snacks.picker.undo() end,                  desc = "Undo History" },
+  { "<leader>sz",    function() Snacks.picker.zoxide() end,                desc = "Undo History" },
+  { "<leader>uC",    function() Snacks.picker.colorschemes() end,          desc = "Colorschemes" },
   -- LSP
-  { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-  { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-  { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-  { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-  { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-  { "<leader>o", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-  { "<leader>O", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+  { "<leader>ss",    function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
+  { "<leader>sS",    function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+  { "gd",            function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
+  { "gD",            function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
+  { "gr",            function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
+  { "gI",            function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
+  { "gy",            function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
 }
 
 M.conform = {
@@ -176,19 +171,19 @@ M.conform = {
 
 -- NAVIGATION --
 M.fzflua = {
-  { "<c-p>", function() FzfLua.files() end, desc = "Open File" },
-  { "<c-s-p>", function() FzfLua.commands() end, desc = "Open Commands" },
-  { "<leader>f", function() FzfLua.blines() end, desc = "Search Buffer" },
-  { "<leader>sf", function() FzfLua.blines() end, desc = "Search Buffer" },
+  { "<c-p>",             function() FzfLua.files() end,          desc = "Open File" },
+  { "<c-s-p>",           function() FzfLua.commands() end,       desc = "Open Commands" },
+  { "<leader>f",         function() FzfLua.blines() end,         desc = "Search Buffer" },
+  { "<leader>sf",        function() FzfLua.blines() end,         desc = "Search Buffer" },
   { "<leader><leader>f", function() FzfLua.live_grep_glob() end, desc = "Search Everywhere" },
-  { "<leader><Tab>", function() FzfLua.oldfiles() end, desc = "Recent Files" },
-  { "<leader>m", function() FzfLua.marks() end, desc = "[M]arks" },
-  { "<leader>sh", function() FzfLua.helptags() end, desc = "[S]earch [H]elp" },
-  { "<leader>sk", function() FzfLua.keymaps() end, desc = "[S]earch keymaps?" },
-  { "<leader>sm", function() FzfLua.manpages() end, desc = "[S]earch [M]an pages" },
-  { "<leader>sw", function() FzfLua.grep_cword() end, desc = "[S]earch [w]ord" },
-  { "<leader>st", "<cmd>TodoFzfLua<CR>", desc = "Search [T]ODO" },
-  { "<leader>z", function() FzfLua.zoxide() end, desc = "[Z]oxide" },
+  { "<leader><Tab>",     function() FzfLua.oldfiles() end,       desc = "Recent Files" },
+  { "<leader>m",         function() FzfLua.marks() end,          desc = "[M]arks" },
+  { "<leader>sh",        function() FzfLua.helptags() end,       desc = "[S]earch [H]elp" },
+  { "<leader>sk",        function() FzfLua.keymaps() end,        desc = "[S]earch keymaps?" },
+  { "<leader>sm",        function() FzfLua.manpages() end,       desc = "[S]earch [M]an pages" },
+  { "<leader>sw",        function() FzfLua.grep_cword() end,     desc = "[S]earch [w]ord" },
+  { "<leader>st",        "<cmd>TodoFzfLua<CR>",                  desc = "Search [T]ODO" },
+  { "<leader>z",         function() FzfLua.zoxide() end,         desc = "[Z]oxide" },
 }
 
 M.todocomments = {
@@ -204,7 +199,8 @@ M.todocomments = {
 
 M.yazi = {
   -- <C-s> greps inside the directory!
-  { "<leader>-", "<cmd>Yazi<cr>", desc = "Open yazi at the current file" },
+  { "<leader>p", "<cmd>Yazi<cr>",     desc = "Open yazi at the current file" },
+  { "<leader>-", "<cmd>Yazi<cr>",     desc = "Open yazi at the current file" },
   { "<leader>_", "<cmd>Yazi cwd<cr>", desc = "Open the file manager in nvim's working directory" },
 }
 M.smartcd = { { "<leader>cd" } }
@@ -215,16 +211,16 @@ M.ext_lsp = function(event, fzflua)
     mode = mode or "n"
     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "FZF-LSP: " .. desc })
   end
-  m("grr", fzflua.lsp_references, "[G]oto [R]eferences")
-  m("gi", fzflua.lsp_implementations, "[G]oto [I]mplementation")
-  m("gd", fzflua.lsp_definitions, "[G]oto [D]efinition")
-  m("gD", fzflua.lsp_declarations, "[G]oto [D]eclaration")
-  m("gt", fzflua.lsp_typedefs, "[G]oto [T]ype")
-  m("gra", fzflua.lsp_code_actions, "Code Action", { "n", "x" })
-  m("<C-.>", fzflua.lsp_code_actions, "Code Action", { "n", "x" })
-  m("<leader>o", fzflua.lsp_document_symbols, "Symb[o]ls")
+  m("grr",               fzflua.lsp_references,            "[G]oto [R]eferences")
+  m("gi",                fzflua.lsp_implementations,       "[G]oto [I]mplementation")
+  m("gd",                fzflua.lsp_definitions,           "[G]oto [D]efinition")
+  m("gD",                fzflua.lsp_declarations,          "[G]oto [D]eclaration")
+  m("gt",                fzflua.lsp_typedefs,              "[G]oto [T]ype")
+  m("gra",               fzflua.lsp_code_actions,          "Code Action", { "n", "x" })
+  m("<C-.>",             fzflua.lsp_code_actions,          "Code Action", { "n", "x" })
+  m("<leader>o",         fzflua.lsp_document_symbols,      "Symb[o]ls")
   -- Diagnostics
-  m("<leader>q", fzflua.lsp_document_diagnostics, "Diagnosti[q]s [L]ist")
+  m("<leader>q",         fzflua.lsp_document_diagnostics,  "Diagnosti[q]s [L]ist")
   m("<leader><leader>q", fzflua.lsp_workspace_diagnostics, "Diagnosti[q]s [W]orkspace")
 end
 
@@ -233,10 +229,10 @@ M.lsp = function(event)
     mode = mode or "n"
     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
   end
-  m("gh", vim.lsp.buf.hover, "Show hover")
+  m("gh",         vim.lsp.buf.hover,       "Show hover")
   m("<leader>ca", vim.lsp.buf.code_action, "Code Actions")
-  m("<C-.>", vim.lsp.buf.code_action, "Code Actions")
-  m("<leader>n", vim.lsp.buf.rename, "Re[n]ame")
+  m("<C-.>",      vim.lsp.buf.code_action, "Code Actions")
+  m("<leader>n",  vim.lsp.buf.rename,      "Re[n]ame")
 end
 
 -- DEBUG --

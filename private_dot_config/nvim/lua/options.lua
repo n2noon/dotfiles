@@ -2,29 +2,8 @@ local g = vim.g
 local o = vim.o
 
 -- Use ripgrep for vimgrep
-if vim.fn.executable('rg') == 1 then
-  vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading"
-  vim.opt.grepformat = "%f:%l:%c:%m"
-end
-
-if g.neovide then
-  o.guifont = "JetBrainsMonoNL Nerd Font Mono:h16"
-  g.neovide_cursor_animate_command_line = false
-  g.neovide_cursor_animate_in_insert_mode = false
-  g.neovide_cursor_animation_length = 0
-  g.neovide_cursor_animation_length = 0.00
-  g.neovide_cursor_trail_size = 0
-  g.neovide_position_animation_length = 0
-  g.neovide_position_animation_length = 0.05
-  g.neovide_scale_factor = 1.0
-  g.neovide_scroll_animation_far_lines = 0
-  g.neovide_scroll_animation_length = 0
-  g.neovide_scroll_animation_length = 0.00
-  local change_scale_factor = function(delta) vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta end
-  vim.keymap.set("n", "<C-=>", function() change_scale_factor(1.05) end)
-  vim.keymap.set("n", "<C-->", function() change_scale_factor(1 / 1.05) end)
-  g.neovide_input_macos_option_key_is_meta = "only_left"
-end
+vim.opt.grepprg = "rg --vimgrep --smart-case --no-heading"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 g.mapleader = " "
 g.maplocalleader = " "
@@ -59,9 +38,24 @@ o.shada = "'1000,f1,<500"
 o.updatetime = 700
 o.spell = false
 
--- Folding
--- o.foldmethod = "expr"
--- o.foldexpr = "v:lua.Foldexpr()"
+-- Folding (https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/ui.lua)
+function Foldexpr()
+  local buf = vim.api.nvim_get_current_buf()
+  if vim.b[buf].ts_folds == nil then
+    -- as long as we don't have a filetype, don't bother
+    -- checking if treesitter is available (it won't)
+    if vim.bo[buf].filetype == "" then return "0" end
+    if vim.bo[buf].filetype:find("dashboard") then
+      vim.b[buf].ts_folds = false
+    else
+      vim.b[buf].ts_folds = pcall(vim.treesitter.get_parser, buf)
+    end
+  end
+  return vim.b[buf].ts_folds and vim.treesitter.foldexpr() or "0"
+end
+
+o.foldmethod = "expr"
+o.foldexpr = "v:lua.Foldexpr()"
 -- o.foldcolumn = "0"
 -- o.foldtext = ""
 o.foldlevel = 99
@@ -69,8 +63,26 @@ o.foldlevel = 99
 -- o.foldnestmax = 4
 
 -- o.timeoutlen = 400 -- Displays which-key popup sooner
+
+-- Clipboard (wsl hates me)
 -- This is delayed so startup time is quicker
-vim.schedule(function() o.clipboard = "unnamedplus" end)
+vim.schedule(function()
+  if vim.fn.has("wsl") == 1 then
+    vim.g.clipboard = {
+      name = "xclip-wsl",
+      copy = {
+        ["+"] = { "xclip", "-quiet", "-i", "-selection", "clipboard" },
+        ["*"] = { "xclip", "-quiet", "-i", "-selection", "primary" },
+      },
+      paste = {
+        ["+"] = { "xclip", "-o", "-selection", "clipboard" },
+        ["*"] = { "xclip", "-o", "-selection", "primary" },
+      },
+      cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
+    }
+  end
+  o.clipboard = "unnamedplus"
+end)
 
 -- vim.diagnostic.config({
 --   -- virtual_text = true

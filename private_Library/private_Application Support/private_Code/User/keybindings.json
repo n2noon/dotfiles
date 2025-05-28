@@ -57,6 +57,11 @@
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
+    "key": "space @",
+    "command": "symbol",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
     "key": "enter",
     "command": "workbench.action.files.save",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
