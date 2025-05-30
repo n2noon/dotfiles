@@ -127,6 +127,10 @@ if type -q yt-dlp
     abbr -a dlj "yt-dlp --write-auto-sub -4 --sub-lang 'en.*,ja' --embed-subs --cookies-from-browser firefox"
 end
 
+if type -q ffmpeg
+    abbr -a --set-cursor={} compress-video "ffmpeg -i {} -c:v libx265 -c:a libopus -b:a 128k out.mp4"
+end
+
 if type -q lazygit
     abbr -a lg lazygit
 end

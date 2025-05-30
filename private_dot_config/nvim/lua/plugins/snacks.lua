@@ -11,7 +11,7 @@ return {
       preset = {
         keys = {
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "p", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('grep')" },
           { icon = " ", key = "y", desc = "Yazi", action = ":Yazi" }, -- TODO - this properly
           {
