@@ -17,18 +17,34 @@ highlight article "\\((link|image|video)\\)" color8 default
 highlight article "https?://[^ ]+" color4 default
 highlight article "\[[0-9]+\]" color6 default bold
 
-browser "$BROWSER --new-window %u"
+highlight all "--.*--" color8 default bold
+highlight all "---.*---" color8 default bold
+highlight all "-----.*-----" color8 default bold
+highlight feedlist ".*0/0.." default default invis
+
+browser "$BROWSER --new-tab %u"
+
+macro y set browser "mpv %u" ; open-in-browser ; set browser "$BROWSER --new-tab %u"
 
 auto-reload yes
 
-highlight feedlist "---.*---" color8 default bold
-highlight feedlist ".*0/0.." default default invis
-
+reload-threads 100
 download-full-page yes
 
 bind-key k up
 bind-key j down
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
 unbind-key ^U
 unbind-key ^D
-bind-key ^U pageup
-bind-key ^D pagedown
+bind-key ^U halfpageup
+bind-key ^D halfpagedown
+bind-key u pageup
+bind-key d pagedown
+
+unbind-key g # bound to `sort` by default
+bind-key g home
+unbind-key G # bound to `rev-sort` by default
+bind-key G end
