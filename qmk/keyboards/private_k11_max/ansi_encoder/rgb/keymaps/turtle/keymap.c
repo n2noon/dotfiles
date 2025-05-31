@@ -14,6 +14,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+// See https://docs.qmk.fm/keycodes_basic
+
 #include QMK_KEYBOARD_H
 #include "keychron_common.h"
 
@@ -74,6 +77,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		[FN2]	   = {ENCODER_CCW_CW(_______, _______)},
 	};
 #endif // ENCODER_MAP_ENABLE
+
+// Overrides
+const key_override_t ctl_j_down_ovrd = ko_make_basic(MOD_MASK_CTRL, KC_J, KC_DOWN);
+const key_override_t ctl_j_up_ovrd = ko_make_basic(MOD_MASK_CTRL, KC_K, KC_UP);
+
+// This globally defines all key overrides to be used
+const key_override_t *key_overrides[] = {
+    &ctl_j_down_ovrd
+    &ctl_j_up_ovrd
+};
 
 // clang-format on
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
