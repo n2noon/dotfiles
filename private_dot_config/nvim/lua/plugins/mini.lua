@@ -18,7 +18,12 @@ return {
     -- Trim ignores whitespace when aligning
     -- Ignore ignores some stuff
     -- Pair smushes things together
-    require("mini.align").setup()
+    require("mini.align").setup({
+      mappings = {
+        start = '<leader>a',
+        start_with_preview = '<leader>A',
+      },
+    })
 
     ----------------------------- operators ----------------------------
     -- Evaluate text and replace with output.
