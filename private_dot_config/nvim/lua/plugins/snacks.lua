@@ -12,17 +12,14 @@ return {
         keys = {
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "p", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('grep')" },
-          { icon = " ", key = "y", desc = "Yazi", action = ":Yazi" }, -- TODO - this properly
-          {
-            icon = " ",
-            key = "c",
-            desc = "Config",
-            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-          },
+          { icon = " ", key = "f", desc = "Find Text", action = ":lua Snacks.dashboard.pick('grep')" },
+          { icon = " ", key = "c", desc = "Find Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})", },
+          { icon = "󰎚 ", key = "n", desc = "Find Note", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})", },
           -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-          -- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "m", desc = "Mason", action = ":Mason", },
+          { icon = " ", key = "y", desc = "Yazi", action = ":Yazi" }, -- TODO - this properly
+          { icon = " ", key = "<tab>", desc = "Recent", action = ":lua Snacks.dashboard.pick('oldfiles')" },
           -- { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
       },

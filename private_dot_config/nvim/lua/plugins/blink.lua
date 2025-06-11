@@ -25,8 +25,6 @@ M = {
     },
     completion = {
       documentation = { auto_show = true, auto_show_delay_ms = 500 },
-
-      -- ghost_text = { enabled = true },
     },
     sources = {
       default = {
@@ -78,9 +76,8 @@ M = {
           score_offset = 2,
         },
         buffer = {
-          max_items=1500
-
-        }
+          max_items = 1500,
+        },
       },
       min_keyword_length = function(ctx)
         -- don't complete commands < 2 chars long

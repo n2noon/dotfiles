@@ -28,20 +28,20 @@ return {
     -- Sort text.
     require("mini.operators").setup({
       evaluate = {
-        prefix = "t=",
+        prefix = "<leader>=",
       },
       exchange = {
-        prefix = "tx",
+        prefix = "<leader>x",
       },
       multiply = {
         prefix = "tm",
       },
       replace = {
-        prefix = "tr",
+        prefix = "<leader>p",
         reindent_linewise = true,
       },
       sort = {
-        prefix = "ts",
+        prefix = "so",
       },
     })
     require("mini.pairs").setup()

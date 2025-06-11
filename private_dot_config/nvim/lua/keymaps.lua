@@ -201,7 +201,6 @@ M.todocomments = {
 
 M.yazi = {
   -- <C-s> greps inside the directory!
-  { "<leader>p", "<cmd>Yazi<cr>",     desc = "Open yazi at the current file" },
   { "<leader>-", "<cmd>Yazi<cr>",     desc = "Open yazi at the current file" },
   { "<leader>_", "<cmd>Yazi cwd<cr>", desc = "Open the file manager in nvim's working directory" },
 }
