@@ -43,9 +43,6 @@ return {
           p:find()
         end,
       },
-      -- layouts = {
-      --   { "wider-sidebar", preset = "sidebar", layout = { width = 0.6 } },
-      -- },
       formatters = {
         file = { filename_first = true },
       },
@@ -93,7 +90,7 @@ return {
       },
       icons = { files = { enabled = false } },
     },
+    statuscolumn = {},
   },
-  statuscolumn = {},
   keys = require("keymaps").snacks,
 }

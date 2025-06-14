@@ -19,7 +19,6 @@ vim.api.nvim_set_hl(0, "SnacksDashboardDir", { fg = grey })
 -- Configure plugins.
 ---@type Lazy
 require("lazy").setup("plugins", {
-  require('leetcode'),
   install = {
     -- Do not automatically install on startup.
     missing = false,

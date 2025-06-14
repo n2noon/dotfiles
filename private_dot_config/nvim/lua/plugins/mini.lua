@@ -20,11 +20,10 @@ return {
     -- Pair smushes things together
     require("mini.align").setup({
       mappings = {
-        start = '<leader>a',
-        start_with_preview = '<leader>A',
+        start = 'ga',
+        start_with_preview = 'gA',
       },
     })
-
     ----------------------------- operators ----------------------------
     -- Evaluate text and replace with output.
     -- Exchange text regions.
@@ -32,22 +31,11 @@ return {
     -- Replace text with register.
     -- Sort text.
     require("mini.operators").setup({
-      evaluate = {
-        prefix = "<leader>=",
-      },
-      exchange = {
-        prefix = "<leader>x",
-      },
-      multiply = {
-        prefix = "tm",
-      },
-      replace = {
-        prefix = "<leader>p",
-        reindent_linewise = true,
-      },
-      sort = {
-        prefix = "so",
-      },
+      evaluate = { prefix = "<leader>=" },
+      exchange = { prefix = "<leader>x" },
+      multiply = { prefix = "tm" },
+      sort     = { prefix = "so" },
+      replace  = { prefix = "<leader>p", reindent_linewise =  true, },
     })
     require("mini.pairs").setup()
     require("mini.splitjoin").setup({ mappings = { toggle = "gj" } })

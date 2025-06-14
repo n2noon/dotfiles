@@ -11,7 +11,18 @@ return {
     format_after_save = {
       lsp_format = "fallback",
     },
-    formatters_by_ft = require("lsp").formatters_by_ft,
-    formatters = require("lsp").formatters,
+    -- https://github.com/stevearc/conform.nvim?tab=readme-ov-file#formatters
+    formatters_by_ft = {
+      css    = { "biome" },
+      fish   = { "fish_indent" },
+      json   = { "biome" },
+      just   = { "just" },
+      lua    = { "stylua" },
+      nix    = { "alejandra" },
+      python = { "ruff_fix", "ruff_format" },
+      rust   = { "rustfmt", lsp_format = "fallback" },
+      sh     = { "shfmt" },
+      xml    = { "xmlformatter" },
+    },
   },
 }
