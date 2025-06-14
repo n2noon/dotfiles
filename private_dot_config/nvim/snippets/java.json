@@ -1,0 +1,16 @@
+{
+    "Make an ArrayList": {
+      "prefix": "list",
+      "body": [
+        "List<${1:type}> ${2:name} = new ArrayList<>();"
+      ],
+      "description": "Make an ArrayList"
+    },
+    "Make a HashMap": {
+      "prefix": "hashmap",
+      "body": [
+        "Map<${1:type}, ${2:type}> ${3:name} = new HashMap<>();"
+      ],
+      "description": "Make a HashMap"
+    },
+}

@@ -1,0 +1,7 @@
+{
+    "Make constructor": {
+      "prefix": ["new", "init"],
+      "body": "def __init__(self):",
+      "description": "Make a constructor for a class"
+    },
+}

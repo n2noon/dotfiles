@@ -1,0 +1,7 @@
+{
+    "Log variable": {
+      "prefix": "printlnvar",
+      "body": "println!\{\}",
+      "description": "Println a variable"
+    },
+}
