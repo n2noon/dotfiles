@@ -15,7 +15,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {},
-    branch = "v1.x",
+    -- branch = "v1.x",
   },
   {
     "neovim/nvim-lspconfig",

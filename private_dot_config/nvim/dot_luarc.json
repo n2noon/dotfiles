@@ -6,7 +6,8 @@
         "local",
         "config",
         "FzfLua",
-        "require"
+        "require",
+        "notesdir"
     ],
     "diagnostics.disable": [
         "missing-fields"
