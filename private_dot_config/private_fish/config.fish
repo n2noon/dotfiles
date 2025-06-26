@@ -93,10 +93,10 @@ end
 if type -q bat
     # Colour man pages
     set -gx MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
-    set -gx PAGER bat
-    abbr -a b bat
-    abbr -a c bat
-    abbr -a cat bat
+    # set -gx PAGER bat -p 
+    set -gx PAGER bat -p 
+    abbr -a bat bat --style=numbers
+    abbr -a b bat --style=numbers
 
     abbr -a catlog batlog
     abbr -a clog batlog

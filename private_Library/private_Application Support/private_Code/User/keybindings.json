@@ -35,6 +35,11 @@
   },
   // Normal mode binds
   {
+    "key": "space space",
+    "command": "workbench.action.quickTextSearch",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
     "key": "space c f",
     "command": "editor.action.format",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
@@ -104,6 +109,11 @@
   {
     "key": "space d w",
     "command": "workbench.action.debug.runToCursor",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w q",
+    "command": "workbench.action.closeActiveEditor",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {

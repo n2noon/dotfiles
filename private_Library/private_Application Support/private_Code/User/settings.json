@@ -12,13 +12,7 @@
         "editor.formatOnSave": true
     },
     "C_Cpp.intelliSenseEngine": "disabled",
-    "C_Cpp.intelliSenseEngineFallback": "enabled",
     "clangd.path": "/Users/kalk/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/18.1.3/clangd_18.1.3/bin/clangd",
-    "cmake.pinnedCommands": [
-        "workbench.action.tasks.configureTaskRunner",
-        "workbench.action.tasks.runTask"
-    ],
-    "cmake.showOptionsMovedNotification": false,
     "debug.allowBreakpointsEverywhere": true,
     "editor.accessibilitySupport": "off",
     // "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
@@ -44,15 +38,7 @@
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
     "git.ignoreRebaseWarning": true,
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "jsonc": true
-    },
     "lldb.suppressUpdateNotifications": true,
-    "rust-analyzer.checkOnSave.command": "clippy",
     "security.workspace.trust.untrustedFiles": "open",
     // "terminal.external.osxExec": "wezterm.app",
     "terminal.integrated.enableImages": true,
@@ -80,8 +66,6 @@
     "totalTypeScript.hideBasicTips": false,
     "vim.neovimUseConfigFile": true,
     "vim.smartRelativeLine": true,
-    // "vim.sneak": true,
-    // "vim.sneakReplacesF": true,
     "vim.useCtrlKeys": true,
     "vim.highlightedyank.enable": true,
     "vim.smartcase": true,
@@ -102,14 +86,4 @@
     "workbench.settings.applyToAllProfiles": [
         "workbench.colorCustomizations"
     ],
-    "github.copilot.nextEditSuggestions.enabled": true,
-    "github.copilot.advanced": {
-    },
-    "github.copilot.selectedCompletionModel": "",
-    "continue.telemetryEnabled": false,
-    "parallels-desktop.extension.path": "/Users/kalk/.parallels-desktop-vscode",
-    "parallels-desktop.prlctl.path": "/usr/local/bin/prlctl",
-    "parallels-desktop.git.path": "/usr/bin/git",
-    "parallels-desktop.brew.path": "/opt/homebrew/bin/brew",
-    "parallels-desktop.devops-service.path": "/Users/kalk/.parallels-desktop-vscode/tools/prldevops"
 }

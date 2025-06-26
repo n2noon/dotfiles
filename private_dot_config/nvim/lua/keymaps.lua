@@ -1,8 +1,17 @@
 M = {}
 
 M.init = function()
-  local m = vim.keymap.set
+  local mlsp = function(keys, func, desc, mode)
+    mode = mode or "n"
+    vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })
+  end
 
+  mlsp("gh",         vim.lsp.buf.hover,       "Show hover")
+  mlsp("<leader>ca", vim.lsp.buf.code_action, "Code Actions")
+  mlsp("<C-.>",      vim.lsp.buf.code_action, "Code Actions")
+  mlsp("<leader>n",  vim.lsp.buf.rename,      "Re[n]ame")
+
+  local m = vim.keymap.set
   m({ "n", "x" }, "<C-/>", "<cmd>normal gcc<cr>", { desc = "Comment line" })
   m({ "n", "x" }, "<C-C>", "<cmd>normal gcc<cr>", { desc = "Comment line" })
   -- clear highlights on search when pressing <Esc> in normal mode (and also dismiss lsp.buf.hover - this is hacky there's probably a better way to do it)
@@ -54,7 +63,7 @@ M.init = function()
   m("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
   -- format file (= formats? wow)
-  m("n", "<leader>L", "gg=G<C-o>")
+  -- m("n", "<leader>L", "gg=G<C-o>")
 
   --- WINDOW ---
   m("n", "<leader>wq", "<cmd>q<CR>",   { desc = "Quit" })
@@ -62,8 +71,8 @@ M.init = function()
   m("n", "<leader>wh", ":split<CR>",   { desc = "Split" })
   m("n", "]T",         ":tabnext<CR>", { desc = "Next Tab" })
   m("n", "[T",         ":tabprev<CR>", { desc = "Prev Tab" })
-  m("n", "<leader>q",  ":cnext<CR>",   { desc = "Next Quickfix" })
-  m("n", "<leader>Q",  ":cprev<CR>",   { desc = "Previous Quickfix" })
+  -- m("n", "<leader>q",  ":cnext<CR>",   { desc = "Next Quickfix" })
+  -- m("n", "<leader>Q",  ":cprev<CR>",   { desc = "Previous Quickfix" })
 
   -- Move Lines
   m("n", "<A-j>",   "<cmd>execute 'move .+' . v:count1<cr>==",       { desc = "Move Down" })

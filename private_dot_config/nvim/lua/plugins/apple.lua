@@ -1,7 +1,6 @@
 return {
   "wojciech-kulik/xcodebuild.nvim",
   enabled = false,
-  cond = vim.fn.executable("xcodebuild") == 1,
   dependencies = {
     -- "nvim-telescope/telescope.nvim",
     "MunifTanjim/nui.nvim",

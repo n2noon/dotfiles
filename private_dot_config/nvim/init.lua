@@ -13,9 +13,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-local grey = "#928374"
-vim.api.nvim_set_hl(0, "SnacksDashboardDir", { fg = grey })
-
 -- Configure plugins.
 ---@type Lazy
 require("lazy").setup("plugins", {

@@ -1,9 +1,8 @@
 return {
   "mikesmithgh/kitty-scrollback.nvim",
-  enabled = true,
+  enabled = false,
   lazy = true,
   -- Checks for if kitty even exists
-  cond = vim.fn.executable("kitty") == 1,
   cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth", "KittyScrollbackGenerateCommandLineEditing" },
   event = { "User KittyScrollbackLaunch" },
   -- version = '*', -- latest stable version, may have breaking changes if major version changed
