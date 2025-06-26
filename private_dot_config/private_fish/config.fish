@@ -42,6 +42,10 @@ if type -q brew
     set -p fish_complete_path /opt/homebrew/share/fish/vendor_completions.d
 end
 
+if type -q tldr
+    abbr -a tl tldr
+end
+
 if type -q just
     abbr -a j just
 end

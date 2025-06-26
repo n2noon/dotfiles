@@ -1,13 +1,10 @@
 -- https://cmp.saghen.dev/configuration/general.html
 -- FIXME: dictionary boolean toggle
-Dict = true
-
 M = {
   "saghen/blink.cmp",
   dependencies = {
     "rafamadriz/friendly-snippets",
     "mikavilpas/blink-ripgrep.nvim",
-    "Kaiser-Yang/blink-cmp-dictionary",
     -- "saghen/blink.compat"
     "folke/snacks.nvim",
   },
@@ -33,24 +30,8 @@ M = {
         "lsp",
         "path",
         "buffer",
-        "dictionary",
       },
       providers = {
-        dictionary = {
-          module = "blink-cmp-dictionary",
-          name = "Dict",
-          -- Make sure this is at least 2.
-          -- 3 is recommended
-          min_keyword_length = 3,
-          score_offset = -3,
-          ---@module "blink-cmp-dictionary"
-          ---@type blink-cmp-dictionary.Options
-          opts = {
-            -- TODO: make this more portable
-            dictionary_files = { vim.fn.expand("~/.config/nvim/words.txt") },
-            -- options for blink-cmp-dictionary
-          },
-        },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
@@ -90,11 +71,4 @@ M = {
   },
   opts_extend = { "sources.default" },
 }
-
--- if Dict then
---   M.dependencies.dependencies = { "nvim-lua/plenary.nvim" }
---   table.insert(M.dependencies, "Kaiser-Yang/blink-cmp-dictionary")
---   table.insert(M.opts.sources.default, "dictionary")
--- end
-
 return M
