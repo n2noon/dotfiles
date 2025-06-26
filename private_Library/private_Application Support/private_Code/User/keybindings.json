@@ -62,8 +62,8 @@
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
-    "key": "space @",
-    "command": "symbol",
+    "key": "space 2",
+    "command": "outline.toggleVisibility",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
@@ -117,6 +117,16 @@
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
+    "key": "space w v",
+    "command": "workbench.action.splitEditorRight",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space w s",
+    "command": "workbench.action.splitEditorDown",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
     "key": "[ d",
     "command": "editor.action.marker.prev",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
@@ -134,6 +144,16 @@
   {
     "key": "] b",
     "command": "workbench.action.nextEditor",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "] h",
+    "command": "workbench.action.editor.nextChange",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "[ h",
+    "command": "workbench.action.editor.previousChange",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   }
 ]
