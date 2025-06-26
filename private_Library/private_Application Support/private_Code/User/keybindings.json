@@ -40,8 +40,40 @@
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
+    "key": "space c a",
+    "command": "editor.action.codeAction",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
     "key": "space c f",
     "command": "editor.action.format",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  { "key": "ctrl+p", "command": "workbench.action.quickOpen" },
+  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup" },
+  {
+    "key": "space 2",
+    "command": "workbench.action.gotoSymbol",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space p",
+    "command": "workbench.action.quickOpen",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space o o",
+    "command": "workbench.action.tasks.runTask",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space tab",
+    "command": "workbench.action.quickOpenRecent",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "enter",
+    "command": "workbench.action.files.save",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
@@ -54,21 +86,9 @@
     "command": "workbench.action.debug.stepBack",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
-  { "key": "ctrl+p", "command": "workbench.action.quickOpen" },
-  { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup" },
   {
     "key": "space d p",
     "command": "workbench.action.debug.selectRepl",
-    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
-  },
-  {
-    "key": "space 2",
-    "command": "outline.toggleVisibility",
-    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
-  },
-  {
-    "key": "enter",
-    "command": "workbench.action.files.save",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
@@ -112,6 +132,31 @@
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
+    "key": "space g d",
+    "command": "gitlens.diffWithRevision",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space s f",
+    "command": "actions.find",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space s o",
+    "command": "workbench.action.gotoSymbol",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space t",
+    "command": "terminal.focus",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "space q",
+    "command": "workbench.actions.view.toggleProblems",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
     "key": "space w q",
     "command": "workbench.action.closeActiveEditor",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
@@ -124,6 +169,11 @@
   {
     "key": "space w s",
     "command": "workbench.action.splitEditorDown",
+    "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+shift+f",
+    "command": "search.action.openEditor",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
   },
   {
@@ -155,5 +205,5 @@
     "key": "[ h",
     "command": "workbench.action.editor.previousChange",
     "when": "(editorTextFocus||!inputFocus) && vim.mode == 'Normal'"
-  }
+  },
 ]
