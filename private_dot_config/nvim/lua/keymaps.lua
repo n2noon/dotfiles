@@ -52,6 +52,41 @@ M.init = function()
   -- ciw shortcut
   m("n", "<Backspace>", "ciw", { silent = true })
 
+  local google = function()
+    -- Get selected text!
+    -- from https://github.com/ibhagwan/fzf-lua/blob/f7f54dd685cfdf5469a763d3a00392b9291e75f2/lua/fzf-lua/utils.lua#L372-L404
+    local _, csrow, cscol, cerow, cecol
+    local mode = vim.fn.mode()
+    -- if we are in visual mode use the live position
+    _, csrow, cscol, _ = unpack(vim.fn.getpos("."))
+    _, cerow, cecol, _ = unpack(vim.fn.getpos("v"))
+    if mode == 'V' then
+      -- visual line doesn't provide columns
+      cscol, cecol = 0, 999
+    end
+    if cerow < csrow then csrow, cerow = cerow, csrow end
+    if cecol < cscol then cscol, cecol = cecol, cscol end
+    local lines = vim.fn.getline(csrow, cerow)
+    local n = #lines
+    if n <= 0 then return "" end
+    lines[n] = string.sub(lines[n], 1, cecol)
+    lines[1] = string.sub(lines[1], cscol)
+    -- And done.
+    local query = table.concat(lines, "\n")
+    -- Now URL encode
+    query = query:gsub(
+      "([^%w ])",
+      function(char) return string.format("%%%02X", string.byte(char)) end
+    )
+    query = vim.trim(query):gsub(" ", "+")
+    local url = 'https://www.google.com/search?q=' .. vim.fn.escape(query, '\\')
+    vim.ui.open(url)
+  end
+
+  -- Google selected thing
+  m("v", "<leader>.", google, { silent = true })
+  m("v", "<leader>sg", google, { silent = true })
+
   -- make j and k move by visual line, not actual line, when text is soft-wrapped
   -- m('n', 'j', 'gj')
   -- m('n', 'k', 'gk')

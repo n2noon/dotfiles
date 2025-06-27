@@ -1,3 +1,6 @@
+-- local grey = "#928374"
+-- vim.api.nvim_set_hl(0, 'MiniCursorwordCurrent', { fg = grey })
+
 return {
   "echasnovski/mini.nvim",
   version = false,
@@ -45,7 +48,7 @@ return {
     -- fs finds
     -- sh highlights
     -- can use q and b also
-    require("mini.diff").setup()
+    -- require("mini.diff").setup()
     require("mini.surround").setup()
     local statusline = function()
       local git = MiniStatusline.section_git({ trunc_width = 40 })
@@ -74,6 +77,7 @@ return {
       -- use_icons = false,
       content = { active = statusline },
     })
+    require("mini.cursorword").setup()
     -- require('mini.sessions').setup()
   end,
 }

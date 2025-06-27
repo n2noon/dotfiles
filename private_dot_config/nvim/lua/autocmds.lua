@@ -6,9 +6,8 @@ autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
   callback = function() vim.highlight.on_yank() end,
 })
-
 autocmd("BufReadPost", {
-  desc = "Jump to last edit position when opepning a file",
+  desc = "Jump to last edit position when opening a file",
   pattern = "*",
   callback = function()
     if vim.fn.line("'\"") > 1 and vim.fn.line("'\"") <= vim.fn.line("$") then
@@ -24,26 +23,10 @@ autocmd("BufWinLeave", {
   pattern = "*.*",
   callback = function() vim.cmd.mkview() end,
 })
-
 autocmd("BufWinEnter", {
   pattern = "*.*",
   callback = function() vim.cmd.loadview({ mods = { emsg_silent = true } }) end,
 })
-
--- Auto insert mode for terminals
--- autocmd({ "TermOpen", "TermEnter" }, {
---   callback = function() vim.cmd.startinsert() end,
--- })
-
--- Show LSP status
--- autocmd("LspProgress", {
---   callback = function()
---     vim.notify(vim.lsp.status(), vim.log.levels.OFF, {
---       id = "lsp_progress",
---       title = "LSP Progress",
---     })
---   end,
--- })
 
 -- Remove auto comment insertion
 autocmd("FileType", {
@@ -89,17 +72,20 @@ autocmd("VimResized", {
   command = "wincmd =",
 })
 
--- autocmd({ "BufWinEnter", "BufEnter", "FocusGained" }, {
---   command = "setlocal number relativenumber",
--- })
---
--- autocmd({ "BufWinLeave", "BufLeave", "FocusLost" }, {
---   command = "setlocal nonumber norelativenumber",
--- })
-
 autocmd("FileType", {
   desc = "Open man or help pages in a right split",
   pattern = { "help", "man" },
-  -- command = "wincmd L | wincmd 3<",
   command = "wincmd L",
+})
+
+-- Navigate help and man files like they're in less
+autocmd("FileType", {
+  pattern = { "help", "man" },
+  callback = function(event)
+    vim.keymap.set("n", "q", ":bdelete<CR>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "d", "<C-D>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "u", "<C-U>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "f", "<C-F>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "b", "<C-B>", { buffer = event.buf, silent = true })
+  end,
 })
